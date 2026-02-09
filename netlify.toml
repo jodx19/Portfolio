@@ -1,0 +1,8 @@
+/*
+  Redirects for single-page app (SPA) routing
+  Vercel serves this file to handle client-side routing
+*/
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
