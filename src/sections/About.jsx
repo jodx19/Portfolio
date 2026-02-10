@@ -1,9 +1,19 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "../motion/motion";
 import { aboutData } from "../constants";
+import { useTranslation } from "react-i18next";
 
 function About() {
-  const { title, description, image, stats } = aboutData;
+  const { image } = aboutData;
+  const { t } = useTranslation();
+
+  const title = t("about.title");
+  const description = [t("about.description1"), t("about.description2")];
+  const stats = [
+    { title: t("about.stat1Title"), desc: t("about.stat1Desc"), icon: "🏢" },
+    { title: t("about.stat2Title"), desc: t("about.stat2Desc"), icon: "🏗️" },
+    { title: t("about.stat3Title"), desc: t("about.stat3Desc"), icon: "⚡" },
+  ];
 
   return (
     <section id="about" className="relative px-6 overflow-visible py-24 md:py-32">
@@ -69,13 +79,9 @@ function About() {
         {/* Right Column - Content */}
         <div className="space-y-10">
           <motion.div variants={fadeUp}>
-            <p className="heading-accent">About Me</p>
+            <p className="heading-accent">{t("about.label")}</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-txt-primary mt-4 leading-tight tracking-tight">
-              {title.split(" ").map((word, i) => {
-                if (i >= 4 && i <= 5) return <span key={i} className="text-cyan-400"> {word} </span>;
-                if (i >= 8 && i <= 9) return <span key={i} className="text-blue-500"> {word} </span>;
-                return word + " ";
-              })}
+              {title}
             </h2>
           </motion.div>
 

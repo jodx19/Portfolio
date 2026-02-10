@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone, Shield, Send, Github, Linkedin } from "lucide-reac
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
 import { staggerContainer, fadeUp } from "../motion/motion";
+import { useTranslation } from "react-i18next";
 
 const initialState = { name: "", email: "", phone: "", message: "", company: "" };
 
@@ -11,6 +12,7 @@ function ContactForm() {
   const formRef = useRef();
   const [form, setForm] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,18 +38,17 @@ function ContactForm() {
         PUBLIC_KEY
       );
 
-      toast.success("Message sent! I'll get back to you soon.");
+      toast.success(t("contact.successToast"));
       setForm(initialState);
       if (formRef.current) formRef.current.reset();
     } catch (err) {
       console.error("EmailJS Error:", err);
-      toast.error("Couldn't send message. Please try again later.");
+      toast.error(t("contact.errorToast"));
     } finally {
       setLoading(false);
     }
   };
 
-  // ربط الأيقونات بالروابط المحدثة من ملف constants
   const socialLinks = [
     { icon: Github, href: "https://github.com/jodx19", label: "GitHub" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoud-mostafa-elsafi", label: "LinkedIn" },
@@ -72,13 +73,12 @@ function ContactForm() {
       >
         {/* Header */}
         <motion.div className="mb-12 text-center" variants={fadeUp}>
-          <p className="heading-accent">Get in Touch</p>
+          <p className="heading-accent">{t("contact.label")}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-txt-primary mt-3 tracking-tight">
-            Let's Build <span className="text-cyan-400">Together</span>
+            {t("contact.title")} <span className="text-cyan-400">{t("contact.titleHighlight")}</span>
           </h2>
           <p className="text-lg text-txt-secondary mt-4 max-w-2xl mx-auto leading-relaxed">
-            I'm open to freelance inquiries, project collaborations, or just a
-            chat about improving your digital products.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -95,13 +95,13 @@ function ContactForm() {
           >
             <div>
               <h3 className="text-xl font-bold text-txt-primary mb-6">
-                Contact Information
+                {t("contact.infoTitle")}
               </h3>
               <div className="space-y-5">
                 {[
-                  { icon: Phone, text: "01118286088", href: "tel:01118286088" },
-                  { icon: Mail, text: "ma7moudmostafa19@gmail.com", href: "mailto:ma7moudmostafa19@gmail.com" },
-                  { icon: MapPin, text: "Cairo, Egypt", href: null },
+                  { icon: Phone, text: t("contact.phone"), href: "tel:01118286088" },
+                  { icon: Mail, text: t("contact.email"), href: "mailto:ma7moudmostafa19@gmail.com" },
+                  { icon: MapPin, text: t("contact.location"), href: null },
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -138,7 +138,7 @@ function ContactForm() {
 
             {/* Social Links */}
             <div className="space-y-4">
-              <p className="text-sm font-medium text-txt-tertiary">Follow me</p>
+              <p className="text-sm font-medium text-txt-tertiary">{t("contact.followMe")}</p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -171,7 +171,7 @@ function ContactForm() {
               style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}
             >
               <Shield size={18} className="text-cyan-400" />
-              <span>Your data is secure. Responses within 24h.</span>
+              <span>{t("contact.secureNote")}</span>
             </div>
           </motion.div>
 
@@ -189,7 +189,7 @@ function ContactForm() {
           >
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-txt-secondary ml-1">Name</label>
+                <label className="text-sm font-medium text-txt-secondary ml-1">{t("contact.labelName")}</label>
                 <input
                   required
                   name="name"
@@ -208,11 +208,11 @@ function ContactForm() {
                     e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
                     e.target.style.boxShadow = "none";
                   }}
-                  placeholder="Your Name"
+                  placeholder={t("contact.placeholderName")}
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-txt-secondary ml-1">Email</label>
+                <label className="text-sm font-medium text-txt-secondary ml-1">{t("contact.labelEmail")}</label>
                 <input
                   required
                   type="email"
@@ -232,13 +232,13 @@ function ContactForm() {
                     e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
                     e.target.style.boxShadow = "none";
                   }}
-                  placeholder="you@example.com"
+                  placeholder={t("contact.placeholderEmail")}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-txt-secondary ml-1">Phone Number</label>
+              <label className="text-sm font-medium text-txt-secondary ml-1">{t("contact.labelPhone")}</label>
               <div className="relative group">
                 <input
                   type="tel"
@@ -258,14 +258,14 @@ function ContactForm() {
                     e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
                     e.target.style.boxShadow = "none";
                   }}
-                  placeholder="+20 123 456 789"
+                  placeholder={t("contact.placeholderPhone")}
                 />
                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-txt-tertiary group-focus-within:text-cyan-400 transition-colors" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-txt-secondary ml-1">Message</label>
+              <label className="text-sm font-medium text-txt-secondary ml-1">{t("contact.labelMessage")}</label>
               <textarea
                 required
                 name="message"
@@ -285,7 +285,7 @@ function ContactForm() {
                   e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
                   e.target.style.boxShadow = "none";
                 }}
-                placeholder="Tell me about your project..."
+                placeholder={t("contact.placeholderMessage")}
               />
             </div>
 
@@ -322,12 +322,12 @@ function ContactForm() {
                 {loading ? (
                   <span className="flex items-center gap-2">
                     <div className="h-4 w-4 border-2 border-slate-800/30 border-t-slate-800 rounded-full animate-spin" />
-                    Sending...
+                    {t("contact.sending")}
                   </span>
                 ) : (
                   <>
                     <Send size={18} />
-                    Send Message
+                    {t("contact.sendMessage")}
                   </>
                 )}
               </motion.button>

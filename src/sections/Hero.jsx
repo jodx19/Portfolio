@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "../motion/motion";
 import { ArrowDown, FileText } from "lucide-react";
-import { heroData, socialLinks } from "../constants";
+import { socialLinks } from "../constants";
 import * as LucideIcons from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function Hero() {
-  const { name, role, specialization, status, description, cta } = heroData;
+  const { t } = useTranslation();
 
   return (
     <section
@@ -52,24 +53,24 @@ function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-              {status}
+              {t("hero.status")}
             </span>
           </motion.div>
 
           {/* Main Title */}
           <motion.div variants={fadeUp} className="space-y-6">
-            <p className="text-lg md:text-xl text-txt-tertiary font-medium">Hi, I'm</p>
+            <p className="text-lg md:text-xl text-txt-tertiary font-medium">{t("hero.greeting")}</p>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[1] tracking-tighter">
-              <span className="hero-title">{name.first}</span>
+              <span className="hero-title">{t("hero.firstName")}</span>
               <br />
-              <span className="hero-title">{name.last}</span>
+              <span className="hero-title">{t("hero.lastName")}</span>
             </h1>
             <div className="space-y-2">
               <p className="text-2xl md:text-3xl font-bold text-txt-primary">
-                {role}
+                {t("hero.role")}
               </p>
               <p className="text-lg md:text-xl text-cyan-400/80 font-medium tracking-wide">
-                {specialization}
+                {t("hero.specialization")}
               </p>
             </div>
           </motion.div>
@@ -79,7 +80,7 @@ function Hero() {
             className="text-lg md:text-xl text-txt-tertiary max-w-2xl mx-auto leading-relaxed mt-8"
             variants={fadeUp}
           >
-            {description}
+            {t("hero.description")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -88,7 +89,7 @@ function Hero() {
             variants={fadeUp}
           >
             <motion.a
-              href={cta.primary.href}
+              href="#projects"
               className="group relative px-10 py-5 rounded-xl font-bold flex items-center gap-2 overflow-hidden"
               style={{
                 background: "linear-gradient(135deg, #22d3ee 0%, #2563eb 100%)",
@@ -101,17 +102,17 @@ function Hero() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {cta.primary.label}
+              {t("hero.ctaPrimary")}
               <ArrowDown className="h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </motion.a>
 
             <motion.a
-              href={cta.secondary.href}
+              href="/Mahmoud_Mostafa_CV.pdf"
               className="btn-secondary px-10 py-5 rounded-xl font-bold flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {cta.secondary.label}
+              {t("hero.ctaSecondary")}
               <FileText className="h-5 w-5" />
             </motion.a>
           </motion.div>

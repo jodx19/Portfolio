@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Github } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function ProjectModal({ project, onClose }) {
+  const { t } = useTranslation();
   if (!project) return null;
 
   return (
@@ -108,7 +110,7 @@ function ProjectModal({ project, onClose }) {
                 {/* Tech Tags */}
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-3">
-                    Technologies Used
+                    {t("projects.techStack")}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
@@ -148,7 +150,7 @@ function ProjectModal({ project, onClose }) {
                       whileTap={{ scale: 0.98 }}
                     >
                       <ExternalLink size={18} />
-                      Live Demo
+                      {t("projects.liveDemo")}
                     </motion.a>
                   )}
                   {project.repo && (
@@ -169,7 +171,7 @@ function ProjectModal({ project, onClose }) {
                       whileTap={{ scale: 0.98 }}
                     >
                       <Github size={18} />
-                      View Code
+                      {t("projects.sourceCode")}
                     </motion.a>
                   )}
                 </div>

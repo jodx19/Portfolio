@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navLinkUnderline } from "../motion/motion";
+import { useTranslation } from "react-i18next";
+import { useTheme } from "../context/ThemeContext";
+
+const navKeys = ["home", "about", "journey", "stack", "work", "certifications", "contact"];
 
 const NavLink = ({ href, children, onClick, isActive }) => (
   <a
@@ -40,53 +43,81 @@ const ThemeToggler = ({ theme, setTheme }) => (
   </motion.button>
 );
 
-const MobileNav = ({ sections, isOpen, setOpen, theme, setTheme, activeSection, handleLinkClick }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: 1, height: "auto" }}
-        exit={{ opacity: 0, height: 0 }}
-        className="absolute left-0 top-full w-full overflow-hidden md:hidden"
-        style={{
-          background: "rgba(10, 15, 26, 0.95)",
-          backdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(34, 211, 238, 0.1)"
-        }}
-      >
-        <nav className="flex flex-col gap-2 p-6" aria-label="Mobile primary">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              onClick={(e) => handleLinkClick(e, section.id)}
-              className={`rounded-xl px-4 py-3 text-sm font-medium transition-all ${activeSection === section.id
-                ? "bg-accent/10 text-accent border border-accent/20"
-                : "text-txt-secondary hover:bg-surface-1 hover:text-accent"
-                }`}
-            >
-              {section.label}
-            </a>
-          ))}
-          <div className="mt-4 flex items-center justify-between border-t border-brd-light pt-4">
-            <span className="text-sm text-txt-tertiary">Switch Theme</span>
-            <ThemeToggler theme={theme} setTheme={setTheme} />
-          </div>
-        </nav>
-      </motion.div>
-    )}
-  </AnimatePresence>
-);
+const LanguageToggle = () => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const nextLang = currentLang === "ar" ? "en" : "ar";
+  const label = currentLang === "ar" ? "EN" : "AR";
+
+  const toggleLang = () => {
+    i18n.changeLanguage(nextLang);
+  };
+
+  return (
+    <motion.button
+      type="button"
+      onClick={toggleLang}
+      aria-label={`Switch to ${nextLang === "ar" ? "Arabic" : "English"}`}
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 text-xs font-bold text-txt-primary transition-all hover:border-accent/50 hover:shadow-glow"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {label}
+    </motion.button>
+  );
+};
+
+const MobileNav = ({ sections, isOpen, setOpen, theme, setTheme, activeSection, handleLinkClick }) => {
+  const { t } = useTranslation();
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="absolute left-0 top-full w-full overflow-hidden md:hidden"
+          style={{
+            background: "rgba(10, 15, 26, 0.95)",
+            backdropFilter: "blur(12px)",
+            borderBottom: "1px solid rgba(34, 211, 238, 0.1)"
+          }}
+        >
+          <nav className="flex flex-col gap-2 p-6" aria-label="Mobile primary">
+            {sections.map((section, idx) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                onClick={(e) => handleLinkClick(e, section.id)}
+                className={`rounded-xl px-4 py-3 text-sm font-medium transition-all ${activeSection === section.id
+                  ? "bg-accent/10 text-accent border border-accent/20"
+                  : "text-txt-secondary hover:bg-surface-1 hover:text-accent"
+                  }`}
+              >
+                {t(`nav.${navKeys[idx]}`)}
+              </a>
+            ))}
+            <div className="mt-4 flex items-center justify-between border-t border-brd-light pt-4">
+              <span className="text-sm text-txt-tertiary">{t("nav.switchTheme")}</span>
+              <div className="flex items-center gap-2">
+                <LanguageToggle />
+                <ThemeToggler theme={theme} setTheme={setTheme} />
+              </div>
+            </div>
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 function Navbar({ sections }) {
   const [isOpen, setOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -178,17 +209,18 @@ function Navbar({ sections }) {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex">
-          {sections.map((section) => (
+          {sections.map((section, idx) => (
             <NavLink
               key={section.id}
               href={`#${section.id}`}
               onClick={(e) => handleLinkClick(e, section.id)}
               isActive={activeSection === section.id}
             >
-              {section.label}
+              {t(`nav.${navKeys[idx]}`)}
             </NavLink>
           ))}
-          <div className="ml-4 border-l border-brd-light pl-4">
+          <div className="ml-4 flex items-center gap-2 border-l border-brd-light pl-4">
+            <LanguageToggle />
             <ThemeToggler theme={theme} setTheme={setTheme} />
           </div>
         </nav>

@@ -1,31 +1,50 @@
 <!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Mahmoud Mostafa | Full-Stack .NET & Frontend Developer</title>
-    <meta name="title" content="Mahmoud Mostafa | Full-Stack .NET & Frontend Developer" />
-    <meta name="description" content="Software Engineer specialized in building scalable web applications using ASP.NET Core, Angular, and React. Passionate about Clean Architecture and UX." />
+<html lang="en">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mahmoud-mostafa.me" /> <meta property="og:title" content="Mahmoud Mostafa | Full-Stack Developer" />
-    <meta property="og:description" content="Check out my portfolio to see projects built with .NET Core, Angular, and React." />
-    <meta property="og:image" content="https://mahmoud-mostafa.me/og-image.png" />
+  <!-- Blocking script: apply theme & language BEFORE first paint -->
+  <script>
+    (function () {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.classList.add(theme === 'dark' ? 'dark' : 'light');
+      var lang = localStorage.getItem('lang') || 'en';
+      if (lang === 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+      }
+    })();
+  </script>
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Mahmoud Mostafa | Full-Stack Developer" />
-    <meta property="twitter:description" content="Building modern web experiences with .NET & Modern JS Frameworks." />
+  <title>Mahmoud Mostafa | Full-Stack .NET & Frontend Developer</title>
+  <meta name="title" content="Mahmoud Mostafa | Full-Stack .NET & Frontend Developer" />
+  <meta name="description"
+    content="Software Engineer specialized in building scalable web applications using ASP.NET Core, Angular, and React. Passionate about Clean Architecture and UX." />
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#0b1220" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-    <script type="application/ld+json">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mahmoud-mostafa.me" />
+  <meta property="og:title" content="Mahmoud Mostafa | Full-Stack Developer" />
+  <meta property="og:description"
+    content="Check out my portfolio to see projects built with .NET Core, Angular, and React." />
+  <meta property="og:image" content="https://mahmoud-mostafa.me/og-image.png" />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Mahmoud Mostafa | Full-Stack Developer" />
+  <meta property="twitter:description" content="Building modern web experiences with .NET & Modern JS Frameworks." />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#0b1220" />
+
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -39,10 +58,12 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="/src/index.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <link rel="stylesheet" href="/src/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

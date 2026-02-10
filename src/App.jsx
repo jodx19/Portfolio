@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Toaster } from "sonner";
 import { AnimatePresence } from "framer-motion";
 import { sections, skills, projects } from "./constants";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 // Section Components
 import Hero from "./sections/Hero";
@@ -18,8 +19,9 @@ import Footer from "./components/Footer";
 import ProjectModal from "./components/ProjectModal";
 import ScrollToTop from "./components/ScrollToTop";
 
-function App() {
+function AppContent() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const { theme } = useTheme();
 
   // Common padding class for sections
   const sectionPadding = "py-24 md:py-32";
@@ -27,7 +29,7 @@ function App() {
   return (
     <div className="relative min-h-screen bg-slate-950 bg-fixed bg-cover bg-no-repeat text-txt-primary selection:bg-accent/30 selection:text-accent">
       {/* Toast Notifications */}
-      <Toaster position="bottom-right" richColors theme="dark" />
+      <Toaster position="bottom-right" richColors theme={theme} />
 
       {/* Navigation */}
       <Navbar sections={sections} />
@@ -95,6 +97,14 @@ function App() {
       {/* Scroll to Top Button */}
       <ScrollToTop />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

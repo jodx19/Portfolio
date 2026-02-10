@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function Footer({ sections }) {
+  const { t } = useTranslation();
+
+  const navKeys = ["home", "about", "journey", "stack", "work", "certifications", "contact"];
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:hello@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/jodx19", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoud-mostafa-elsafi", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:ma7moudmostafa19@gmail.com", label: "Email" },
   ];
 
   return (
@@ -45,20 +50,20 @@ function Footer({ sections }) {
               </span>
               <div>
                 <p className="font-bold text-txt-primary">Mahmoud Mostafa</p>
-                <p className="text-xs text-txt-tertiary">Full-Stack Developer</p>
+                <p className="text-xs text-txt-tertiary">{t("footer.fullStackDev")}</p>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <nav className="flex flex-wrap justify-center gap-4">
-            {sections.slice(0, 5).map((section) => (
+            {sections.slice(0, 5).map((section, idx) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
                 className="text-sm text-txt-tertiary hover:text-cyan-400 transition-colors"
               >
-                {section.label}
+                {t(`nav.${navKeys[idx]}`)}
               </a>
             ))}
           </nav>
@@ -102,9 +107,9 @@ function Footer({ sections }) {
         {/* Bottom row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-txt-tertiary">
           <p className="flex items-center gap-1">
-            Built with <Heart size={14} className="text-red-500" /> using React & Tailwind
+            {t("footer.builtWith")} <Heart size={14} className="text-red-500" /> {t("footer.using")}
           </p>
-          <p>© {new Date().getFullYear()} Mahmoud Mostafa. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Mahmoud Mostafa. {t("footer.rights")}</p>
         </div>
 
         {/* Scroll to top button */}

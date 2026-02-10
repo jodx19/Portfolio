@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "../motion/motion";
-import { education, experience } from "../constants";
 import { GraduationCap, Briefcase, Calendar } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const TimelineCard = ({ title, subtitle, period, description, type }) => (
   <motion.div
@@ -76,6 +76,20 @@ const TimelineCard = ({ title, subtitle, period, description, type }) => (
 );
 
 const EducationExperience = () => {
+  const { t } = useTranslation();
+
+  const education = [
+    { degree: t("journey.edu1Degree"), university: t("journey.edu1University"), year: t("journey.edu1Year"), description: t("journey.edu1Desc") },
+    { degree: t("journey.edu2Degree"), university: t("journey.edu2University"), year: t("journey.edu2Year"), description: t("journey.edu2Desc") },
+  ];
+
+  const experience = [
+    { role: t("journey.exp1Role"), place: t("journey.exp1Place"), period: t("journey.exp1Period"), description: t("journey.exp1Desc") },
+    { role: t("journey.exp2Role"), place: t("journey.exp2Place"), period: t("journey.exp2Period"), description: t("journey.exp2Desc") },
+    { role: t("journey.exp3Role"), place: t("journey.exp3Place"), period: t("journey.exp3Period"), description: t("journey.exp3Desc") },
+    { role: t("journey.exp4Role"), place: t("journey.exp4Place"), period: t("journey.exp4Period"), description: t("journey.exp4Desc") },
+  ];
+
   return (
     <section className="relative py-24 px-6 overflow-visible">
       {/* Background Glows */}
@@ -102,9 +116,9 @@ const EducationExperience = () => {
         viewport={{ once: true }}
       >
         <motion.div className="mb-16 text-center" variants={fadeUp}>
-          <p className="heading-accent">My Journey</p>
+          <p className="heading-accent">{t("journey.label")}</p>
           <h2 className="mt-3 text-4xl font-bold text-txt-primary md:text-5xl tracking-tight">
-            Education <span className="text-cyan-400">&</span> Experience
+            {t("journey.title")} <span className="text-cyan-400">{t("journey.titleAnd")}</span> {t("journey.titleExperience")}
           </h2>
         </motion.div>
 
@@ -117,7 +131,7 @@ const EducationExperience = () => {
                 style={{ background: "linear-gradient(180deg, #22d3ee, transparent)" }}
               />
               <h3 className="text-2xl font-bold text-txt-primary uppercase tracking-wider">
-                Education
+                {t("journey.educationLabel")}
               </h3>
             </motion.div>
 
@@ -156,7 +170,7 @@ const EducationExperience = () => {
                 style={{ background: "linear-gradient(180deg, #a855f7, transparent)" }}
               />
               <h3 className="text-2xl font-bold text-txt-primary uppercase tracking-wider">
-                Experience
+                {t("journey.experienceLabel")}
               </h3>
             </motion.div>
 

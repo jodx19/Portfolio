@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "../motion/motion";
 import ProjectCard from "../components/ProjectCard";
 import { Layers } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function ProjectsGrid({ projects, onSelect }) {
+  const { t } = useTranslation();
+
   return (
     <section className="relative px-6 overflow-visible">
       {/* Background decoration */}
@@ -25,13 +28,13 @@ function ProjectsGrid({ projects, onSelect }) {
         <motion.div className="mb-12 text-center" variants={fadeUp}>
           <p className="heading-accent flex items-center justify-center gap-2">
             <Layers className="h-4 w-4" />
-            Portfolio
+            {t("projects.label")}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-txt-primary mt-3 tracking-tight">
-            Featured <span className="text-cyan-400">Projects</span>
+            {t("projects.title")} <span className="text-cyan-400">{t("projects.titleHighlight")}</span>
           </h2>
           <p className="text-lg text-txt-secondary mt-4 max-w-2xl mx-auto">
-            A selection of my recent work showcasing full-stack development with modern technologies.
+            {t("projects.subtitle")}
           </p>
         </motion.div>
 

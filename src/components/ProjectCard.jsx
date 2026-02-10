@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github, ChevronRight } from "lucide-react";
 import { fadeUp, badgeReveal } from "../motion/motion";
+import { useTranslation } from "react-i18next";
 
 function ProjectCard({ project, onSelect }) {
+  const { t } = useTranslation();
   // Use liveLink if available, otherwise fallback to githubLink
   const projectLink = project.liveLink || project.githubLink || "#";
 
@@ -107,7 +109,7 @@ function ProjectCard({ project, onSelect }) {
             className="flex items-center gap-2 text-sm font-bold text-cyan-400 group/link"
             whileHover={{ x: 5 }}
           >
-            <span>View Project</span>
+            <span>{t("projects.viewProject")}</span>
             <ExternalLink
               size={16}
               className="transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
@@ -118,7 +120,7 @@ function ProjectCard({ project, onSelect }) {
             onClick={() => onSelect(project)}
             className="flex items-center gap-1 text-xs font-bold text-txt-tertiary hover:text-cyan-400 transition-colors"
           >
-            <span>Learn More</span>
+            <span>{t("projects.learnMore")}</span>
             <ChevronRight size={14} />
           </motion.button>
         </div>

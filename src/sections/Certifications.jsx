@@ -1,54 +1,30 @@
 import { motion } from "framer-motion";
 import { FileBadge, Plus, ExternalLink, Award } from "lucide-react";
 import { staggerContainer, fadeUp } from "../motion/motion";
+import { useTranslation } from "react-i18next";
 
-const certificates = [
-  {
-    title: "Full Stack Web Development Using .NET",
-    issuer: "Information Technology Institute (ITI)",
-    date: "2025",
-    link: "https://drive.google.com/file/d/1yJ2PMMZ7LOV3wl-UvexTLXWT42wD-vC_/view?usp=drive_link",
-    note: "Intensive professional track covering Advanced .NET, Angular, and SQL Server architecture.",
-  },
-  {
-    title: "OpenAI GPTs: Creating Custom AI Assistants",
-    issuer: "Vanderbilt University (via Coursera)",
-    date: "2025",
-    link: "https://drive.google.com/file/d/1L5PED2xaLnmWmLgH1h7QyoyHCpf8Fb1B/view?usp=drive_link",
-    note: "Advanced certification in prompt engineering and building specialized AI-driven solutions.",
-  },
-  {
-    title: "Mastering OOP using C++",
-    issuer: "ITI (Mahara-Tech)",
-    date: "2024",
-    link: "https://drive.google.com/file/d/1MvnQhEw2baeM68IlfdQpDRF6SuQBwcnP/view?usp=drive_link",
-    note: "Deep dive into Object-Oriented Programming principles, memory management, and C++ efficiency.",
-  },
-  {
-    title: ".Net Full Stack Foundation",
-    issuer: "ITI",
-    date: "2024",
-    link: "https://drive.google.com/file/d/1yJ2PMMZ7LOV3wl-UvexTLXWT42wD-vC_/view?usp=drive_link",
-    note: "Foundational mastery of the .NET ecosystem and full-stack integration workflows.",
-  },
-  {
-    title: "Freelancing Basics",
-    issuer: "Mahara-Tech",
-    date: "2024",
-    link: "https://drive.google.com/file/d/1m-MKQn8in13HXTxl0-kSAZKd_xjr8NB_/view?usp=drive_link",
-    note: "Strategic skills for project management and client communication in the digital market.",
-  },
-  {
-    title: "Database Fundamentals",
-    issuer: "Mahara-Tech (ITI)",
-    date: "2025",
-    link: "https://drive.google.com/file/d/12nWX5QvyivlKTk2cYHaa7HKxqpbrXqxW/view?usp=drive_link",
-    note: "Verified mastery of relational database design, SQL querying, and data normalization.",
-  },
-
+const certLinks = [
+  "https://drive.google.com/file/d/1yJ2PMMZ7LOV3wl-UvexTLXWT42wD-vC_/view?usp=drive_link",
+  "https://drive.google.com/file/d/1L5PED2xaLnmWmLgH1h7QyoyHCpf8Fb1B/view?usp=drive_link",
+  "https://drive.google.com/file/d/1MvnQhEw2baeM68IlfdQpDRF6SuQBwcnP/view?usp=drive_link",
+  "https://drive.google.com/file/d/1yJ2PMMZ7LOV3wl-UvexTLXWT42wD-vC_/view?usp=drive_link",
+  "https://drive.google.com/file/d/1m-MKQn8in13HXTxl0-kSAZKd_xjr8NB_/view?usp=drive_link",
+  "https://drive.google.com/file/d/12nWX5QvyivlKTk2cYHaa7HKxqpbrXqxW/view?usp=drive_link",
 ];
 
+const certDates = ["2025", "2025", "2024", "2024", "2024", "2025"];
+
 function Certifications() {
+  const { t } = useTranslation();
+
+  const certificates = certLinks.map((link, i) => ({
+    title: t(`certifications.cert${i + 1}Title`),
+    issuer: t(`certifications.cert${i + 1}Issuer`),
+    date: certDates[i],
+    link,
+    note: t(`certifications.cert${i + 1}Note`),
+  }));
+
   return (
     <section id="certifications" className="relative py-24 md:py-32 px-6 overflow-visible">
       {/* Background decoration */}
@@ -69,13 +45,13 @@ function Certifications() {
         <motion.div className="mb-12" variants={fadeUp}>
           <p className="heading-accent flex items-center gap-2">
             <Award className="h-4 w-4" />
-            Credentials
+            {t("certifications.label")}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-txt-primary mt-3 tracking-tight">
-            Certifications & <span className="text-cyan-400">Diplomas</span>
+            {t("certifications.title")} <span className="text-cyan-400">{t("certifications.titleHighlight")}</span>
           </h2>
           <p className="text-lg text-txt-secondary mt-4 max-w-2xl">
-            My official certifications and verified qualifications that back my expertise.
+            {t("certifications.subtitle")}
           </p>
         </motion.div>
 
@@ -142,7 +118,7 @@ function Certifications() {
               </p>
 
               <div className="mt-auto pt-4 flex items-center gap-2 text-sm font-bold text-cyan-400">
-                <span>View Credentials</span>
+                <span>{t("certifications.viewCredentials")}</span>
                 <ExternalLink
                   size={14}
                   className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -181,8 +157,8 @@ function Certifications() {
             >
               <Plus size={24} />
             </motion.div>
-            <h3 className="text-sm font-bold text-txt-secondary">More Coming Soon</h3>
-            <p className="text-xs text-txt-tertiary mt-1">AWS Cloud & Docker in progress...</p>
+            <h3 className="text-sm font-bold text-txt-secondary">{t("certifications.comingSoonTitle")}</h3>
+            <p className="text-xs text-txt-tertiary mt-1">{t("certifications.comingSoonDesc")}</p>
           </motion.div>
         </motion.div>
       </motion.div>
