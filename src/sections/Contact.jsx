@@ -26,9 +26,9 @@ function ContactForm() {
     setLoading(true);
 
     // EmailJS Keys
-    const SERVICE_ID = "service_ers1qoz";
-    const TEMPLATE_ID = "template_1wp7lte";
-    const PUBLIC_KEY = "Kv0OY7N28AL3vsT5D";
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     try {
       await emailjs.sendForm(
