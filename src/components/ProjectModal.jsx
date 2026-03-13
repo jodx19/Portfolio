@@ -129,17 +129,41 @@ function ProjectModal({ project, onClose }) {
                   </div>
                 </div>
 
+                {/* Optional Screenshots Gallery */}
+                {project.images && project.images.length > 0 && (
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-3">
+                      {t("projects.screenshots")}
+                    </p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {project.images.map((img, index) => (
+                        <motion.div
+                          key={index}
+                          className="relative aspect-video rounded-xl overflow-hidden border border-white/10 group/img"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <img
+                            src={img}
+                            alt={`${project.title} screenshot ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Action Buttons */}
                 <div
                   className="flex gap-3 pt-4"
                   style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}
                 >
-                  {project.demo && (
+                  {(project.liveLink || project.demo) && (
                     <motion.a
-                      href={project.demo}
+                      href={project.liveLink || project.demo}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
                       style={{
                         background: "linear-gradient(135deg, #22d3ee, #2563eb)",
                         color: "#0a0f1a"
@@ -153,12 +177,33 @@ function ProjectModal({ project, onClose }) {
                       {t("projects.liveDemo")}
                     </motion.a>
                   )}
-                  {project.repo && (
+                  {project.backendLink && (
                     <motion.a
-                      href={project.repo}
+                      href={project.backendLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
+                      style={{
+                        background: "rgba(34, 211, 238, 0.1)",
+                        border: "1px solid rgba(34, 211, 238, 0.2)",
+                        color: "#22d3ee"
+                      }}
+                      whileHover={{
+                        background: "rgba(34, 211, 238, 0.2)",
+                        boxShadow: "0 0 15px rgba(34, 211, 238, 0.2)"
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <ExternalLink size={18} />
+                      {t("projects.backendApi")}
+                    </motion.a>
+                  )}
+                  {(project.githubLink || project.repo) && (
+                    <motion.a
+                      href={project.githubLink || project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
                       style={{
                         background: "rgba(255, 255, 255, 0.05)",
                         border: "1px solid rgba(255, 255, 255, 0.1)",

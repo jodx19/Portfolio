@@ -1,10 +1,25 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, ChevronRight } from "lucide-react";
 import { fadeUp, badgeReveal } from "../motion/motion";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 
 function ProjectCard({ project, onSelect }) {
   const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const hasMultipleImages = project.images && project.images.length > 1;
+
+  // Auto-cycle images if available
+  useEffect(() => {
+    if (!hasMultipleImages) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev === project.images.length - 1 ? 0 : prev + 1));
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [hasMultipleImages, project.images]);
+
   // Use liveLink if available, otherwise fallback to githubLink
   const projectLink = project.liveLink || project.githubLink || "#";
 
@@ -40,15 +55,22 @@ function ProjectCard({ project, onSelect }) {
           </span>
         )}
 
-        {/* Project Image with zoom effect */}
-        <motion.img
-          src={project.image}
-          srcSet={project.srcSet}
-          alt={project.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700"
-          whileHover={{ scale: 1.1 }}
-        />
+        {/* Project Image with auto-cycle and zoom effect */}
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={hasMultipleImages ? project.images[currentImageIndex] : project.image}
+            src={hasMultipleImages ? project.images[currentImageIndex] : project.image}
+            srcSet={project.srcSet}
+            alt={project.title}
+            loading="lazy"
+            initial={{ opacity: 0.8, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.05 }}
+            exit={{ opacity: 0.8 }}
+            transition={{ duration: 1 }}
+            className="h-full w-full object-cover transition-transform duration-700"
+            whileHover={{ scale: 1.15 }}
+          />
+        </AnimatePresence>
 
         {/* Gradient Overlay */}
         <div

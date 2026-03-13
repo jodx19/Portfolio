@@ -157,12 +157,28 @@ export const projects = [
     liveLink: "#"
   },
   {
-    title: "SafiStore Backend API",
-    description: "A robust RESTful API built with .NET Core, featuring JWT authentication, role-based access control, and Swagger documentation for seamless integration.",
-    image: "/images/backendapi (2).png",
-    tags: [".NET 8", "Entity Framework", "JWT", "SQL Server", "Swagger"],
-    githubLink: "https://github.com/jodx19/SafiStore-Backend-API",
-    liveLink: "https://jodx19-3404492.postman.co/workspace/mahmoud-mostafa-%27s-Workspace~22e8087e-31a5-44d8-88f4-88a57e30e178/collection/50957138-99e6cbb0-b903-4f33-9bda-d46d8d072362?action=share&creator=50957138&active-environment=50957138-fecde5c1-4707-449c-90f4-cc92c837dfd1&sideView=agentMode"
+    title: "Maxilla Store",
+    description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
+    details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
+    image: "/images/maxillastore.png",
+    images: ["/images/maxillastore.png", "/images/maxillastore (2).png"],
+    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
+    stackBadge: "Full-Stack Web Application",
+    githubLink: "https://github.com/jodx19/maxilla-frontend",
+    liveLink: "https://maxillastore.vercel.app/",
+    backendLink: "https://maxillastorebackend.runasp.net/swagger"
+  },
+  {
+    title: "Simple ERP System",
+    description: "A full-stack ERP system built with ASP.NET Core Web API, Angular, and SQL Server, featuring JWT authentication, role-based authorization, dashboard management, and customer operations.",
+    details: "Designed and deployed a production-ready ERP system with secure authentication, protected APIs, admin workflows, customer management, and responsive dashboard interfaces.",
+    image: "/images/dashboard.png",
+    images: ["/images/dashboard.png", "/images/customers.png"],
+    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
+    stackBadge: "Full-Stack Web Application",
+    githubLink: "https://github.com/jodx19",
+    liveLink: "https://simpleerpsystem.vercel.app",
+    backendLink: "https://simpleerpsystem.runasp.net/swagger"
   },
 ];
 // === EXPERIENCE ===
