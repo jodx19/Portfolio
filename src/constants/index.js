@@ -129,7 +129,8 @@ export const projects = [
     image: "/images/safistore.png",
     tags: ["Angular", ".NET Core API", "SQL Server", "Tailwind CSS"],
     githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
-    liveLink: null,
+    liveLink: "https://safistore.vercel.app/",
+    backendLink: "https://safistore.runasp.net/swagger/index.html",
     images: ["/images/backendapi (1).png", "/images/backendapi (2).png"]
   },
   {
