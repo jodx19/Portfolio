@@ -149,3 +149,38 @@ export const iconGlow = {
     transition: { duration: 0.2 }
   },
 };
+
+// === HERO TITLE PULSATING GLOW ===
+// Cyan brand color — but very faint & subtle. Barely-there shimmer,
+// just enough to feel alive without straining the eyes.
+export const titleGlow = {
+  animate: {
+    textShadow: [
+      "0 0 0px transparent",
+      "0 0 8px rgba(34, 211, 238, 0.18), 0 0 20px rgba(34, 211, 238, 0.08)",
+      "0 0 0px transparent",
+    ],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
+// === WHATSAPP BUTTON PULSATING GLOW ===
+// Applied to the green WhatsApp submit button to draw attention
+export const whatsappPulse = {
+  animate: {
+    boxShadow: [
+      "0 4px 20px rgba(22, 163, 74, 0.3)",
+      "0 0 18px rgba(22, 163, 74, 0.7), 0 0 40px rgba(22, 163, 74, 0.35)",
+      "0 4px 20px rgba(22, 163, 74, 0.3)",
+    ],
+    transition: {
+      duration: 2.5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};

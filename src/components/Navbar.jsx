@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun, X, Globe } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../context/ThemeContext";
+import useThemeColors from "../hooks/useThemeColors";
 
 const navKeys = ["home", "about", "journey", "stack", "work", "certifications", "contact"];
 
-const NavLink = ({ href, children, onClick, isActive }) => (
+const NavLink = ({ href, children, onClick, isActive, tc }) => (
   <a
     href={href}
     onClick={onClick}
     className="relative group px-3 py-2 text-sm font-medium transition-colors duration-200"
   >
-    <span className={`relative z-10 ${isActive ? "text-accent" : "text-txt-secondary group-hover:text-accent"}`}>
+    <span className={`relative z-10 transition-colors ${isActive ? "text-accent" : "text-txt-secondary group-hover:text-accent"}`}>
       {children}
     </span>
-    {/* Animated underline on hover */}
     <motion.span
-      className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+      className="absolute bottom-0 left-0 h-0.5 w-full rounded-full"
+      style={{ background: `linear-gradient(90deg, ${tc.accent}, ${tc.accentSec})` }}
       initial={{ scaleX: 0, originX: 0 }}
       animate={{ scaleX: isActive ? 1 : 0 }}
       whileHover={{ scaleX: 1 }}
@@ -34,6 +35,8 @@ const ThemeToggler = ({ theme, setTheme }) => (
     className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 transition-all hover:border-accent/50 hover:shadow-glow"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
+    animate={{ rotate: theme === "dark" ? 0 : 180 }}
+    transition={{ duration: 0.5 }}
   >
     {theme === "dark" ? (
       <Sun size={18} className="text-yellow-400" />
@@ -48,17 +51,12 @@ const LanguageToggle = () => {
   const currentLang = i18n.language;
   const nextLang = currentLang === "ar" ? "en" : "ar";
   const label = currentLang === "ar" ? "EN" : "AR";
-
-  const toggleLang = () => {
-    i18n.changeLanguage(nextLang);
-  };
-
   return (
     <motion.button
       type="button"
-      onClick={toggleLang}
+      onClick={() => i18n.changeLanguage(nextLang)}
       aria-label={`Switch to ${nextLang === "ar" ? "Arabic" : "English"}`}
-      className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 text-xs font-bold text-txt-primary transition-all hover:border-accent/50 hover:shadow-glow"
+      className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 text-xs font-bold text-txt-primary transition-all hover:border-accent/50"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -67,9 +65,8 @@ const LanguageToggle = () => {
   );
 };
 
-const MobileNav = ({ sections, isOpen, setOpen, theme, setTheme, activeSection, handleLinkClick }) => {
+const MobileNav = ({ sections, isOpen, theme, setTheme, activeSection, handleLinkClick, tc }) => {
   const { t } = useTranslation();
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -79,9 +76,9 @@ const MobileNav = ({ sections, isOpen, setOpen, theme, setTheme, activeSection, 
           exit={{ opacity: 0, height: 0 }}
           className="absolute left-0 top-full w-full overflow-hidden md:hidden"
           style={{
-            background: "rgba(10, 15, 26, 0.95)",
-            backdropFilter: "blur(12px)",
-            borderBottom: "1px solid rgba(34, 211, 238, 0.1)"
+            background: tc.mobileNavBg,
+            backdropFilter: "blur(14px)",
+            borderBottom: `1px solid ${tc.navBorder}`,
           }}
         >
           <nav className="flex flex-col gap-2 p-6" aria-label="Mobile primary">
@@ -90,10 +87,11 @@ const MobileNav = ({ sections, isOpen, setOpen, theme, setTheme, activeSection, 
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={(e) => handleLinkClick(e, section.id)}
-                className={`rounded-xl px-4 py-3 text-sm font-medium transition-all ${activeSection === section.id
-                  ? "bg-accent/10 text-accent border border-accent/20"
-                  : "text-txt-secondary hover:bg-surface-1 hover:text-accent"
-                  }`}
+                className={`rounded-xl px-4 py-3 text-sm font-medium transition-all ${
+                  activeSection === section.id
+                    ? "bg-accent/10 text-accent border border-accent/20"
+                    : "text-txt-secondary hover:bg-surface-1 hover:text-accent"
+                }`}
               >
                 {t(`nav.${navKeys[idx]}`)}
               </a>
@@ -118,6 +116,7 @@ function Navbar({ sections }) {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const { t } = useTranslation();
+  const tc = useThemeColors();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -134,20 +133,14 @@ function Navbar({ sections }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); });
       },
       { rootMargin: "-40% 0px -40% 0px" }
     );
-
     sections.forEach((section) => {
       const el = document.getElementById(section.id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, [sections]);
 
@@ -158,25 +151,19 @@ function Navbar({ sections }) {
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: elementRect - bodyRect - offset, behavior: "smooth" });
     }
     setOpen(false);
   };
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${scrolled ? "py-3" : "py-4"
-        }`}
+      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${scrolled ? "py-3" : "py-4"}`}
       style={{
-        background: scrolled ? "rgba(10, 15, 26, 0.9)" : "rgba(10, 15, 26, 0.6)",
-        backdropFilter: "blur(12px)",
-        borderBottom: scrolled ? "1px solid rgba(34, 211, 238, 0.1)" : "1px solid transparent"
+        background: scrolled ? tc.navBg : tc.navBgTrans,
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: scrolled ? `1px solid ${tc.navBorder}` : "1px solid transparent",
       }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
@@ -189,15 +176,8 @@ function Navbar({ sections }) {
         >
           <motion.span
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-lg font-bold"
-            style={{
-              background: "linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(37, 99, 235, 0.15))",
-              border: "1px solid rgba(34, 211, 238, 0.3)",
-              color: "#22d3ee"
-            }}
-            whileHover={{
-              boxShadow: "0 0 20px rgba(34, 211, 238, 0.4)",
-              borderColor: "#22d3ee"
-            }}
+            style={{ background: tc.logoBg, border: `1px solid ${tc.logoBorder}`, color: tc.accent }}
+            whileHover={{ boxShadow: `0 0 20px ${tc.accent}55`, borderColor: tc.accent }}
           >
             MM
           </motion.span>
@@ -207,7 +187,7 @@ function Navbar({ sections }) {
           </div>
         </motion.a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex">
           {sections.map((section, idx) => (
             <NavLink
@@ -215,6 +195,7 @@ function Navbar({ sections }) {
               href={`#${section.id}`}
               onClick={(e) => handleLinkClick(e, section.id)}
               isActive={activeSection === section.id}
+              tc={tc}
             >
               {t(`nav.${navKeys[idx]}`)}
             </NavLink>
@@ -225,12 +206,12 @@ function Navbar({ sections }) {
           </div>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <div className="md:hidden">
           <motion.button
             onClick={() => setOpen(!isOpen)}
             className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 text-txt-primary"
-            whileHover={{ borderColor: "rgba(34, 211, 238, 0.5)" }}
+            whileHover={{ borderColor: `${tc.accent}80` }}
             whileTap={{ scale: 0.95 }}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -240,11 +221,11 @@ function Navbar({ sections }) {
         <MobileNav
           sections={sections}
           isOpen={isOpen}
-          setOpen={setOpen}
           theme={theme}
           setTheme={setTheme}
           activeSection={activeSection}
           handleLinkClick={handleLinkClick}
+          tc={tc}
         />
       </div>
     </header>

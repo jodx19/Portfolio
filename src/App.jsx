@@ -23,11 +23,11 @@ function AppContent() {
   const [selectedProject, setSelectedProject] = useState(null);
   const { theme } = useTheme();
 
-  // Common padding class for sections
-  const sectionPadding = "py-24 md:py-32";
+  // Common padding class for sections - increased for a premium, breathable layout
+  const sectionPadding = "py-20 md:py-32";
 
   return (
-    <div className="relative min-h-screen bg-slate-950 bg-fixed bg-cover bg-no-repeat text-txt-primary selection:bg-accent/30 selection:text-accent">
+    <div className="relative min-h-screen text-txt-primary selection:bg-accent/30 selection:text-accent" style={{ background: "var(--color-bg-0)" }}>
       {/* Toast Notifications */}
       <Toaster position="bottom-right" richColors theme={theme} />
 
@@ -46,7 +46,7 @@ function AppContent() {
         </section>
 
         {/* 3. Journey (Education & Experience) */}
-        <section id="education" className={`bg-surface-0 ${sectionPadding} border-y border-brd-light overflow-visible`}>
+        <section id="education" className={`${sectionPadding} overflow-visible`}>
           <div className="mx-auto max-w-7xl">
             <Journey />
           </div>
@@ -67,14 +67,14 @@ function AppContent() {
         </section>
 
         {/* 6. Certifications */}
-        <section id="certifications" className={`bg-surface-0 ${sectionPadding} border-y border-brd-light overflow-visible`}>
+        <section id="certifications" className={`${sectionPadding} overflow-visible`}>
           <div className="mx-auto max-w-7xl">
             <Certifications />
           </div>
         </section>
 
         {/* 7. Contact Form */}
-        <section id="contact" className={`bg-surface-0 ${sectionPadding} border-t border-brd-light overflow-visible`}>
+        <section id="contact" className={`${sectionPadding} overflow-visible`}>
           <div className="mx-auto max-w-7xl">
             <Contact />
           </div>
