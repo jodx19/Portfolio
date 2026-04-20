@@ -150,12 +150,28 @@ export const projects = [
     liveLink: "#"
   },
   {
-    title: "Smart To-Do List",
-    description: "A smart task management system that allows users to prioritize and track their daily tasks efficiently.",
-    image: "/images/todo.png",
-    tags: ["html", "css", "vanilla Js"],
-    githubLink: "https://github.com/jodx19/To_do_list",
-    liveLink: "#"
+    title: "Dr. Mahmoud Omran - Dental Clinic",
+    titleAr: "د. محمود عمران - عيادة الأسنان",
+    description: "A comprehensive dental clinic management system focused on user experience and appointment booking, featuring a clean and professional interface.",
+    details: "Designed and developed a modern dental clinic platform with intuitive appointment scheduling, service showcases, and patient-friendly navigation, emphasizing accessibility and professional healthcare aesthetics.",
+    image: "/images/dental page.png",
+    images: ["/images/dental page.png"],
+    tags: ["React", "Tailwind CSS", "Responsive Design", "UI/UX"],
+    stackBadge: "Web Application",
+    githubLink: "https://github.com/jodx19/Dental-Landing-page",
+    liveLink: "https://drmahmoudomran.vercel.app/"
+  },
+  {
+    title: "Qasr Al Riyadh - Luxury Hotel",
+    titleAr: "قصر الرياض | فندق فاخر للإقامة الملكية",
+    description: "A luxury hotel booking platform showcasing royal rooms and premium services with an elegant minimalist design.",
+    details: "Crafted a high-end hotel landing page with sophisticated booking features, immersive gallery displays, and premium service highlights, delivering a refined digital experience for luxury hospitality.",
+    image: "/images/قصر الرياض .png",
+    images: ["/images/قصر الرياض .png", "/images/قصر الرياض 2.png", "/images/قصر الرياض 3.png", "/images/قصر الرياض 4.png"],
+    tags: ["React", "Tailwind CSS", "Responsive Design", "Animation"],
+    stackBadge: "Landing Page",
+    githubLink: "https://github.com/jodx19/royal-stay-hotel-landing-freelance",
+    liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/"
   },
   {
     title: "Maxilla Store",
