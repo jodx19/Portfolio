@@ -123,43 +123,18 @@ export const skills = [
 
 // === PROJECTS ===
 export const projects = [
+  // === FIRST ROW ===
   {
-    title: "SafiStore - Full Stack E-Commerce",
-    description: "A comprehensive e-commerce platform enabling users to browse products, manage their shopping cart, and complete purchases securely.",
-    image: "/images/safistore.png",
-    tags: ["Angular", ".NET Core API", "SQL Server", "Tailwind CSS"],
-    githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
-    liveLink: "https://safistore.vercel.app/",
-    backendLink: "https://safistore.runasp.net/swagger/index.html",
-    images: ["/images/backendapi (1).png", "/images/backendapi (2).png"]
-  },
-  {
-    title: "MovieBox",
-    description: "A movie discovery platform featuring advanced search and user ratings, powered by external APIs.",
-    image: "/images/movieapp@2x.png",
-    tags: ["angular", "tailwind css", "TMDB API"],
-    githubLink: "https://github.com/amralmohamdy/Movie-App",
-    liveLink: "#"
-  },
-  {
-    title: "Digital Notes Manager",
-    description: "A smart digital note-taking system that focuses on performance and ease of access to information.",
-    image: "/images/digitalnote@2x.png",
-    tags: ["c#", "sql database", "Entity Framwork", "Linq"],
-    githubLink: "https://github.com/jodx19/DigitalNotesManager",
-    liveLink: "#"
-  },
-  {
-    title: "Dr. Mahmoud Omran - Dental Clinic",
-    titleAr: "د. محمود عمران - عيادة الأسنان",
-    description: "A comprehensive dental clinic management system focused on user experience and appointment booking, featuring a clean and professional interface.",
-    details: "Designed and developed a modern dental clinic platform with intuitive appointment scheduling, service showcases, and patient-friendly navigation, emphasizing accessibility and professional healthcare aesthetics.",
-    image: "/images/dental page.png",
-    images: ["/images/dental page.png"],
-    tags: ["React", "Tailwind CSS", "Responsive Design", "UI/UX"],
-    stackBadge: "Web Application",
-    githubLink: "https://github.com/jodx19/Dental-Landing-page",
-    liveLink: "https://drmahmoudomran.vercel.app/"
+    title: "Maxilla Store",
+    description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
+    details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
+    image: "/images/maxillastore.png",
+    images: ["/images/maxillastore.png", "/images/maxillastore (2).png"],
+    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
+    stackBadge: "Full-Stack Web Application",
+    githubLink: "https://github.com/jodx19/maxilla-frontend",
+    liveLink: "https://maxillastore.vercel.app/",
+    backendLink: "https://maxillastorebackend.runasp.net/swagger"
   },
   {
     title: "Qasr Al Riyadh - Luxury Hotel",
@@ -174,17 +149,18 @@ export const projects = [
     liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/"
   },
   {
-    title: "Maxilla Store",
-    description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
-    details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
-    image: "/images/maxillastore.png",
-    images: ["/images/maxillastore.png", "/images/maxillastore (2).png"],
-    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
-    stackBadge: "Full-Stack Web Application",
-    githubLink: "https://github.com/jodx19/maxilla-frontend",
-    liveLink: "https://maxillastore.vercel.app/",
-    backendLink: "https://maxillastorebackend.runasp.net/swagger"
+    title: "Dr. Mahmoud Omran - Dental Clinic",
+    titleAr: "د. محمود عمران - عيادة الأسنان",
+    description: "A comprehensive dental clinic management system focused on user experience and appointment booking, featuring a clean and professional interface.",
+    details: "Designed and developed a modern dental clinic platform with intuitive appointment scheduling, service showcases, and patient-friendly navigation, emphasizing accessibility and professional healthcare aesthetics.",
+    image: "/images/dental page.png",
+    images: ["/images/dental page.png"],
+    tags: ["React", "Tailwind CSS", "Responsive Design", "UI/UX"],
+    stackBadge: "Landing Page",
+    githubLink: "https://github.com/jodx19/Dental-Landing-page",
+    liveLink: "https://drmahmoudomran.vercel.app/"
   },
+  // === SECOND ROW ===
   {
     title: "Simple ERP System",
     description: "A full-stack ERP system built with ASP.NET Core Web API, Angular, and SQL Server, featuring JWT authentication, role-based authorization, dashboard management, and customer operations.",
@@ -196,6 +172,40 @@ export const projects = [
     githubLink: "https://github.com/jodx19",
     liveLink: "https://simpleerpsystem.vercel.app",
     backendLink: "https://simpleerpsystem.runasp.net/swagger"
+  },
+  {
+    title: "SafiStore - Full Stack E-Commerce",
+    description: "A comprehensive e-commerce platform enabling users to browse products, manage their shopping cart, and complete purchases securely.",
+    details: "Built a full-featured online store with product catalog, shopping cart, secure checkout, and admin dashboard for inventory management.",
+    image: "/images/safistore.png",
+    images: ["/images/backendapi (1).png", "/images/backendapi (2).png"],
+    tags: ["Angular", ".NET Core API", "SQL Server", "Tailwind CSS"],
+    stackBadge: "E-Commerce Platform",
+    githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
+    liveLink: "https://safistore.vercel.app/",
+    backendLink: "https://safistore.runasp.net/swagger/index.html"
+  },
+  {
+    title: "MovieBox",
+    description: "A movie discovery platform featuring advanced search and user ratings, powered by external APIs.",
+    details: "Developed an interactive movie browsing application with real-time search, detailed movie information, and rating system using TMDB API.",
+    image: "/images/movieapp@2x.png",
+    images: ["/images/movieapp@2x.png"],
+    tags: ["Angular", "Tailwind CSS", "TMDB API"],
+    stackBadge: "Web Application",
+    githubLink: "https://github.com/amralmohamdy/Movie-App",
+    liveLink: "#"
+  },
+  {
+    title: "Digital Notes Manager",
+    description: "A smart digital note-taking system that focuses on performance and ease of access to information.",
+    details: "Created a desktop note management application with CRUD operations, search functionality, and local database storage for efficient note organization.",
+    image: "/images/digitalnote@2x.png",
+    images: ["/images/digitalnote@2x.png"],
+    tags: ["C#", "SQL Database", "Entity Framework", "LINQ"],
+    stackBadge: "Desktop Application",
+    githubLink: "https://github.com/jodx19/DigitalNotesManager",
+    liveLink: "#"
   },
 ];
 // === EXPERIENCE ===
