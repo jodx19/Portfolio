@@ -83,8 +83,8 @@ function ContactForm() {
 
   // Build input base style from tc
   const inputBase = {
-    backgroundColor: tc.isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.90)",
-    border: `1px solid ${tc.cardBorder}`,
+    backgroundColor: tc.isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(254, 250, 244, 1.00)", // Off-white in light mode
+    border: `1px solid ${tc.isDark ? tc.cardBorder : "rgba(146, 64, 14, 0.20)"}`,
   };
   const focusStyle = tc.isDark ? focusStyleDark : focusStyleLight;
   const blurStyleFn = (e) => {

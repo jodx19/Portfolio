@@ -14,7 +14,7 @@
     /* Text */
     --color-text-primary: #f1f5f9;
     --color-text-secondary: #cbd5e1;
-    --color-text-tertiary: #64748b;
+    --color-text-tertiary: #94a3b8;  /* Brightened from #64748b for better readability */
     --color-text-accent: #22d3ee;
 
     /* Card & Surfaces - Glassmorphism */
@@ -62,8 +62,8 @@
     /* ── Typography ───────────────────────────────────── */
     --color-text-primary:   #1C1917;   /* stone-900 — warm charcoal */
     --color-text-secondary: #44403C;   /* stone-700 — deep warm gray (better contrast) */
-    --color-text-tertiary:  #78716C;   /* stone-500 — medium warm gray (better contrast) */
-    --color-text-accent:    #B45309;   /* amber-700 */
+    --color-text-tertiary:  #57534E;   /* stone-600 — darker for WCAG compliance */
+    --color-text-accent:    #92400E;   /* amber-800 */
 
     /* ── Surfaces ─────────────────────────────────────── */
     --color-surface-0: rgba(255, 255, 255, 0.96);   /* white cards */
@@ -74,9 +74,9 @@
     --color-border-medium: rgba(120, 90, 50, 0.30);
     --color-border-accent: rgba(180, 83,  9, 0.55);
 
-    /* ── Accent — Amber-700 (calm, professional) ────────── */
-    --color-accent-primary:   #B45309;   /* amber-700 */
-    --color-accent-secondary: #92400E;   /* amber-800 */
+    /* ── Accent — Amber-800 (enhanced contrast) ────────── */
+    --color-accent-primary:   #92400E;   /* amber-800 */
+    --color-accent-secondary: #78350F;   /* amber-900 */
 
     /* ── Shadows ─────────────────────────────────────── */
     --shadow-lightning:         0 0 15px rgba(180,83,9,0.15), 0 0 35px rgba(180,83,9,0.08);
@@ -180,9 +180,9 @@
     animation: gradient-shift 4s ease-in-out infinite;
   }
 
-  /* Light mode: warm amber → golden gradient */
+  /* Light mode: warm amber → golden gradient (darker for contrast) */
   .light .hero-title {
-    background: linear-gradient(120deg, #B45309 0%, #D97706 45%, #92400E 100%);
+    background: linear-gradient(120deg, #92400E 0%, #B45309 45%, #78350F 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;

@@ -52,7 +52,7 @@ function Skills({ skills }) {
             return (
               <motion.article
                 key={skill.name}
-                className="group relative rounded-xl p-5 cursor-default transition-all duration-300 ease-in-out"
+                className="group relative rounded-2xl p-6 cursor-default transition-all duration-300 ease-in-out"
                 style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
                 variants={fadeUp}
                 whileHover={{
