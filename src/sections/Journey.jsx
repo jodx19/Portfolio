@@ -18,10 +18,10 @@ function TimelineCard({ title, subtitle, period, description, type, tc }) {
 
   return (
     <motion.div
-      className="group relative p-6 rounded-2xl transition-all duration-300"
+      className="group relative p-6 rounded-2xl transition-all duration-300 ease-in-out"
       style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
       variants={fadeUp}
-      whileHover={{ y: -5, borderColor: hoverBorder, boxShadow: hoverShadow }}
+      whileHover={{ scale: 1.02, borderColor: hoverBorder, boxShadow: hoverShadow, zIndex: 5 }}
     >
       {/* Icon Badge */}
       <motion.div
@@ -105,7 +105,7 @@ function EducationExperience() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 [perspective:1000px]">
           {/* Education Column */}
           <div className="space-y-12">
             <motion.div className="flex items-center gap-4" variants={fadeUp}>

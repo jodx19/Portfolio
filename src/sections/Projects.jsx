@@ -62,7 +62,7 @@ function ProjectsGrid({ projects, onSelect }) {
         */}
         <motion.div
           ref={gridRef}
-          className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+          className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 [perspective:1000px]"
           variants={staggerContainer}
           initial="initial"
           animate={gridControls}

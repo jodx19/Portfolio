@@ -39,7 +39,7 @@ function Skills({ skills }) {
         </motion.div>
 
         {/* Grid — 1 → 2 → 3 cols */}
-        <motion.div ref={gridRef} className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        <motion.div ref={gridRef} className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [perspective:1000px]"
           variants={staggerContainer} initial="initial" animate={gridControls}>
           {skills.map((skill, index) => {
             const key = skillKeys[index];
@@ -52,13 +52,12 @@ function Skills({ skills }) {
             return (
               <motion.article
                 key={skill.name}
-                className="group relative rounded-xl p-5 cursor-default transition-all duration-300"
+                className="group relative rounded-xl p-5 cursor-default transition-all duration-300 ease-in-out"
                 style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
                 variants={fadeUp}
                 whileHover={{
-                  y: -6,
-                  rotateX: 2,
-                  rotateY: index % 2 === 0 ? 2 : -2,
+                  scale: 1.02,
+                  zIndex: 5,
                   borderColor: tc.accent,
                   boxShadow: `0 0 10px ${tc.accent}, 0 0 30px ${tc.accent}4D`,
                 }}

@@ -33,7 +33,7 @@ function ProjectCard({ project, onSelect }) {
 
   return (
     <motion.article
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-500"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 ease-in-out"
       style={{
         background: tc.cardBg,
         border: `1px solid ${tc.cardBorder}`,
@@ -44,12 +44,13 @@ function ProjectCard({ project, onSelect }) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{
-        y: -10,
+        scale: 1.02,
+        zIndex: 10,
         borderColor: tc.cardHoverBorder,
         boxShadow: tc.cardHoverShadow,
         background: tc.cardHoverBg,
       }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       {/* ── Image Container ─────────────────────────────────────── */}
       <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl">
