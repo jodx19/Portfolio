@@ -22,13 +22,13 @@ function Skills({ skills }) {
   const skillKeys = ["skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9"];
 
   return (
-    <section className="relative overflow-visible">
+    <section className="relative py-16 md:py-24 px-6 overflow-visible">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 70% 30%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
       <div className="relative z-10">
         {/* Header */}
-        <motion.div ref={headerRef} className="mb-16 text-center"
+        <motion.div ref={headerRef} className="mb-12 text-center"
           variants={fadeUp} initial="initial" animate={headerControls}>
           <p className="heading-accent flex items-center justify-center gap-2 tracking-[0.25em]">
             <Sparkles className="h-4 w-4" /> {t("skills.label")}

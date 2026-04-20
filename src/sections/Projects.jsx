@@ -22,7 +22,7 @@ function ProjectsGrid({ projects, onSelect }) {
   const { ref: gridRef, controls: gridControls } = useScrollAnimation({ threshold: 0.05 });
 
   return (
-    <section className="relative px-6 overflow-visible">
+    <section className="relative px-6 overflow-visible py-16 md:py-24">
       {/* Background ambient glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -35,7 +35,7 @@ function ProjectsGrid({ projects, onSelect }) {
         {/* ── Section Header ─────────────────────────────────────────────── */}
         <motion.div
           ref={headerRef}
-          className="mb-16 text-center"
+          className="mb-12 text-center"
           variants={fadeUp}
           initial="initial"
           animate={headerControls}

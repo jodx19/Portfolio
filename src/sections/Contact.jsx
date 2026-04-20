@@ -156,7 +156,7 @@ function ContactForm() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 px-6 overflow-visible">
+    <section id="contact" className="relative py-16 md:py-24 px-6 overflow-visible">
       {/* Background radial glow decoration */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -175,7 +175,7 @@ function ContactForm() {
         viewport={{ once: true }}
       >
         {/* ── Section Header ─────────────────────────────────────────────── */}
-        <motion.div className="mb-16 text-center" variants={fadeUp}>
+        <motion.div className="mb-12 text-center" variants={fadeUp}>
           <p className="heading-accent tracking-[0.25em]">{t("contact.label")}</p>
           <h2 className="text-4xl md:text-6xl font-bold text-txt-primary mt-4 tracking-tight leading-tight">
             {t("contact.title")}{" "}

@@ -27,7 +27,7 @@ function Certifications() {
   }));
 
   return (
-    <section id="certifications" className="relative py-24 md:py-32 px-6 overflow-visible">
+    <section id="certifications" className="relative py-16 md:py-24 px-6 overflow-visible">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 20% 80%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
@@ -39,7 +39,7 @@ function Certifications() {
         viewport={{ once: true }}
       >
         {/* Header */}
-        <motion.div className="mb-12" variants={fadeUp}>
+        <motion.div className="mb-10" variants={fadeUp}>
           <p className="heading-accent flex items-center gap-2">
             <Award className="h-4 w-4" />
             {t("certifications.label")}
@@ -58,11 +58,12 @@ function Certifications() {
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col gap-4 p-6 rounded-2xl transition-all duration-300"
+              className="group relative flex flex-col gap-4 p-6 rounded-2xl transition-all duration-300 ease-in-out"
               style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
               variants={fadeUp}
               whileHover={{
-                y: -6,
+                scale: 1.02,
+                zIndex: 5,
                 borderColor: tc.accent,
                 boxShadow: `0 0 10px ${tc.accent}, 0 0 30px ${tc.accent}4D`,
               }}

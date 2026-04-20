@@ -82,7 +82,7 @@ function EducationExperience() {
   ];
 
   return (
-    <section className="relative py-24 px-6 overflow-visible">
+    <section className="relative py-16 md:py-24 px-6 overflow-visible">
       {/* Ambient orbs */}
       <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full pointer-events-none"
         style={{ background: tc.orbPrimary, filter: "blur(100px)" }} />
@@ -96,7 +96,7 @@ function EducationExperience() {
         whileInView="animate"
         viewport={{ once: true }}
       >
-        <motion.div className="mb-20 text-center" variants={fadeUp}>
+        <motion.div className="mb-12 text-center" variants={fadeUp}>
           <p className="heading-accent tracking-[0.25em]">{t("journey.label")}</p>
           <h2 className="mt-4 text-4xl font-bold text-txt-primary md:text-6xl tracking-tight leading-tight">
             {t("journey.title")}{" "}

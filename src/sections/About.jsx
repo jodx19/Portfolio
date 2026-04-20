@@ -18,7 +18,7 @@ function About() {
   ];
 
   return (
-    <section id="about" className="relative px-6 overflow-visible py-24 md:py-32">
+    <section id="about" className="relative px-6 overflow-visible py-16 md:py-24">
       {/* Background radial gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -92,11 +92,12 @@ function About() {
             {stats.map((item) => (
               <motion.div
                 key={item.title}
-                className="group relative rounded-3xl p-8 transition-all duration-500 cursor-default overflow-visible"
+                className="group relative rounded-3xl p-8 transition-all duration-300 ease-in-out cursor-default overflow-visible"
                 style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
                 variants={fadeUp}
                 whileHover={{
-                  y: -8,
+                  scale: 1.02,
+                  zIndex: 5,
                   borderColor: tc.cardHoverBorder,
                   boxShadow: tc.cardHoverShadow,
                   background: tc.cardHoverBg,
