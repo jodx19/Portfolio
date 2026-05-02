@@ -125,6 +125,37 @@ export const skills = [
 export const projects = [
   // === FIRST ROW ===
   {
+    title: "Al-Ma'rad - Luxury Car Showcase",
+    titleAr: "المعرض | معرض السيارات الفاخرة",
+    description: "A premium digital showroom designed for high-end vehicle sales. The platform features a sophisticated dark-themed UI to reflect luxury, with advanced filtering systems and dynamic gallery views.",
+    details: "Designed and developed a high-end digital showroom for luxury vehicles. The platform features a premium dark-themed UI, advanced vehicle filtering systems, and dynamic gallery views to provide an immersive browsing experience. Built with Angular, it includes full RTL support and responsive design for all devices.",
+    image: "/images/المعرض/screencapture-file-E-ITI-MY-Projects-Day-1-index-html-2026-03-21-08_47_46.png",
+    images: [
+      "/images/المعرض/screencapture-file-E-ITI-MY-Projects-Day-1-index-html-2026-03-21-08_47_46.png",
+      "/images/المعرض/1.png",
+      "/images/المعرض/2.png",
+      "/images/المعرض/3.png",
+      "/images/المعرض/4.png",
+      "/images/المعرض/5.png"
+    ],
+    tags: ["Angular", "UI/UX Design", "RTL Support", "Responsive Design"],
+    stackBadge: "Premium Digital Showroom",
+    githubLink: "https://github.com/jodx19/El-mo3rad.git",
+    liveLink: "https://el-mo3rad.vercel.app/"
+  },
+  {
+    title: "Al-Wod - Premium Cleaning Landing Page",
+    titleAr: "شركة الواد للتنظيف | Landing Page",
+    description: "A modern, high-conversion landing page focused on cleaning services. Designed with a 'Fresh Luxury' aesthetic, featuring a clean layout, bento-grid components, and smooth animations.",
+    details: "Crafted a high-end landing page for 'Al-Wod' cleaning services. The design uses a sophisticated palette of deep green and gold to evoke trust and cleanliness. Key features include a responsive Bento-style layout, interactive statistics, and a seamless booking interface. Optimized for performance and full RTL accessibility.",
+    image: "/images/الود.png",
+    images: ["/images/الود.png", "/images/الود2.png", "/images/الود3.png"],
+    tags: ["React", "Tailwind CSS", "Modern UI", "Bento Layout", "RTL Support"],
+    stackBadge: "Premium Landing Page",
+    githubLink: "https://github.com/jodx19/El-Wad-Premium-Landing-Page",
+    liveLink: "https://el-wad.vercel.app/"
+  },
+  {
     title: "Maxilla Store",
     description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
     details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
