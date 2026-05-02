@@ -121,7 +121,11 @@
     "project4Desc": "A smart task management system that allows users to prioritize and track their daily tasks efficiently.",
     "project5Desc": "A robust RESTful API built with .NET Core, featuring JWT authentication, role-based access control, and Swagger documentation for seamless integration.",
     "project6Title": "Simple ERP System",
-    "project6Desc": "A full-stack ERP system with authentication, role-based authorization, customer management, dashboard views, and production deployment configuration."
+    "project6Desc": "A full-stack ERP system with authentication, role-based authorization, customer management, dashboard views, and production deployment configuration.",
+    "project7Title": "Al-Ma'rad - Luxury Car Showcase",
+    "project7Desc": "A premium digital showroom designed for high-end vehicle sales with a sophisticated dark UI and advanced filtering.",
+    "project8Title": "Al-Wod - Cleaning Services Landing Page",
+    "project8Desc": "A premium, high-conversion landing page for a cleaning service, featuring a fresh luxury aesthetic and bento-grid layouts."
   },
   "certifications": {
     "label": "Credentials",
