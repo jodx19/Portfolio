@@ -205,16 +205,23 @@ export const projects = [
     backendLink: "https://simpleerpsystem.runasp.net/swagger"
   },
   {
-    title: "SafiStore - Full Stack E-Commerce",
-    description: "A comprehensive e-commerce platform enabling users to browse products, manage their shopping cart, and complete purchases securely.",
-    details: "Built a full-featured online store with product catalog, shopping cart, secure checkout, and admin dashboard for inventory management.",
-    image: "/images/safistore.png",
-    images: ["/images/backendapi (1).png", "/images/backendapi (2).png"],
-    tags: ["Angular", ".NET Core API", "SQL Server", "Tailwind CSS"],
+    title: "SafiStore",
+    description: "A professional e-commerce platform built with a focus on modularity and high-performance API integration.",
+    details: "A professional e-commerce platform built with Angular for the frontend, .NET Core Web API for the backend, and SQL Server for data persistence, following Clean Architecture principles. The platform features a modular design with clear separation of concerns, high-performance API integration, and a comprehensive feature set including product catalog, shopping cart, secure checkout, and admin dashboard for inventory management.",
+    image: "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
+    images: [
+      "/images/safistore/1.png",
+      "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
+      "/images/safistore/screencapture-safistore-vercel-app-admin-dashboard-2026-05-05-18_45_25.png",
+      "/images/safistore/screencapture-safistore-vercel-app-admin-orders-2026-05-05-18_45_47.png",
+      "/images/safistore/screencapture-safistore-vercel-app-profile-2026-05-05-18_44_58.png",
+      "/images/safistore/screencapture-safistore-vercel-app-track-2026-05-05-18_44_03.png"
+    ],
+    tags: ["Angular", ".NET Core Web API", "SQL Server", "Clean Architecture"],
     stackBadge: "E-Commerce Platform",
     githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
     liveLink: "https://safistore.vercel.app/",
-    backendLink: "https://safistore.runasp.net/swagger/index.html"
+    backendLink: "https://github.com/jodx19/SafiStore-Backend-API"
   },
   {
     title: "MovieBox",
