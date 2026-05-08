@@ -96,13 +96,23 @@ function Footer({ sections }) {
           <p>© {new Date().getFullYear()} {" "}
             <motion.span
               className="font-black tracking-tight cursor-default inline-block"
-              style={{ color: tc.accent }}
-              whileHover={{
-                scale: 1.05,
-                filter: `drop-shadow(0 0 10px ${tc.accent}88)`,
-                color: tc.accentSec || tc.accent
+              animate={{
+                color: [tc.accent, tc.accentSec || tc.accent, tc.accent],
+                filter: [
+                  `drop-shadow(0 0 2px ${tc.accent}44)`,
+                  `drop-shadow(0 0 8px ${tc.accent}88)`,
+                  `drop-shadow(0 0 2px ${tc.accent}44)`
+                ],
               }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              whileHover={{
+                scale: 1.1,
+                filter: `drop-shadow(0 0 15px ${tc.accent})`,
+              }}
             >
               AL-SAFI | الصافي
             </motion.span>
