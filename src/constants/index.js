@@ -18,7 +18,7 @@ export const sections = [
 
 // === HERO SECTION DATA ===
 export const heroData = {
-  name: { first: "Mahmoud", last: "Mostafa" },
+  name: { first: "Mahmoud", last: "Al-Safi" },
   role: "Full-Stack Web Developer",
   specialization: ".NET Core & Modern JavaScript",
   status: "Available for New Projects",
@@ -124,6 +124,23 @@ export const skills = [
 // === PROJECTS ===
 export const projects = [
   // === FIRST ROW ===
+  {
+    title: "Art4Print - Premium Printing Services",
+    titleAr: "آرت فور برينت | خدمات الطباعة المتميزة",
+    description: "A high-end landing page for a professional printing and advertising agency, featuring a vibrant design, interactive service showcases, and a seamless WhatsApp-based order system.",
+    details: "Designed and developed a premium digital presence for 'Art4Print'. The platform features a dynamic, color-rich UI that reflects the creative nature of the printing industry. Key functionalities include a responsive service catalog, price estimation highlights, and a custom-built WhatsApp integration that allows customers to send files and orders directly to the agency. Optimized for speed, accessibility, and full RTL support.",
+    image: "/images/Art4print/4.png",
+    images: [
+      "/images/Art4print/4.png",
+      "/images/Art4print/1.png",
+      "/images/Art4print/2.png",
+      "/images/Art4print/3.png"
+    ],
+    tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "WhatsApp API", "RTL"],
+    stackBadge: "Premium Printing Agency",
+    githubLink: "https://github.com/jodx19/Art4Print",
+    liveLink: "https://art4-print.vercel.app/"
+  },
   {
     title: "Al-Ma'rad - Luxury Car Showcase",
     titleAr: "المعرض | معرض السيارات الفاخرة",
