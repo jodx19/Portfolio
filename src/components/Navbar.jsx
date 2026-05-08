@@ -174,16 +174,16 @@ function Navbar({ sections }) {
           className="group flex items-center gap-3"
           whileHover={{ scale: 1.02 }}
         >
-          <motion.span
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-lg font-bold"
-            style={{ background: tc.logoBg, border: `1px solid ${tc.logoBorder}`, color: tc.accent }}
+          <motion.div
+            className="relative h-11 w-11 overflow-hidden rounded-xl border border-brd-light"
+            style={{ background: tc.logoBg }}
             whileHover={{ boxShadow: `0 0 20px ${tc.accent}55`, borderColor: tc.accent }}
           >
-            MM
-          </motion.span>
+            <img src="/images/logo.png" alt="Al-Safi Logo" className="h-full w-full object-cover" />
+          </motion.div>
           <div className="hidden sm:block leading-tight">
             <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Dev</p>
-            <p className="text-lg font-bold text-txt-primary tracking-tight">Mahmoud Mostafa</p>
+            <p className="text-lg font-bold text-txt-primary tracking-tight">Mahmoud Al-Safi</p>
           </div>
         </motion.a>
 

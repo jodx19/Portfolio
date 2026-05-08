@@ -28,14 +28,14 @@ function Footer({ sections }) {
           {/* Logo & tagline */}
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3">
-              <span
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold"
-                style={{ background: tc.logoBg, border: `1px solid ${tc.logoBorder}`, color: tc.accent }}
+              <div
+                className="relative h-10 w-10 overflow-hidden rounded-xl border border-brd-light"
+                style={{ background: tc.logoBg }}
               >
-                MM
-              </span>
+                <img src="/images/logo.png" alt="Al-Safi Logo" className="h-full w-full object-cover" />
+              </div>
               <div>
-                <p className="font-bold text-txt-primary">Mahmoud Mostafa</p>
+                <p className="font-bold text-txt-primary">Mahmoud Al-Safi</p>
                 <p className="text-xs text-txt-tertiary">{t("footer.fullStackDev")}</p>
               </div>
             </div>
@@ -93,7 +93,21 @@ function Footer({ sections }) {
           <p className="flex items-center gap-1">
             {t("footer.builtWith")} <Heart size={14} className="text-red-500 mx-1" /> {t("footer.using")}
           </p>
-          <p>© {new Date().getFullYear()} Mahmoud Mostafa. {t("footer.rights")}</p>
+          <p>© {new Date().getFullYear()} {" "}
+            <motion.span
+              className="font-black tracking-tight cursor-default inline-block"
+              style={{ color: tc.accent }}
+              whileHover={{
+                scale: 1.05,
+                filter: `drop-shadow(0 0 10px ${tc.accent}88)`,
+                color: tc.accentSec || tc.accent
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              AL-SAFI | الصافي
+            </motion.span>
+            . {t("footer.rights")}
+          </p>
         </div>
       </div>
     </footer>

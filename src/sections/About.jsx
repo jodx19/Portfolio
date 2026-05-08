@@ -49,7 +49,7 @@ function About() {
           >
             <img
               src={image}
-              alt="Mahmoud Mostafa"
+              alt="Mahmoud Al-Safi"
               className="w-72 h-72 md:w-96 md:h-96 object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700"
               loading="lazy"
             />
