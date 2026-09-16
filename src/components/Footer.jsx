@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
+import PortfolioLogo from "./PortfolioLogo";
 
 function Footer({ sections }) {
   const { t } = useTranslation();
@@ -29,10 +30,14 @@ function Footer({ sections }) {
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3">
               <div
-                className="relative h-10 w-10 overflow-hidden rounded-xl border border-brd-light"
-                style={{ background: tc.logoBg }}
+                className="relative overflow-hidden rounded-xl flex items-center justify-center"
+                style={{ boxShadow: `0 0 0 1px ${tc.accent}30` }}
               >
-                <img src="/images/logo.png" alt="Al-Safi Logo" className="h-full w-full object-cover" />
+                <PortfolioLogo
+                  accent={tc.accent}
+                  accentSec={tc.accentSec}
+                  isDark={tc.isDark}
+                />
               </div>
               <div>
                 <p className="font-bold text-txt-primary">Mahmoud Al-Safi</p>

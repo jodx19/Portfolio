@@ -7,9 +7,9 @@ import useThemeColors from "../hooks/useThemeColors";
 
 // Floating action overlay — slides up from image bottom on hover
 const overlayVariants = {
-  hidden:  { opacity: 0, y: "100%" },
+  hidden: { opacity: 0, y: "100%" },
   visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.2, 0.8, 0.2, 1] } },
-  exit:    { opacity: 0, y: "100%", transition: { duration: 0.25, ease: "easeIn" } },
+  exit: { opacity: 0, y: "100%", transition: { duration: 0.25, ease: "easeIn" } },
 };
 
 function ProjectCard({ project, onSelect }) {
@@ -53,7 +53,7 @@ function ProjectCard({ project, onSelect }) {
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       {/* ── Image Container ─────────────────────────────────────── */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl">
+      <div className="relative h-44 sm:h-52 w-full overflow-hidden rounded-t-2xl shrink-0">
         {project.stackBadge && (
           <span
             className="absolute left-4 top-4 z-20 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider shadow-xl"
@@ -85,7 +85,7 @@ function ProjectCard({ project, onSelect }) {
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{ background: tc.isDark
             ? "linear-gradient(to top, rgba(10,15,26,0.95) 0%, rgba(10,15,26,0.4) 50%, transparent 100%)"
-            : "linear-gradient(to top, rgba(255,247,237,0.92) 0%, rgba(255,247,237,0.3) 50%, transparent 100%)"
+            : "linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.3) 50%, transparent 100%)"
           }}
         />
 
@@ -149,8 +149,8 @@ function ProjectCard({ project, onSelect }) {
       </div>
 
       {/* ── Card Content ─────────────────────────────────────────── */}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <div className="mb-3">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-2xl font-bold text-txt-primary group-hover:text-accent transition-colors">
               {project.title}
@@ -167,7 +167,7 @@ function ProjectCard({ project, onSelect }) {
         </div>
 
         {/* Tech Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag) => (
             <span key={tag}
               className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-md transition-all tracking-wider"
@@ -182,7 +182,7 @@ function ProjectCard({ project, onSelect }) {
         </div>
 
         {/* Bottom action row */}
-        <div className="mt-auto flex items-center justify-between pt-5" style={{ borderTop: `1px solid ${tc.cardBorder}` }}>
+        <div className="mt-auto flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${tc.cardBorder}` }}>
           <motion.a href={projectLink} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm font-bold group/link"
             style={{ color: tc.accent }}
