@@ -123,7 +123,65 @@ export const skills = [
 
 // === PROJECTS ===
 export const projects = [
-  // === FIRST ROW ===
+  // ── TIER 1: Full-Stack Production Applications (Most Complex) ──────────
+  {
+    title: "SafiStore",
+    description: "A professional e-commerce platform built with Angular, .NET Core Web API, and SQL Server, following Clean Architecture principles with full admin dashboard and order management.",
+    details: "A professional e-commerce platform built with Angular for the frontend, .NET Core Web API for the backend, and SQL Server for data persistence, following Clean Architecture principles. The platform features a modular design with clear separation of concerns, high-performance API integration, and a comprehensive feature set including product catalog, shopping cart, secure checkout, and admin dashboard for inventory management.",
+    image: "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
+    images: [
+      "/images/safistore/1.png",
+      "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
+      "/images/safistore/screencapture-safistore-vercel-app-admin-dashboard-2026-05-05-18_45_25.png",
+      "/images/safistore/screencapture-safistore-vercel-app-admin-orders-2026-05-05-18_45_47.png",
+      "/images/safistore/screencapture-safistore-vercel-app-profile-2026-05-05-18_44_58.png",
+      "/images/safistore/screencapture-safistore-vercel-app-track-2026-05-05-18_44_03.png"
+    ],
+    tags: ["Angular", ".NET Core Web API", "SQL Server", "Clean Architecture"],
+    stackBadge: "E-Commerce Platform",
+    githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
+    liveLink: "https://safistore.vercel.app/",
+    backendLink: "https://github.com/jodx19/SafiStore-Backend-API"
+  },
+  {
+    title: "ErrorMonitor — Full-Stack Observability Platform",
+    description: "A production-grade observability dashboard built with ASP.NET Core 8 and Angular. Features real-time error tracking, Serilog structured logging with Seq integration, JWT authentication with UserId enrichment, and ProblemDetails RFC 7807 compliance.",
+    details: "A CV-grade Full-Stack project demonstrating enterprise-level backend engineering. The ASP.NET Core 8 API integrates Serilog with a custom UserId Enricher that injects the authenticated user's identity into every log entry, making error tracing surgical in multi-tenant environments. The Angular frontend provides a live API test panel with status indicators, a request log viewer showing response times and JWT claims, and a real-time Architecture Flow diagram. GlobalExceptionHandler ensures all unhandled exceptions return structured ProblemDetails with TraceId for end-to-end debugging.",
+    image: "/images/ErrorMonitor/screencapture-error-monitor-ui-vercel-app-2026-09-16-11_15_15.png",
+    images: [
+      "/images/ErrorMonitor/screencapture-error-monitor-ui-vercel-app-2026-09-16-11_15_15.png"
+    ],
+    tags: ["ASP.NET Core 8", "Angular", "Serilog", "Seq", "JWT", "ProblemDetails RFC 7807", "Clean Architecture"],
+    stackBadge: "Full-Stack Observability Platform",
+    githubLink: "https://github.com/jodx19/ErrorMonitor",
+    liveLink: "https://error-monitor-ui.vercel.app/",
+    backendLink: "https://errormonitorapi.runasp.net/swagger"
+  },
+  {
+    title: "Simple ERP System",
+    description: "A full-stack ERP system built with ASP.NET Core Web API, Angular, and SQL Server, featuring JWT authentication, role-based authorization, dashboard management, and customer operations.",
+    details: "Designed and deployed a production-ready ERP system with secure authentication, protected APIs, admin workflows, customer management, and responsive dashboard interfaces.",
+    image: "/images/dashboard.png",
+    images: ["/images/dashboard.png", "/images/customers.png"],
+    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
+    stackBadge: "Full-Stack Web Application",
+    githubLink: "https://github.com/jodx19",
+    liveLink: "https://simpleerpsystem.vercel.app",
+    backendLink: "https://simpleerpsystem.runasp.net/swagger"
+  },
+  // ── TIER 2: Full-Stack Freelance & Complex Projects ───────────────────
+  {
+    title: "Maxilla Store",
+    description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
+    details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
+    image: "/images/maxillastore.png",
+    images: ["/images/maxillastore.png", "/images/maxillastore (2).png"],
+    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
+    stackBadge: "Full-Stack Web Application",
+    githubLink: "https://github.com/jodx19/maxilla-frontend",
+    liveLink: "https://maxillastore.vercel.app/",
+    backendLink: "https://maxillastorebackend.runasp.net/swagger"
+  },
   {
     title: "Art4Print - Premium Printing Services",
     titleAr: "آرت فور برينت | خدمات الطباعة المتميزة",
@@ -160,6 +218,7 @@ export const projects = [
     githubLink: "https://github.com/jodx19/El-mo3rad.git",
     liveLink: "https://el-mo3rad.vercel.app/"
   },
+  // ── TIER 3: Premium Landing Pages ────────────────────────────────────
   {
     title: "Al-Wod - Premium Cleaning Landing Page",
     titleAr: "شركة الواد للتنظيف | Landing Page",
@@ -171,18 +230,6 @@ export const projects = [
     stackBadge: "Premium Landing Page",
     githubLink: "https://github.com/jodx19/El-Wad-Premium-Landing-Page",
     liveLink: "https://el-wad.vercel.app/"
-  },
-  {
-    title: "Maxilla Store",
-    description: "A full-stack dental supply e-commerce platform built with ASP.NET Core and Angular, featuring secure JWT authentication, role-based access, and a comprehensive product management system.",
-    details: "Designed and implemented a specialized e-commerce solution for dental clinics, integrating a robust .NET backend with a dynamic Angular frontend, secure payment workflows, and administrative management tools.",
-    image: "/images/maxillastore.png",
-    images: ["/images/maxillastore.png", "/images/maxillastore (2).png"],
-    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
-    stackBadge: "Full-Stack Web Application",
-    githubLink: "https://github.com/jodx19/maxilla-frontend",
-    liveLink: "https://maxillastore.vercel.app/",
-    backendLink: "https://maxillastorebackend.runasp.net/swagger"
   },
   {
     title: "Qasr Al Riyadh - Luxury Hotel",
@@ -208,38 +255,7 @@ export const projects = [
     githubLink: "https://github.com/jodx19/Dental-Landing-page",
     liveLink: "https://drmahmoudomran.vercel.app/"
   },
-  // === SECOND ROW ===
-  {
-    title: "Simple ERP System",
-    description: "A full-stack ERP system built with ASP.NET Core Web API, Angular, and SQL Server, featuring JWT authentication, role-based authorization, dashboard management, and customer operations.",
-    details: "Designed and deployed a production-ready ERP system with secure authentication, protected APIs, admin workflows, customer management, and responsive dashboard interfaces.",
-    image: "/images/dashboard.png",
-    images: ["/images/dashboard.png", "/images/customers.png"],
-    tags: ["ASP.NET Core", "Angular", "SQL Server", "JWT", "RBAC"],
-    stackBadge: "Full-Stack Web Application",
-    githubLink: "https://github.com/jodx19",
-    liveLink: "https://simpleerpsystem.vercel.app",
-    backendLink: "https://simpleerpsystem.runasp.net/swagger"
-  },
-  {
-    title: "SafiStore",
-    description: "A professional e-commerce platform built with a focus on modularity and high-performance API integration.",
-    details: "A professional e-commerce platform built with Angular for the frontend, .NET Core Web API for the backend, and SQL Server for data persistence, following Clean Architecture principles. The platform features a modular design with clear separation of concerns, high-performance API integration, and a comprehensive feature set including product catalog, shopping cart, secure checkout, and admin dashboard for inventory management.",
-    image: "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
-    images: [
-      "/images/safistore/1.png",
-      "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
-      "/images/safistore/screencapture-safistore-vercel-app-admin-dashboard-2026-05-05-18_45_25.png",
-      "/images/safistore/screencapture-safistore-vercel-app-admin-orders-2026-05-05-18_45_47.png",
-      "/images/safistore/screencapture-safistore-vercel-app-profile-2026-05-05-18_44_58.png",
-      "/images/safistore/screencapture-safistore-vercel-app-track-2026-05-05-18_44_03.png"
-    ],
-    tags: ["Angular", ".NET Core Web API", "SQL Server", "Clean Architecture"],
-    stackBadge: "E-Commerce Platform",
-    githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
-    liveLink: "https://safistore.vercel.app/",
-    backendLink: "https://github.com/jodx19/SafiStore-Backend-API"
-  },
+  // ── TIER 4: Web & Desktop Apps ────────────────────────────────────────
   {
     title: "MovieBox",
     description: "A movie discovery platform featuring advanced search and user ratings, powered by external APIs.",

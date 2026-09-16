@@ -46,44 +46,44 @@
   }
 
   /* ================================================================
-     LIGHT MODE — Professional Warm Amber
+     LIGHT MODE — Solar Minimal 🔶
      ================================================================
-     Accent  : #B45309 (amber-700) — calm, warm, NOT harsh orange
-     BG      : #F5F3EF (warm parchment) — ALL sections same
-     Cards   : #FFFFFF  (white lifts above the warm bg)
-     Text    : Stone-900 / Stone-600 / Stone-400
-     Borders : Warm sepia, very subtle
+     Philosophy : أبيض نظيف + برتقالي متوهج = premium tech feel
+     BG         : #ffffff — أبيض حقيقي
+     Particles  : رمادي + برتقالي
+     Accent     : #ea580c (orange-600) — حيوي ومتوهج
+     Text       : stone-900 دافئ (stone-900 مش أسود بارد)
      ================================================================ */
   .light {
-    /* ── Backgrounds (unified — no section alternation) ────────── */
-    --color-bg-0: #F9F8F6;           /* bright warm parchment — extremely elegant */
-    --color-bg-1: #FFFFFF;           /* pure white for cards */
+    /* ── Backgrounds ────────── */
+    --color-bg-0: #ffffff;           /* أبيض نظيف */
+    --color-bg-1: #fafaf9;           /* off-white دافئ للسطوح */
 
-    /* ── Typography ───────────────────────────────────── */
-    --color-text-primary:   #1C1917;   /* stone-900 — warm charcoal */
-    --color-text-secondary: #44403C;   /* stone-700 — deep warm gray (better contrast) */
-    --color-text-tertiary:  #57534E;   /* stone-600 — darker for WCAG compliance */
-    --color-text-accent:    #92400E;   /* amber-800 */
+    /* ── Typography (Stone — دافئ ومريح للعين) ──────────── */
+    --color-text-primary:   #1c1917;   /* stone-900 — دافئ وقوي */
+    --color-text-secondary: #44403c;   /* stone-700 — رمادي دافئ */
+    --color-text-tertiary:  #78716c;   /* stone-500 — خفيف ومقروء */
+    --color-text-accent:    #ea580c;   /* orange-600 — برتقالي حيوي */
 
-    /* ── Surfaces ─────────────────────────────────────── */
-    --color-surface-0: rgba(255, 255, 255, 0.96);   /* white cards */
-    --color-surface-1: rgba(254, 250, 244, 0.92);   /* very soft warm */
+    /* ── Surfaces (Glassmorphism أبيض نظيف) ──────────────── */
+    --color-surface-0: rgba(255, 255, 255, 0.95); /* أبيض شبه مصمت */
+    --color-surface-1: rgba(250, 250, 249, 0.90); /* off-white شفاف */
 
-    /* ── Borders (warm sepia, barely visible) ────────────── */
-    --color-border-light:  rgba(120, 90, 50, 0.12);
-    --color-border-medium: rgba(120, 90, 50, 0.30);
-    --color-border-accent: rgba(180, 83,  9, 0.55);
+    /* ── Borders ──────────────────────────────────────── */
+    --color-border-light:  rgba(234, 88, 12, 0.15);  /* برتقالي خفيف */
+    --color-border-medium: rgba(234, 88, 12, 0.42);  /* برتقالي واضح */
+    --color-border-accent: rgba(194, 65, 12, 0.75);  /* orange-700 قوي */
 
-    /* ── Accent — Amber-800 (enhanced contrast) ────────── */
-    --color-accent-primary:   #92400E;   /* amber-800 */
-    --color-accent-secondary: #78350F;   /* amber-900 */
+    /* ── Accent ───────────────────────────────────────── */
+    --color-accent-primary:   #ea580c;   /* orange-600 — حيوي ومتوهج */
+    --color-accent-secondary: #9a3412;   /* orange-800 — برتقالي محترق */
 
-    /* ── Shadows ─────────────────────────────────────── */
-    --shadow-lightning:         0 0 15px rgba(180,83,9,0.15), 0 0 35px rgba(180,83,9,0.08);
-    --shadow-lightning-intense: 0 0 24px rgba(180,83,9,0.25), 0 0 60px rgba(180,83,9,0.12);
-    --shadow-soft:     0 6px 20px rgba(28,25,23,0.04);
-    --shadow-card:     0 10px 30px rgba(28,25,23,0.06);
-    --shadow-card-hover: 0 16px 40px rgba(180,83,9,0.10), 0 8px 16px rgba(180,83,9,0.05);
+    /* ── Shadows (orange glow متوهج) ──────────────────── */
+    --shadow-lightning:         0 0 16px rgba(234,88,12,0.55), 0 0 42px rgba(234,88,12,0.28);
+    --shadow-lightning-intense: 0 0 24px rgba(234,88,12,0.75), 0 0 65px rgba(234,88,12,0.42);
+    --shadow-soft:     0 6px 20px rgba(28, 25, 23, 0.08);
+    --shadow-card:     0 4px 16px rgba(28,25,23,0.08), 0 1px 4px rgba(234,88,12,0.06);
+    --shadow-card-hover: 0 0 28px rgba(234,88,12,0.48), 0 12px 32px rgba(28,25,23,0.12);
     --backdrop-blur: blur(16px);
   }
 
@@ -180,14 +180,15 @@
     animation: gradient-shift 4s ease-in-out infinite;
   }
 
-  /* Light mode: warm amber → golden gradient (darker for contrast) */
+  /* Light mode: Orange fire — برتقالي حيوي على خلفية بيضاء */
   .light .hero-title {
-    background: linear-gradient(120deg, #92400E 0%, #B45309 45%, #78350F 100%);
+    background: linear-gradient(120deg, #ea580c 0%, #c2410c 45%, #f97316 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient-shift 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(234,88,12,0.50));
   }
 
   /* === BUTTONS === */
@@ -320,6 +321,45 @@
   .ambient-orb-blue {
     background: rgba(37, 99, 235, 0.12);
   }
+
+  /* === LIGHT MODE OVERRIDES (Solar Minimal — Orange & Warm Stone) === */
+  .light .ambient-orb-cyan {
+    background: rgba(234, 88, 12, 0.18);
+  }
+  .light .ambient-orb-blue {
+    background: rgba(154, 52, 18, 0.12);
+  }
+  .light .card-lightning {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(234, 88, 12, 0.18);
+    box-shadow: 0 4px 16px rgba(28,25,23,0.06);
+  }
+  .light .card-lightning:hover {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 24px rgba(234,88,12,0.50), 0 0 55px rgba(234,88,12,0.25);
+  }
+  .light .badge-tech:hover {
+    color: var(--color-accent-primary);
+    border-color: rgba(234, 88, 12, 0.55);
+    box-shadow: 0 0 10px rgba(234, 88, 12, 0.30);
+  }
+  .light .btn-primary {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(234, 88, 12, 0.45);
+  }
+  .light .btn-primary:hover {
+    box-shadow: 0 0 22px rgba(234,88,12,0.72), 0 0 48px rgba(234,88,12,0.38);
+  }
+  .light .hero-title {
+    background: linear-gradient(120deg, #ea580c 0%, #c2410c 45%, #f97316 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(234,88,12,0.50));
+  }
 }
 
 /* === KEYFRAME ANIMATIONS === */
@@ -354,6 +394,81 @@
   }
 }
 
+/* === BLINKING CURSOR === */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.animate-blink-cursor {
+  animation: blink-cursor 0.8s ease-in-out infinite;
+}
+
+/* Loading screen terminal cursor */
+.loading-cursor {
+  display: inline-block;
+  animation: blink-cursor 0.6s step-end infinite;
+}
+
+/* === GLITCH TEXT EFFECT === */
+@keyframes glitch-1 {
+  0%          { clip-path: inset(0 0 95% 0); transform: translate(-3px, 0); }
+  20%         { clip-path: inset(30% 0 50% 0); transform: translate(3px, 0); }
+  40%         { clip-path: inset(60% 0 20% 0); transform: translate(-2px, 0); }
+  60%         { clip-path: inset(80% 0 5% 0);  transform: translate(2px, 0); }
+  80%, 100%   { clip-path: inset(0 0 100% 0); transform: translate(0, 0); opacity: 0; }
+}
+@keyframes glitch-2 {
+  0%          { clip-path: inset(50% 0 30% 0); transform: translate(3px, 0); }
+  20%         { clip-path: inset(10% 0 70% 0); transform: translate(-3px, 0); }
+  40%, 100%   { opacity: 0; }
+}
+.glitch-text {
+  position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--color-bg-0);
+}
+.glitch-text::before {
+  color: #22d3ee;
+  animation: glitch-1 0.6s cubic-bezier(.25,.46,.45,.94) both;
+  animation-iteration-count: 1;
+}
+.glitch-text::after {
+  color: #2563eb;
+  animation: glitch-2 0.6s cubic-bezier(.25,.46,.45,.94) both;
+  animation-iteration-count: 1;
+}
+
+/* === SHIMMER SWEEP (for highlighted text) === */
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-primary) 0%,
+    rgba(255,255,255,0.9) 40%,
+    var(--color-accent-primary) 80%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 2s ease-in-out forwards;
+}
+
+/* === SCAN LINE === */
+@keyframes scan-line {
+  0%   { top: -2px; opacity: 0.9; }
+  95%  { opacity: 0.7; }
+  100% { top: 100%; opacity: 0; }
+}
+
 /* === SMOOTH SCROLLING ACCESSIBILITY === */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -362,7 +477,12 @@
   .gradient-text,
   .hero-title,
   .ambient-orb,
-  .border-neon-pulse::before {
+  .border-neon-pulse::before,
+  .animate-blink-cursor,
+  .loading-cursor,
+  .glitch-text::before,
+  .glitch-text::after,
+  .shimmer-text {
     animation: none;
   }
 }

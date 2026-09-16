@@ -5,7 +5,9 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem("theme") || "dark";
+      // الموقع يفتح دائماً على dark mode — اللوجو والـ dark theme هم الـ default
+      const saved = localStorage.getItem("theme");
+      return saved || "dark"; // dark is the default experience
     } catch {
       return "dark";
     }

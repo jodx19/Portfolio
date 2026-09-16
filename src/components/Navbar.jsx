@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../context/ThemeContext";
 import useThemeColors from "../hooks/useThemeColors";
+import PortfolioLogo from "./PortfolioLogo";
 
 const navKeys = ["home", "about", "journey", "stack", "work", "certifications", "contact"];
 
+// ── NavLink ────────────────────────────────────────────────────────────────────
 const NavLink = ({ href, children, onClick, isActive, tc }) => (
   <a
     href={href}
@@ -27,6 +29,7 @@ const NavLink = ({ href, children, onClick, isActive, tc }) => (
   </a>
 );
 
+// ── Theme Toggle ───────────────────────────────────────────────────────────────
 const ThemeToggler = ({ theme, setTheme }) => (
   <motion.button
     type="button"
@@ -38,14 +41,11 @@ const ThemeToggler = ({ theme, setTheme }) => (
     animate={{ rotate: theme === "dark" ? 0 : 180 }}
     transition={{ duration: 0.5 }}
   >
-    {theme === "dark" ? (
-      <Sun size={18} className="text-yellow-400" />
-    ) : (
-      <Moon size={18} className="text-accent" />
-    )}
+    {theme === "dark" ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-accent" />}
   </motion.button>
 );
 
+// ── Language Toggle ────────────────────────────────────────────────────────────
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language;
@@ -65,6 +65,7 @@ const LanguageToggle = () => {
   );
 };
 
+// ── Mobile Nav ─────────────────────────────────────────────────────────────────
 const MobileNav = ({ sections, isOpen, theme, setTheme, activeSection, handleLinkClick, tc }) => {
   const { t } = useTranslation();
   return (
@@ -75,15 +76,11 @@ const MobileNav = ({ sections, isOpen, theme, setTheme, activeSection, handleLin
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           className="absolute left-0 top-full w-full overflow-hidden md:hidden"
-          style={{
-            background: tc.mobileNavBg,
-            backdropFilter: "blur(14px)",
-            borderBottom: `1px solid ${tc.navBorder}`,
-          }}
+          style={{ background: tc.mobileNavBg, backdropFilter: "blur(14px)", borderBottom: `1px solid ${tc.navBorder}` }}
         >
           <nav className="flex flex-col gap-2 p-6" aria-label="Mobile primary">
             {sections.map((section, idx) => (
-              <a
+              <motion.a
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={(e) => handleLinkClick(e, section.id)}
@@ -92,9 +89,12 @@ const MobileNav = ({ sections, isOpen, theme, setTheme, activeSection, handleLin
                     ? "bg-accent/10 text-accent border border-accent/20"
                     : "text-txt-secondary hover:bg-surface-1 hover:text-accent"
                 }`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.05 }}
               >
                 {t(`nav.${navKeys[idx]}`)}
-              </a>
+              </motion.a>
             ))}
             <div className="mt-4 flex items-center justify-between border-t border-brd-light pt-4">
               <span className="text-sm text-txt-tertiary">{t("nav.switchTheme")}</span>
@@ -110,6 +110,7 @@ const MobileNav = ({ sections, isOpen, theme, setTheme, activeSection, handleLin
   );
 };
 
+// ── Main Navbar ────────────────────────────────────────────────────────────────
 function Navbar({ sections }) {
   const [isOpen, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -132,9 +133,7 @@ function Navbar({ sections }) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); });
-      },
+      (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) setActiveSection(entry.target.id); }); },
       { rootMargin: "-40% 0px -40% 0px" }
     );
     sections.forEach((section) => {
@@ -157,7 +156,7 @@ function Navbar({ sections }) {
   };
 
   return (
-    <header
+    <motion.header
       className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${scrolled ? "py-3" : "py-4"}`}
       style={{
         background: scrolled ? tc.navBg : tc.navBgTrans,
@@ -165,21 +164,38 @@ function Navbar({ sections }) {
         WebkitBackdropFilter: "blur(14px)",
         borderBottom: scrolled ? `1px solid ${tc.navBorder}` : "1px solid transparent",
       }}
+      /* ── NAVBAR ENTRANCE: whole bar slides down from above ── */
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
-        {/* Logo */}
+
+        {/* ── Logo — pops in from left ── */}
         <motion.a
           href="#home"
           onClick={(e) => handleLinkClick(e, "home")}
           className="group flex items-center gap-3"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           whileHover={{ scale: 1.02 }}
         >
+          {/* ── Logo SVG ── */}
           <motion.div
-            className="relative h-11 w-11 overflow-hidden rounded-xl border border-brd-light"
-            style={{ background: tc.logoBg }}
-            whileHover={{ boxShadow: `0 0 20px ${tc.accent}55`, borderColor: tc.accent }}
+            className="relative overflow-hidden rounded-xl"
+            style={{
+              boxShadow: `0 0 0 1px ${tc.accent}30`,
+            }}
+            whileHover={{
+              boxShadow: `0 0 20px ${tc.accent}55, 0 0 0 1px ${tc.accent}80`,
+            }}
           >
-            <img src="/images/logo.png" alt="Al-Safi Logo" className="h-full w-full object-cover" />
+            <PortfolioLogo
+              accent={tc.accent}
+              accentSec={tc.accentSec}
+              isDark={tc.isDark}
+            />
           </motion.div>
           <div className="hidden sm:block leading-tight">
             <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Dev</p>
@@ -187,27 +203,45 @@ function Navbar({ sections }) {
           </div>
         </motion.a>
 
-        {/* Desktop Nav */}
+        {/* ── Desktop Nav — links stagger down from above ── */}
         <nav className="hidden items-center gap-1 md:flex">
           {sections.map((section, idx) => (
-            <NavLink
+            <motion.div
               key={section.id}
-              href={`#${section.id}`}
-              onClick={(e) => handleLinkClick(e, section.id)}
-              isActive={activeSection === section.id}
-              tc={tc}
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 + idx * 0.07 }}
             >
-              {t(`nav.${navKeys[idx]}`)}
-            </NavLink>
+              <NavLink
+                href={`#${section.id}`}
+                onClick={(e) => handleLinkClick(e, section.id)}
+                isActive={activeSection === section.id}
+                tc={tc}
+              >
+                {t(`nav.${navKeys[idx]}`)}
+              </NavLink>
+            </motion.div>
           ))}
-          <div className="ml-4 flex items-center gap-2 border-l border-brd-light pl-4">
+
+          {/* ── Action buttons — slide in from right ── */}
+          <motion.div
+            className="ml-4 flex items-center gap-2 border-l border-brd-light pl-4"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.75 }}
+          >
             <LanguageToggle />
             <ThemeToggler theme={theme} setTheme={setTheme} />
-          </div>
+          </motion.div>
         </nav>
 
-        {/* Mobile Button */}
-        <div className="md:hidden">
+        {/* ── Mobile Button — slides in from right ── */}
+        <motion.div
+          className="md:hidden"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+        >
           <motion.button
             onClick={() => setOpen(!isOpen)}
             className="flex h-10 w-10 items-center justify-center rounded-xl border border-brd-light bg-surface-1 text-txt-primary"
@@ -216,7 +250,7 @@ function Navbar({ sections }) {
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </motion.button>
-        </div>
+        </motion.div>
 
         <MobileNav
           sections={sections}
@@ -228,7 +262,7 @@ function Navbar({ sections }) {
           tc={tc}
         />
       </div>
-    </header>
+    </motion.header>
   );
 }
 

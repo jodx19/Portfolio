@@ -1,0 +1,42 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#0a0f1a"/>
+
+  <!-- Corner frame lines — top-left -->
+  <line x1="6" y1="6" x2="17" y2="6" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="6" y1="6" x2="6" y2="17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <!-- Corner frame lines — top-right -->
+  <line x1="58" y1="6" x2="47" y2="6" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <line x1="58" y1="6" x2="58" y2="17" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <!-- Corner frame lines — bottom-left -->
+  <line x1="6" y1="58" x2="17" y2="58" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="6" y1="58" x2="6" y2="47" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Corner frame lines — bottom-right -->
+  <line x1="58" y1="58" x2="47" y2="58" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="58" y1="58" x2="58" y2="47" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- M shape — left vertical -->
+  <line x1="13" y1="48" x2="13" y2="17" stroke="#22d3ee" stroke-width="5" stroke-linecap="round"/>
+  <!-- M shape — left diagonal -->
+  <line x1="13" y1="17" x2="32" y2="35" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- M shape — right diagonal -->
+  <line x1="32" y1="35" x2="51" y2="17" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- M shape — right vertical -->
+  <line x1="51" y1="17" x2="51" y2="48" stroke="#22d3ee" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Circuit nodes — top-left -->
+  <circle cx="13" cy="17" r="4" fill="#22d3ee"/>
+  <circle cx="13" cy="17" r="7" fill="#22d3ee" opacity="0.18"/>
+  <!-- Circuit nodes — peak/center -->
+  <circle cx="32" cy="35" r="3" fill="#2563eb"/>
+  <circle cx="32" cy="35" r="5.5" fill="#2563eb" opacity="0.22"/>
+  <!-- Circuit nodes — top-right -->
+  <circle cx="51" cy="17" r="4" fill="#22d3ee"/>
+  <circle cx="51" cy="17" r="7" fill="#22d3ee" opacity="0.18"/>
+  <!-- Circuit nodes — bottom endpoints -->
+  <circle cx="13" cy="48" r="2.5" fill="#2563eb" opacity="0.75"/>
+  <circle cx="51" cy="48" r="2.5" fill="#2563eb" opacity="0.75"/>
+
+  <!-- Bottom center accent dot -->
+  <circle cx="32" cy="56" r="2" fill="#22d3ee" opacity="0.50"/>
+</svg>

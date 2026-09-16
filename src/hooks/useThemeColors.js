@@ -2,9 +2,10 @@
  * useThemeColors — Central theme-aware color token hook
  *
  * Dark  → Cyberpunk Cyan  (#22d3ee / #2563eb)
- * Light → Professional Warm Amber (#B45309 / #92400E)
- *         Background: #F5F3EF (warm parchment — ALL sections unified)
- *         Cards: #FFFFFF (white elevates above parchment)
+ * Light → Solar Minimal   (#ea580c orange / warm stone text)
+ *         Background: #ffffff (pure white)
+ *         Particles:  Gray + Orange mixed
+ *         Accent: orange-600 — برتقالي يتوهج على الأبيض بشكل مختلف كلياً
  */
 
 import { useTheme } from "../context/ThemeContext";
@@ -17,115 +18,108 @@ export default function useThemeColors() {
     isDark,
 
     // ── Core accents ─────────────────────────────────────────────────────
-    // Light: amber-800 (#92400E) — improved contrast for WCAG compliance
-    accent:       isDark ? "#22d3ee" : "#92400E",
-    accentSec:    isDark ? "#2563eb" : "#78350F",
-    accentRgh:    isDark ? "34, 211, 238"  : "146, 64, 14",    // for rgba()
-    accentSecRgb: isDark ? "37, 99, 235"   : "120, 53, 15",
+    accent:       isDark ? "#22d3ee" : "#ea580c",          // dark: cyan | light: orange-600
+    accentSec:    isDark ? "#2563eb" : "#9a3412",          // dark: blue-600 | light: orange-800
+    accentRgh:    isDark ? "34, 211, 238"  : "234, 88, 12",
+    accentSecRgb: isDark ? "37, 99, 235"   : "154, 52, 18",
 
     // ── Backgrounds / Navigation ─────────────────────────────────────────
-    // Light: warm bright white nav that feels airy, not heavy
-    navBg:       isDark ? "rgba(10, 15, 26, 0.85)"  : "rgba(255, 255, 255, 0.90)",
-    navBgTrans:  isDark ? "rgba(10, 15, 26, 0.55)"  : "rgba(255, 255, 255, 0.65)",
-    navBorder:   isDark ? "rgba(34, 211, 238, 0.12)": "rgba(180, 83, 9, 0.08)",
-    mobileNavBg: isDark ? "rgba(10, 15, 26, 0.97)"  : "rgba(245, 243, 239, 0.99)",
+    navBg:       isDark ? "rgba(10, 15, 26, 0.85)"  : "rgba(255, 255, 255, 0.92)",  // أبيض شفاف
+    navBgTrans:  isDark ? "rgba(10, 15, 26, 0.55)"  : "rgba(250, 250, 249, 0.75)",
+    navBorder:   isDark ? "rgba(34, 211, 238, 0.12)": "rgba(234, 88, 12, 0.18)",
+    mobileNavBg: isDark ? "rgba(10, 15, 26, 0.97)"  : "rgba(255, 255, 255, 0.98)",
 
     // ── Cards ─────────────────────────────────────────────────────────────
-    // Light: enhanced glassmorphism with 85% opacity + amber-tinted border
-    cardBg:       isDark ? "rgba(15, 23, 42, 0.80)"  : "rgba(255, 255, 255, 0.85)",
-    cardBgDeep:   isDark ? "rgba(15, 23, 42, 0.90)"  : "rgba(255, 255, 255, 0.95)",
-    cardBorder:   isDark ? "rgba(255,255,255,0.12)"  : "rgba(146, 64, 14, 0.10)",
-    cardHoverBorder: isDark ? "rgba(34,211,238,0.55)": "rgba(146, 64, 14, 0.40)",
-    cardHoverBg:  isDark ? "rgba(15, 23, 42, 0.85)"  : "rgba(255, 255, 255, 0.95)",
+    cardBg:       isDark ? "rgba(15, 23, 42, 0.80)"  : "rgba(255, 255, 255, 0.95)", // أبيض نظيف
+    cardBgDeep:   isDark ? "rgba(15, 23, 42, 0.90)"  : "rgba(250, 250, 249, 0.98)", // off-white دافئ
+    cardBorder:   isDark ? "rgba(255,255,255,0.12)"  : "rgba(234, 88, 12, 0.18)",
+    cardHoverBorder: isDark ? "rgba(34,211,238,0.55)": "rgba(234, 88, 12, 0.65)",
+    cardHoverBg:  isDark ? "rgba(15, 23, 42, 0.85)"  : "rgba(255, 255, 255, 1.00)",
 
-    // Enhanced drop shadow with amber tint for light mode
     cardHoverShadow: isDark
       ? "0 0 30px rgba(34,211,238,0.20), 0 0 60px rgba(34,211,238,0.10), 0 20px 40px rgba(0,0,0,0.40)"
-      : "0 20px 48px rgba(146,83,9,0.12), 0 8px 16px rgba(0,0,0,0.06)",
+      : "0 0 28px rgba(234,88,12,0.50), 0 0 58px rgba(234,88,12,0.22), 0 12px 28px rgba(28,25,23,0.10)",
 
     // ── Footer ────────────────────────────────────────────────────────────
-    footerBg:     isDark ? "rgba(10, 15, 26, 0.88)"  : "rgba(240, 237, 231, 1.00)",
-    footerBorder: isDark ? "rgba(34, 211, 238, 0.10)": "rgba(28, 25, 23, 0.10)",
+    footerBg:     isDark ? "rgba(10, 15, 26, 0.88)"  : "rgba(250, 250, 249, 1.00)", // off-white
+    footerBorder: isDark ? "rgba(34, 211, 238, 0.10)": "rgba(234, 88, 12, 0.18)",
 
     // ── Ambient orbs ─────────────────────────────────────────────────────
-    // Light: very faint warm tint — barely visible, just atmospheric
-    orbPrimary:   isDark ? "rgba(34, 211, 238, 0.12)": "rgba(180, 83, 9, 0.05)",
-    orbSecondary: isDark ? "rgba(37, 99, 235, 0.10)" : "rgba(146, 64, 14, 0.04)",
+    orbPrimary:   isDark ? "rgba(34, 211, 238, 0.12)": "rgba(234, 88, 12, 0.14)",
+    orbSecondary: isDark ? "rgba(37, 99, 235, 0.10)" : "rgba(154, 52, 18, 0.10)",
 
     // ── Icon containers ───────────────────────────────────────────────────
-    // Light: enhanced warm-tinted background for better glass effect
-    iconBg:     isDark ? "rgba(34, 211, 238, 0.08)" : "rgba(254, 250, 244, 1.00)",
-    iconBorder: isDark ? "rgba(34, 211, 238, 0.20)" : "rgba(146, 64, 14, 0.15)",
-    iconColor:  isDark ? "#22d3ee"                 : "#92400E",
+    iconBg:     isDark ? "rgba(34, 211, 238, 0.08)" : "rgba(255, 255, 255, 1.00)",   // أبيض مصمت
+    iconBorder: isDark ? "rgba(34, 211, 238, 0.20)" : "rgba(234, 88, 12, 0.35)",
+    iconColor:  isDark ? "#22d3ee"                 : "#ea580c",
 
     // ── Gradients ─────────────────────────────────────────────────────────
     primaryGradient: isDark
       ? "linear-gradient(135deg, #22d3ee 0%, #2563eb 100%)"
-      : "linear-gradient(135deg, #92400E 0%, #78350F 100%)",
+      : "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
 
     logoBg: isDark
       ? "linear-gradient(135deg, rgba(34,211,238,0.15), rgba(37,99,235,0.15))"
-      : "linear-gradient(135deg, rgba(254,243,199,0.80), rgba(253,230,138,0.50))",   // amber-100→200
+      : "linear-gradient(135deg, rgba(234,88,12,0.15), rgba(154,52,18,0.10))",
 
-    logoBorder: isDark ? "rgba(34,211,238,0.30)": "rgba(146, 64, 14, 0.30)",
+    logoBorder: isDark ? "rgba(34,211,238,0.30)": "rgba(234, 88, 12, 0.50)",
 
     heroBtnShadow: isDark
       ? "0 4px 20px rgba(34,211,238,0.30)"
-      : "0 8px 24px rgba(146,83,9,0.25)",
+      : "0 4px 20px rgba(234, 88, 12, 0.42)",
     heroBtnHoverShadow: isDark
       ? "0 0 20px #22d3ee, 0 0 40px rgba(6,182,212,0.47)"
-      : "0 12px 32px rgba(146,83,9,0.35), 0 4px 12px rgba(146,83,9,0.20)",
+      : "0 0 26px #ea580c, 0 0 52px rgba(234,88,12,0.55)",
 
     // ── Social / misc hover ───────────────────────────────────────────────
-    socialHoverBorder: isDark ? "#22d3ee"               : "#92400E",
+    socialHoverBorder: isDark ? "#22d3ee"               : "#ea580c",
     socialHoverShadow: isDark
       ? "0 0 15px rgba(34,211,238,0.30)"
-      : "0 4px 12px rgba(146,83,9,0.20)",
+      : "0 0 18px rgba(234,88,12,0.50)",
 
     // ── Glow line at card bottom ──────────────────────────────────────────
     glowLine: isDark
       ? "linear-gradient(90deg, transparent, #22d3ee, transparent)"
-      : "linear-gradient(90deg, transparent, rgba(146,83,9,0.50), transparent)",
+      : "linear-gradient(90deg, transparent, #ea580c, transparent)",
 
     // ── ScrollToTop button ────────────────────────────────────────────────
     scrollBtnBg:     isDark ? "rgba(15, 23, 42, 0.85)"  : "rgba(255, 255, 255, 0.95)",
-    scrollBtnBorder: isDark ? "rgba(34,211,238,0.30)"   : "rgba(146, 64, 14, 0.30)",
+    scrollBtnBorder: isDark ? "rgba(34,211,238,0.30)"   : "rgba(234, 88, 12, 0.50)",
     scrollBtnHoverShadow: isDark
       ? "0 0 15px #22d3ee, 0 0 30px rgba(34,211,238,0.40)"
-      : "0 4px 16px rgba(146,83,9,0.28)",
+      : "0 0 18px #ea580c, 0 0 36px rgba(234,88,12,0.50)",
 
     // ── Input focus ring ──────────────────────────────────────────────────
-    inputFocusBorder: isDark ? "#22d3ee"  : "#92400E",
+    inputFocusBorder: isDark ? "#22d3ee"  : "#ea580c",
     inputFocusShadow: isDark
       ? "0 0 0 3px rgba(34,211,238,0.15), 0 0 10px rgba(34,211,238,0.30)"
-      : "0 0 0 3px rgba(146,83,9,0.15),   0 0 8px  rgba(146,83,9,0.12)",
+      : "0 0 0 3px rgba(234,88,12,0.18), 0 0 12px rgba(234,88,12,0.40)",
 
     // ── Timeline (Journey) ────────────────────────────────────────────────
     timelineEduGrad:    isDark
       ? "linear-gradient(180deg, #22d3ee, transparent)"
-      : "linear-gradient(180deg, #92400E, transparent)",
-    timelineEduBorder:  isDark ? "rgba(34,211,238,0.20)": "rgba(146, 64, 14, 0.16)",
-    timelineEduDot:     isDark ? "#22d3ee"               : "#92400E",
+      : "linear-gradient(180deg, #ea580c, transparent)",
+    timelineEduBorder:  isDark ? "rgba(34,211,238,0.20)": "rgba(234, 88, 12, 0.30)",
+    timelineEduDot:     isDark ? "#22d3ee"               : "#ea580c",
     timelineEduDotGlow: isDark
       ? "0 0 10px #22d3ee, 0 0 20px rgba(34,211,238,0.50)"
-      : "0 0 8px rgba(146,83,9,0.45), 0 0 16px rgba(146,83,9,0.25)",
+      : "0 0 14px #ea580c, 0 0 28px rgba(234,88,12,0.60)",
 
     // ── Hero title pulsating glow ─────────────────────────────────────────
-    // Light: enhanced depth shadow with amber glow
     titleGlowShadow: isDark
       ? "0 0 8px rgba(34,211,238,0.25), 0 0 24px rgba(34,211,238,0.15)"
-      : "0 0 12px rgba(146,83,9,0.15), 0 6px 16px rgba(146,83,9,0.08)",
+      : "0 0 18px rgba(234,88,12,0.55), 0 0 36px rgba(234,88,12,0.30)",
 
     // ── About photo frame ─────────────────────────────────────────────────
-    photoBorderColor: isDark ? "rgba(34,211,238,0.50)"  : "rgba(146, 64, 14, 0.40)",
+    photoBorderColor: isDark ? "rgba(34,211,238,0.50)"  : "rgba(234, 88, 12, 0.65)",
     photoBorderGlow:  isDark
       ? "0 0 30px rgba(34,211,238,0.20)"
-      : "0 0 20px rgba(146,83,9,0.15)",
+      : "0 0 34px rgba(234, 88, 12, 0.42)",
     photoHoverGlow:   isDark
       ? "0 0 50px rgba(34,211,238,0.40)"
-      : "0 0 30px rgba(146,83,9,0.25)",
+      : "0 0 58px rgba(234, 88, 12, 0.62)",
     photoBlobBg: isDark
       ? "linear-gradient(135deg, rgba(34,211,238,0.20), rgba(37,99,235,0.15))"
-      : "linear-gradient(135deg, rgba(254,243,199,0.70), rgba(253,230,138,0.40))",
+      : "linear-gradient(135deg, rgba(234,88,12,0.18), rgba(154,52,18,0.12))",
   };
 }
