@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
 // ── Reusable viewport config ──────────────────────────────────────────────────
-const VP = { once: true, amount: 0.15 };
+const VP = { once: true, amount: 0.05 };
 
 // ── Shared variants ───────────────────────────────────────────────────────────
 const fadeUp   = { hidden: { opacity: 0, y: 40, filter: "blur(6px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } } };
@@ -76,7 +76,7 @@ function About() {
   ];
 
   return (
-    <section id="about" className="relative px-6 overflow-visible py-12 md:py-16">
+    <section id="about" className="relative px-6 overflow-visible py-12 md:py-16 scroll-mt-24">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 30% 50%, ${tc.orbPrimary} 0%, transparent 50%)` }}
@@ -135,7 +135,7 @@ function About() {
           >
             <motion.p className="heading-accent" variants={fadeUp}>{t("about.label")}</motion.p>
             <motion.h2
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-txt-primary mt-4 leading-tight tracking-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-txt-primary mt-2 leading-tight tracking-tight"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }}
             >
               {titleWords.map((word, i) => (

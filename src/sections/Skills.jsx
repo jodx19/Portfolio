@@ -4,7 +4,7 @@ import { Code2, Database, Cpu, Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
-const VP = { once: true, amount: 0.1 };
+const VP = { once: true, amount: 0.05 };
 
 const cardIn = {
   hidden:   { opacity: 0, y: 40, filter: "blur(8px)", scale: 0.92 },
@@ -54,7 +54,7 @@ function Skills({ skills }) {
   const skillKeys = ["skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9"];
 
   return (
-    <section className="relative py-12 md:py-16 px-6 overflow-visible">
+    <section id="stack" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 70% 30%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
@@ -81,7 +81,7 @@ function Skills({ skills }) {
             {t("skills.label")}
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-6xl font-bold text-txt-primary mt-4 tracking-tight leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-2 tracking-tight"
             variants={fadeUp}
           >
             {t("skills.title")} <span style={{ color: tc.accent }}>{t("skills.titleHighlight")}</span>
