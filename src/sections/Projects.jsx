@@ -24,7 +24,7 @@ function ProjectsGrid({ projects, onSelect }) {
   const tc = useThemeColors();
 
   return (
-    <section className="relative px-6 overflow-visible py-12 md:py-16">
+    <section id="work" className="relative px-6 overflow-visible py-12 md:py-16 scroll-mt-24">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 50% 0%, ${tc.orbPrimary} 0%, transparent 50%)` }}
@@ -52,8 +52,8 @@ function ProjectsGrid({ projects, onSelect }) {
             {t("projects.label")}
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-6xl font-bold text-txt-primary mt-4 tracking-tight leading-tight"
-            variants={glitch}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-3 tracking-tight"
+            variants={fadeUp}
           >
             {t("projects.title")}{" "}
             <span style={{ color: tc.accent }}>{t("projects.titleHighlight")}</span>

@@ -3,7 +3,7 @@ import { GraduationCap, Briefcase, Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
-const VP = { once: true, amount: 0.15 };
+const VP = { once: true, amount: 0.05 };
 const EXP_COLOR = "#a855f7";
 
 const fadeUp   = { hidden: { opacity: 0, y: 35, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
@@ -145,7 +145,7 @@ function EducationExperience() {
   const splitRight = { hidden: { opacity: 0, x: 50  }, visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } };
 
   return (
-    <section className="relative py-12 md:py-16 px-6 overflow-visible">
+    <section id="journey" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
       <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full pointer-events-none"
         style={{ background: tc.orbPrimary, filter: "blur(100px)" }} />
       <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full pointer-events-none"
@@ -161,7 +161,7 @@ function EducationExperience() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
         >
           <motion.p className="heading-accent tracking-[0.25em]" variants={fadeUp}>{t("journey.label")}</motion.p>
-          <div className="mt-4 text-4xl font-bold text-txt-primary md:text-6xl tracking-tight leading-tight flex flex-wrap justify-center gap-x-4">
+          <div className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary tracking-tight leading-tight flex flex-wrap justify-center gap-x-3">
             <motion.span variants={splitLeft}>{t("journey.title")}</motion.span>
             <motion.span style={{ color: tc.accent }} variants={fadeUp}>{t("journey.titleAnd")}</motion.span>
             <motion.span variants={splitRight}>{t("journey.titleExperience")}</motion.span>

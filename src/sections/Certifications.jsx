@@ -3,7 +3,7 @@ import { FileBadge, Plus, ExternalLink, Award } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
-const VP = { once: true, amount: 0.15 };
+const VP = { once: true, amount: 0.05 };
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30, filter: "blur(4px)" },
@@ -57,7 +57,7 @@ function Certifications() {
   }));
 
   return (
-    <section id="certifications" className="relative py-12 md:py-16 px-6 overflow-visible">
+    <section id="certifications" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 20% 80%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
@@ -81,7 +81,7 @@ function Certifications() {
             {t("certifications.label")}
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-txt-primary mt-3 tracking-tight relative"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-3 tracking-tight relative"
             variants={fadeUp}
           >
             {t("certifications.title")}{" "}

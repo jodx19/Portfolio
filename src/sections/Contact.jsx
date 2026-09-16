@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
 // ── Viewport config — once:false so it re-animates on scroll-back ─────────────
-const VP = { once: true, amount: 0.15 };
+const VP = { once: true, amount: 0.05 };
 
 // ── Local variants ────────────────────────────────────────────────────────────
 const fadeUp       = { hidden: { opacity: 0, y: 30, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
@@ -142,7 +142,7 @@ function ContactForm() {
   ];
 
   return (
-    <section id="contact" className="relative py-12 md:py-16 px-6 overflow-visible">
+    <section id="contact" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
       {/* Radar pulse background effect */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
         <RadarPulse tc={tc} />
@@ -161,7 +161,7 @@ function ContactForm() {
             {t("contact.label")}
           </motion.p>
           <motion.h2
-            className="text-4xl md:text-6xl font-bold text-txt-primary mt-4 tracking-tight leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-4 tracking-tight leading-tight"
             variants={fadeUp}
           >
             {t("contact.title")}{" "}
