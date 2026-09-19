@@ -20,8 +20,7 @@ import ProjectModal from "./components/ProjectModal";
 import ScrollToTop from "./components/ScrollToTop";
 import LoadingScreen from "./components/LoadingScreen";
 
-// Lazy-load the heavy Three.js component — separate chunk
-const ParticleBackground = lazy(() => import("./components/ParticleBackground"));
+import ParticleBackground from "./components/ParticleBackground";
 
 const sectionPadding = "py-20 md:py-32";
 
@@ -36,19 +35,14 @@ function AppContent() {
   }, []);
 
   return (
-    <div
-      className="relative min-h-screen text-txt-primary selection:bg-accent/30 selection:text-accent"
-      style={{ background: "var(--color-bg-0)" }}
-    >
+    <div className="relative min-h-screen text-txt-primary selection:bg-accent/30 selection:text-accent">
       {/* ── Loading Screen (Terminal Boot) ── */}
       <AnimatePresence>
         {!isLoaded && <LoadingScreen onComplete={handleLoadComplete} />}
       </AnimatePresence>
 
       {/* ── 3D Particle Background (Three.js) — rendered only after load ── */}
-      <Suspense fallback={null}>
-        {isLoaded && <ParticleBackground />}
-      </Suspense>
+      {isLoaded && <ParticleBackground />}
 
       {/* ── Toast Notifications ── */}
       <Toaster position="bottom-right" richColors theme={theme} />
