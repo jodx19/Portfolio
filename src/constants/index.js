@@ -28,7 +28,7 @@ export const heroData = {
 
     secondary: {
       label: "Download CV",
-      href: "/Mahmoud_Mostafa_CV.pdf"
+      href: "/Mahmoud_Mostafa_CV.pdf?v=20260919"
     }
   }
 };
