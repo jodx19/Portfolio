@@ -193,7 +193,7 @@ function Hero() {
             </motion.a>
 
             <motion.a
-              href="/Mahmoud_Mostafa_CV.pdf"
+              href="/Mahmoud_Mostafa_CV.pdf?v=20260919"
               className="btn-secondary px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-2 text-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
