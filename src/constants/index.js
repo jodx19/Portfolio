@@ -145,9 +145,9 @@ export const projects = [
     apiUrl: "https://safis.runasp.net/swagger/index.html",
     categories: ["client", "engineering"],
     clientKey: "safistore",
-    clientImage: "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
-    clientImageW: 1358,
-    clientImageH: 5620
+    clientImage: "/images/client/safistore.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   {
     title: "ErrorMonitor — Full-Stack Observability Platform",
@@ -192,9 +192,9 @@ export const projects = [
     backendLink: "https://maxillastorebackend.runasp.net/swagger",
     categories: ["client", "engineering"],
     clientKey: "maxilla",
-    clientImage: "/images/maxillastore (2).png",
-    clientImageW: 2730,
-    clientImageH: 5804
+    clientImage: "/images/client/maxilla.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   {
     title: "Art4Print - Premium Printing Services",
@@ -214,9 +214,9 @@ export const projects = [
     liveLink: "https://art4-print.vercel.app/",
     categories: ["client"],
     clientKey: "art4print",
-    clientImage: "/images/Art4print/4.png",
-    clientImageW: 1358,
-    clientImageH: 6167
+    clientImage: "/images/client/art4print.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   {
     title: "Al-Ma'rad - Luxury Car Showcase",
@@ -238,9 +238,9 @@ export const projects = [
     liveLink: "https://el-mo3rad.vercel.app/",
     categories: ["client"],
     clientKey: "mearad",
-    clientImage: "/images/المعرض/screencapture-file-E-ITI-MY-Projects-Day-1-index-html-2026-03-21-08_47_46.png",
-    clientImageW: 1358,
-    clientImageH: 4500
+    clientImage: "/images/client/al-marad.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   // ── TIER 3: Premium Landing Pages ────────────────────────────────────
   {
@@ -256,9 +256,9 @@ export const projects = [
     liveLink: "https://el-wad.vercel.app/",
     categories: ["client"],
     clientKey: "alwod",
-    clientImage: "/images/الود.png",
-    clientImageW: 1358,
-    clientImageH: 5733
+    clientImage: "/images/client/al-wod.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   {
     title: "Qasr Al Riyadh - Luxury Hotel",
@@ -273,9 +273,9 @@ export const projects = [
     liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/",
     categories: ["client"],
     clientKey: "qasr",
-    clientImage: "/images/قصر الرياض .png",
-    clientImageW: 1358,
-    clientImageH: 4146
+    clientImage: "/images/client/qasr-al-riyadh.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   {
     title: "Dr. Mahmoud Omran - Dental Clinic",
@@ -290,9 +290,9 @@ export const projects = [
     liveLink: "https://drmahmoudomran.vercel.app/",
     categories: ["client"],
     clientKey: "omran",
-    clientImage: "/images/dental page.png",
-    clientImageW: 1358,
-    clientImageH: 5777
+    clientImage: "/images/client/dr-omran.webp",
+    clientImageW: 1280,
+    clientImageH: 720
   },
   // ── TIER 4: Web & Desktop Apps ────────────────────────────────────────
   {
