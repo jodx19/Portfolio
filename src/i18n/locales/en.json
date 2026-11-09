@@ -10,15 +10,18 @@
     "switchTheme": "Switch Theme"
   },
   "hero": {
-    "status": "Available for New Projects",
+    "status": "Open to freelance & full-time roles",
     "greeting": "Hi, I'm",
     "firstName": "Mahmoud",
     "lastName": "Al-Safi",
     "role": "Full-Stack Web Developer",
     "specialization": ".NET Core & Modern JavaScript",
     "description": "I build scalable, high-performance web applications. Specializing in turning complex problems into elegant digital solutions with a focus on Clean Architecture and User Experience.",
+    "tagline": "I build fast, polished web apps — from design to delivery.",
     "ctaPrimary": "View My Work",
-    "ctaSecondary": "Download CV"
+    "ctaSecondary": "Download CV",
+    "ctaWhatsapp": "Start a Project",
+    "whatsappMessage": "Hi Mahmoud! I'd like to start a project with you. Could we discuss the details?"
   },
   "about": {
     "label": "About Me",

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileText } from "lucide-react";
-import { socialLinks } from "../constants";
+import { ArrowDown, FileText, MessageCircle } from "lucide-react";
+import { socialLinks, contactInfo } from "../constants";
 import * as LucideIcons from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
@@ -53,6 +53,10 @@ function Hero() {
   const lastName  = t("hero.lastName");
   const roleText  = t("hero.role");
   const specText  = t("hero.specialization");
+
+  // WhatsApp CTA — reuses the same number as the Contact section (contactInfo.phone, +20 prefix)
+  const whatsappNumber = `20${contactInfo.phone.replace(/^0/, "")}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t("hero.whatsappMessage"))}`;
 
   // Typewriter starts immediately (component mounts AFTER loading screen)
   const { displayed: roleDisplayed } = useTypewriter({ text: roleText,  speed: 45, delay: 600  });
@@ -166,12 +170,23 @@ function Hero() {
 
           {/* ── Description — fades in ── */}
           <motion.p
-            className="text-lg md:text-2xl text-txt-secondary max-w-2xl mx-auto leading-relaxed mb-12"
+            className="text-lg md:text-2xl text-txt-secondary max-w-2xl mx-auto leading-relaxed mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.1 }}
           >
             {t("hero.description")}
+          </motion.p>
+
+          {/* ── Tagline — one line under description ── */}
+          <motion.p
+            className="text-base md:text-lg font-medium mb-12"
+            style={{ color: `${tc.accent}B3` }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.15 }}
+          >
+            {t("hero.tagline")}
           </motion.p>
 
           {/* ── CTA Buttons ── */}
@@ -181,17 +196,21 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.25 }}
           >
+            {/* Primary — Start a Project (opens WhatsApp with prefilled message) */}
             <motion.a
-              href="#projects"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
               className="group relative px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-2 overflow-hidden text-lg"
               style={{ background: tc.primaryGradient, color: tc.isDark ? "#0a0f1a" : "#fff", boxShadow: tc.heroBtnShadow }}
               whileHover={{ scale: 1.05, boxShadow: tc.heroBtnHoverShadow }}
               whileTap={{ scale: 0.95 }}
             >
-              {t("hero.ctaPrimary")}
-              <ArrowDown className="h-6 w-6 group-hover:translate-y-1 transition-transform" />
+              {t("hero.ctaWhatsapp")}
+              <MessageCircle className="h-6 w-6 group-hover:scale-110 transition-transform" />
             </motion.a>
 
+            {/* Secondary — Download CV (kept) */}
             <motion.a
               href="/Mahmoud_Mostafa_CV.pdf?v=20260919"
               className="btn-secondary px-10 py-5 rounded-2xl font-bold flex items-center justify-center gap-2 text-lg"
@@ -202,6 +221,19 @@ function Hero() {
               <FileText className="h-6 w-6" />
             </motion.a>
           </motion.div>
+
+          {/* "View My Work" — demoted to text/arrow link (3 buttons overflow on mobile) */}
+          <motion.a
+            href="#projects"
+            className="group inline-flex items-center justify-center gap-2 mt-6 text-base font-semibold"
+            style={{ color: `${tc.accent}CC` }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.3 }}
+          >
+            {t("hero.ctaPrimary")}
+            <ArrowDown className="h-5 w-5 group-hover:translate-y-1 transition-transform" />
+          </motion.a>
 
           {/* ── Social Icons — bounce up ── */}
           <motion.div
