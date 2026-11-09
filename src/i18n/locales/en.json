@@ -109,6 +109,18 @@
     "viewProject": "View Project",
     "learnMore": "Learn More",
     "apiDocs": "API Docs",
+    "tabClient": "Client Work",
+    "tabEngineering": "Engineering",
+    "viewSite": "View Site",
+    "clientDesc": {
+      "maxilla": "A complete online store for dental supplies with a product catalog, shopping cart and secure customer accounts.",
+      "safistore": "A full online store experience: product pages, shopping cart and an admin dashboard to manage the store.",
+      "qasr": "A luxury hotel booking website that presents rooms and services in a calm, minimal design.",
+      "mearad": "A premium digital showroom for high-end vehicles, with a dark, luxurious design that matches the product.",
+      "alwod": "A modern landing page for a cleaning company, designed to encourage visitors to get in touch.",
+      "omran": "A dental clinic website focused on easy appointment booking and a clean, professional look.",
+      "art4print": "A landing page for a printing and advertising agency that showcases its services interactively."
+    },
     "sourceCode": "Source Code",
     "liveDemo": "Live Demo",
     "close": "Close",

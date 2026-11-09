@@ -142,7 +142,12 @@ export const projects = [
     githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
     liveLink: "https://safistore.vercel.app/",
     backendLink: "https://github.com/jodx19/SafiStore-Backend-API",
-    apiUrl: "https://safis.runasp.net/swagger/index.html"
+    apiUrl: "https://safis.runasp.net/swagger/index.html",
+    categories: ["client", "engineering"],
+    clientKey: "safistore",
+    clientImage: "/images/safistore/screencapture-safistore-vercel-app-about-2026-05-05-18_44_31.png",
+    clientImageW: 1358,
+    clientImageH: 5620
   },
   {
     title: "ErrorMonitor — Full-Stack Observability Platform",
@@ -156,7 +161,8 @@ export const projects = [
     stackBadge: "Full-Stack Observability Platform",
     githubLink: "https://github.com/jodx19/ErrorMonitor",
     liveLink: "https://error-monitor-ui.vercel.app/",
-    backendLink: "https://errormonitorapi.runasp.net/swagger"
+    backendLink: "https://errormonitorapi.runasp.net/swagger",
+    categories: ["engineering"]
   },
   {
     title: "Simple ERP System",
@@ -169,7 +175,8 @@ export const projects = [
     githubLink: "https://github.com/jodx19",
     liveLink: "https://simpleerpsystem.vercel.app",
     backendLink: "https://simpleerpsystem.runasp.net/swagger",
-    apiUrl: "https://simpleerpsystem.runasp.net/swagger/index.html"
+    apiUrl: "https://simpleerpsystem.runasp.net/swagger/index.html",
+    categories: ["engineering"]
   },
   // ── TIER 2: Full-Stack Freelance & Complex Projects ───────────────────
   {
@@ -182,7 +189,12 @@ export const projects = [
     stackBadge: "Full-Stack Web Application",
     githubLink: "https://github.com/jodx19/maxilla-frontend",
     liveLink: "https://maxillastore.vercel.app/",
-    backendLink: "https://maxillastorebackend.runasp.net/swagger"
+    backendLink: "https://maxillastorebackend.runasp.net/swagger",
+    categories: ["client", "engineering"],
+    clientKey: "maxilla",
+    clientImage: "/images/maxillastore (2).png",
+    clientImageW: 2730,
+    clientImageH: 5804
   },
   {
     title: "Art4Print - Premium Printing Services",
@@ -199,7 +211,12 @@ export const projects = [
     tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "WhatsApp API", "RTL"],
     stackBadge: "Premium Printing Agency",
     githubLink: "https://github.com/jodx19/Art4Print",
-    liveLink: "https://art4-print.vercel.app/"
+    liveLink: "https://art4-print.vercel.app/",
+    categories: ["client"],
+    clientKey: "art4print",
+    clientImage: "/images/Art4print/4.png",
+    clientImageW: 1358,
+    clientImageH: 6167
   },
   {
     title: "Al-Ma'rad - Luxury Car Showcase",
@@ -218,7 +235,12 @@ export const projects = [
     tags: ["Angular", "UI/UX Design", "RTL Support", "Responsive Design"],
     stackBadge: "Premium Digital Showroom",
     githubLink: "https://github.com/jodx19/El-mo3rad.git",
-    liveLink: "https://el-mo3rad.vercel.app/"
+    liveLink: "https://el-mo3rad.vercel.app/",
+    categories: ["client"],
+    clientKey: "mearad",
+    clientImage: "/images/المعرض/screencapture-file-E-ITI-MY-Projects-Day-1-index-html-2026-03-21-08_47_46.png",
+    clientImageW: 1358,
+    clientImageH: 4500
   },
   // ── TIER 3: Premium Landing Pages ────────────────────────────────────
   {
@@ -231,7 +253,12 @@ export const projects = [
     tags: ["React", "Tailwind CSS", "Modern UI", "Bento Layout", "RTL Support"],
     stackBadge: "Premium Landing Page",
     githubLink: "https://github.com/jodx19/El-Wad-Premium-Landing-Page",
-    liveLink: "https://el-wad.vercel.app/"
+    liveLink: "https://el-wad.vercel.app/",
+    categories: ["client"],
+    clientKey: "alwod",
+    clientImage: "/images/الود.png",
+    clientImageW: 1358,
+    clientImageH: 5733
   },
   {
     title: "Qasr Al Riyadh - Luxury Hotel",
@@ -243,7 +270,12 @@ export const projects = [
     tags: ["React", "Tailwind CSS", "Responsive Design", "Animation"],
     stackBadge: "Landing Page",
     githubLink: "https://github.com/jodx19/royal-stay-hotel-landing-freelance",
-    liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/"
+    liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/",
+    categories: ["client"],
+    clientKey: "qasr",
+    clientImage: "/images/قصر الرياض .png",
+    clientImageW: 1358,
+    clientImageH: 4146
   },
   {
     title: "Dr. Mahmoud Omran - Dental Clinic",
@@ -255,7 +287,12 @@ export const projects = [
     tags: ["React", "Tailwind CSS", "Responsive Design", "UI/UX"],
     stackBadge: "Landing Page",
     githubLink: "https://github.com/jodx19/Dental-Landing-page",
-    liveLink: "https://drmahmoudomran.vercel.app/"
+    liveLink: "https://drmahmoudomran.vercel.app/",
+    categories: ["client"],
+    clientKey: "omran",
+    clientImage: "/images/dental page.png",
+    clientImageW: 1358,
+    clientImageH: 5777
   },
   // ── TIER 4: Web & Desktop Apps ────────────────────────────────────────
   {
@@ -267,7 +304,8 @@ export const projects = [
     tags: ["Angular", "Tailwind CSS", "TMDB API"],
     stackBadge: "Web Application",
     githubLink: "https://github.com/amralmohamdy/Movie-App",
-    liveLink: "#"
+    liveLink: "#",
+    categories: ["engineering"]
   },
   {
     title: "Digital Notes Manager",
@@ -278,7 +316,8 @@ export const projects = [
     tags: ["C#", "SQL Database", "Entity Framework", "LINQ"],
     stackBadge: "Desktop Application",
     githubLink: "https://github.com/jodx19/DigitalNotesManager",
-    liveLink: "#"
+    liveLink: "#",
+    categories: ["engineering"]
   },
 ];
 // === EXPERIENCE ===
