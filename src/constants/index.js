@@ -285,12 +285,12 @@ export const experience = [
     role: "Full-Stack .NET Developer",
     place: "Freelance & Contract",
     period: "2023 - Present",
-    description: "Architecting end-to-end solutions for international clients, ensuring seamless integration between .NET APIs and modern JS frameworks (React/Angular).",
+    description: "Architecting end-to-end solutions for clients, integrating .NET APIs with modern JS frameworks (React/Angular).",
   },
   {
     role: "Software Engineering Trainee",
     place: "ITI (Information Technology Institute)",
-    period: "2024",
+    period: "07/2025 - 12/2025",
     description: "Mastered full-stack development cycles, focusing on Clean Code, SOLID principles, and Agile methodologies within the .NET ecosystem.",
   },
   {
