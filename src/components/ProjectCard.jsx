@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ChevronRight, Play } from "lucide-react";
+import { ExternalLink, Github, ChevronRight, Play, BookOpen } from "lucide-react";
 import { fadeUp } from "../motion/motion";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
@@ -183,13 +183,25 @@ function ProjectCard({ project, onSelect }) {
 
         {/* Bottom action row */}
         <div className="mt-auto flex items-center justify-between pt-3" style={{ borderTop: `1px solid ${tc.cardBorder}` }}>
-          <motion.a href={projectLink} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-bold group/link"
-            style={{ color: tc.accent }}
-            whileHover={{ x: 5 }}>
-            <span>{t("projects.viewProject")}</span>
-            <ExternalLink size={16} className="transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
-          </motion.a>
+          <div className="flex items-center gap-4">
+            <motion.a href={projectLink} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-bold group/link"
+              style={{ color: tc.accent }}
+              whileHover={{ x: 5 }}>
+              <span>{t("projects.viewProject")}</span>
+              <ExternalLink size={16} className="transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+            </motion.a>
+
+            {/* API Docs — rendered only when project.apiUrl exists */}
+            {project.apiUrl && (
+              <motion.a href={project.apiUrl} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1 text-sm font-bold text-txt-tertiary hover:text-accent transition-colors"
+                whileHover={{ x: 3 }}>
+                <span>{t("projects.apiDocs")}</span>
+                <BookOpen size={14} />
+              </motion.a>
+            )}
+          </div>
 
           <motion.button onClick={() => onSelect(project)}
             className="flex items-center gap-1 text-xs font-bold text-txt-tertiary hover:text-accent transition-colors">

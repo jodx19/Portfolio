@@ -141,7 +141,8 @@ export const projects = [
     stackBadge: "E-Commerce Platform",
     githubLink: "https://github.com/jodx19/safistore-front-end-angular-",
     liveLink: "https://safistore.vercel.app/",
-    backendLink: "https://github.com/jodx19/SafiStore-Backend-API"
+    backendLink: "https://github.com/jodx19/SafiStore-Backend-API",
+    apiUrl: "https://safis.runasp.net/swagger/index.html"
   },
   {
     title: "ErrorMonitor — Full-Stack Observability Platform",
@@ -167,7 +168,8 @@ export const projects = [
     stackBadge: "Full-Stack Web Application",
     githubLink: "https://github.com/jodx19",
     liveLink: "https://simpleerpsystem.vercel.app",
-    backendLink: "https://simpleerpsystem.runasp.net/swagger"
+    backendLink: "https://simpleerpsystem.runasp.net/swagger",
+    apiUrl: "https://simpleerpsystem.runasp.net/swagger/index.html"
   },
   // ── TIER 2: Full-Stack Freelance & Complex Projects ───────────────────
   {
