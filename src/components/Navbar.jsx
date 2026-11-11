@@ -6,7 +6,7 @@ import { useTheme } from "../context/ThemeContext";
 import useThemeColors from "../hooks/useThemeColors";
 import PortfolioLogo from "./PortfolioLogo";
 
-const navKeys = ["home", "about", "journey", "stack", "work", "certifications", "contact"];
+const navKeys = ["home", "work", "services", "stack", "journey", "about", "certifications", "contact"];
 
 // ── NavLink ────────────────────────────────────────────────────────────────────
 const NavLink = ({ href, children, onClick, isActive, tc }) => (

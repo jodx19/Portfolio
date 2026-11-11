@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github } from "lucide-react";
+import { X, ExternalLink, Github, BookOpen, Layers, Terminal } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 
@@ -139,6 +139,58 @@ function ProjectModal({ project, onClose }) {
                   </div>
                 </div>
 
+                {/* Optional API Architecture & Endpoints Section (for SaaS / API systems) */}
+                {project.apiUrl && (
+                  <div
+                    className="p-4 rounded-xl space-y-3"
+                    style={{
+                      background: tc.iconBg,
+                      border: `1px solid ${tc.iconBorder}`,
+                    }}
+                  >
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <Terminal size={16} style={{ color: tc.accent }} />
+                        <span className="text-xs font-bold uppercase tracking-wider text-txt-primary">
+                          {t("projects.apiArchitecture") || "Backend API & Architecture"}
+                        </span>
+                      </div>
+                      {project.apiEndpointsCount && (
+                        <span
+                          className="text-[11px] font-bold px-2.5 py-0.5 rounded-full"
+                          style={{
+                            background: `${tc.accent}22`,
+                            color: tc.accent,
+                            border: `1px solid ${tc.accent}44`,
+                          }}
+                        >
+                          {project.apiEndpointsCount} REST Endpoints
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="text-xs text-txt-secondary leading-relaxed">
+                      {project.title.includes("MediQueue")
+                        ? "Engineered with ASP.NET Core 8 & Clean Architecture. Covers full clinical workflows: Appointments scheduling, Patient EMR, Queuing, Multi-tenant RBAC, and Invoicing."
+                        : "Fully documented RESTful API with Swagger OpenAPI specification, structured responses, and JWT authorization."}
+                    </p>
+
+                    <div className="pt-1 flex items-center justify-between">
+                      <a
+                        href={project.apiUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
+                        style={{ color: tc.accent }}
+                      >
+                        <BookOpen size={14} />
+                        <span>{t("projects.openSwagger") || "Explore Live Swagger UI"}</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 {/* Optional Screenshots Gallery */}
                 {project.images && project.images.length > 0 && (
                   <div>
@@ -166,7 +218,7 @@ function ProjectModal({ project, onClose }) {
 
                 {/* Action Buttons */}
                 <div
-                  className="flex gap-3 pt-4"
+                  className="flex flex-wrap gap-3 pt-4"
                   style={{ borderTop: `1px solid ${tc.cardBorder}` }}
                 >
                   {(project.liveLink || project.demo) && (
@@ -174,7 +226,7 @@ function ProjectModal({ project, onClose }) {
                       href={project.liveLink || project.demo}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
+                      className="flex-1 min-w-[130px] flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
                       style={{
                         background: tc.primaryGradient,
                         color: tc.isDark ? "#0a0f1a" : "#ffffff",
@@ -186,6 +238,28 @@ function ProjectModal({ project, onClose }) {
                     >
                       <ExternalLink size={18} />
                       {t("projects.liveDemo")}
+                    </motion.a>
+                  )}
+                  {project.apiUrl && (
+                    <motion.a
+                      href={project.apiUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 min-w-[130px] flex items-center justify-center gap-2 py-3 rounded-xl font-bold transition-all text-sm"
+                      style={{
+                        background: tc.iconBg,
+                        border: `1px solid ${tc.iconBorder}`,
+                        color: tc.accent,
+                      }}
+                      whileHover={{
+                        background: `${tc.accent}33`,
+                        borderColor: tc.accent,
+                        boxShadow: `0 0 15px ${tc.accent}33`,
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <BookOpen size={18} />
+                      {t("projects.apiDocs") || "Swagger UI"}
                     </motion.a>
                   )}
                   {project.backendLink && (

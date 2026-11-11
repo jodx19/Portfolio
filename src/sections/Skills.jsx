@@ -104,8 +104,6 @@ function Skills({ skills }) {
               const name     = key ? t(`skills.${key}Name`)     : skill.name;
               const catLabel = key ? t(`skills.${key}CatLabel`) : skill.categoryLabel;
               const desc     = key ? t(`skills.${key}Desc`)     : skill.description;
-              const isExpert = skill.level === "Expert";
-              const level    = isExpert ? t("skills.levelExpert") : t("skills.levelAdvanced");
 
               return (
                 <motion.article
@@ -138,22 +136,6 @@ function Skills({ skills }) {
                         <p className="text-xs text-txt-tertiary">{catLabel}</p>
                       </div>
                     </div>
-
-                    {/* Badge */}
-                    <motion.span
-                      className="rounded-full px-3 py-1 text-xs font-semibold shrink-0"
-                      style={{
-                        background: isExpert ? `${tc.accent}1A` : `${tc.accentSec}1A`,
-                        border: `1px solid ${isExpert ? `${tc.accent}4D` : `${tc.accentSec}4D`}`,
-                        color: isExpert ? tc.accent : tc.accentSec,
-                      }}
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={VP}
-                      transition={{ type: "spring", stiffness: 400, damping: 20, delay: 0.25 + index * 0.04 }}
-                    >
-                      {level}
-                    </motion.span>
                   </div>
 
                   <p className="mt-4 text-sm text-txt-secondary leading-relaxed">{desc}</p>
