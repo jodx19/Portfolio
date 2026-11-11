@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import { Layers, ExternalLink } from "lucide-react";
@@ -23,12 +23,23 @@ const glitch = {
 function ProjectsGrid({ projects, onSelect }) {
   const { t } = useTranslation();
   const tc = useThemeColors();
-  const [activeTab, setActiveTab] = useState("client"); // Default = "Client Work"
+  const [activeFilter, setActiveFilter] = useState("all");
 
-  const visibleProjects = projects.filter((p) => p.categories && p.categories.includes(activeTab));
+  const filterTabs = [
+    { key: "all", labelKey: "projects.filterAll" },
+    { key: "fullstack", labelKey: "projects.filterFullstack" },
+    { key: "ecommerce", labelKey: "projects.filterEcommerce" },
+    { key: "landing", labelKey: "projects.filterLanding" },
+    { key: "specialized", labelKey: "projects.filterSpecialized" },
+  ];
+
+  const visibleProjects = projects.filter((p) => {
+    if (activeFilter === "all") return true;
+    return p.categories && p.categories.includes(activeFilter);
+  });
 
   return (
-    <section id="work" className="relative px-6 overflow-visible py-12 md:py-16 scroll-mt-24">
+    <div className="relative px-6 overflow-visible py-12 md:py-16">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 50% 0%, ${tc.orbPrimary} 0%, transparent 50%)` }}
@@ -70,102 +81,65 @@ function ProjectsGrid({ projects, onSelect }) {
           </motion.p>
         </motion.div>
 
-        {/* ── Tab switcher — Client Work (default) / Engineering ── */}
+        {/* ── Solution-Based Filter Tabs ── */}
         <motion.div
-          className="mb-8 flex flex-wrap items-center justify-center gap-3"
+          className="mb-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
           variants={fadeUp}
         >
-          {["client", "engineering"].map((tab) => {
-            const isActive = activeTab === tab;
+          {filterTabs.map((tab) => {
+            const isActive = activeFilter === tab.key;
             return (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${isActive ? "shadow-lg" : "text-txt-secondary border bg-surface-1 hover:text-txt-primary"}`}
-                style={isActive
-                  ? { background: tc.primaryGradient, color: tc.isDark ? "#0a0f1a" : "#fff" }
-                  : { borderColor: tc.cardBorder }}
+                key={tab.key}
+                onClick={() => setActiveFilter(tab.key)}
+                className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-300 ${
+                  isActive
+                    ? "shadow-lg scale-105"
+                    : "text-txt-secondary border bg-surface-1 hover:text-txt-primary hover:border-accent/40"
+                }`}
+                style={
+                  isActive
+                    ? { background: tc.primaryGradient, color: tc.isDark ? "#0a0f1a" : "#fff" }
+                    : { borderColor: tc.cardBorder }
+                }
               >
-                {t(`projects.tab${tab === "client" ? "Client" : "Engineering"}`)}
+                {t(tab.labelKey)}
               </button>
             );
           })}
         </motion.div>
 
-        {/* ── Grid ── */}
+        {/* ── 3D Grid — All projects presented with full technical depth and visual polish ── */}
         <motion.div
+          layout
           className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 [perspective:1200px]"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
         >
-          {visibleProjects.map((project) => (
-            <motion.div
-              key={project.title}
-              variants={flip3D}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {activeTab === "engineering" ? (
-                /* Engineering tab — identical cards to before (tags, Learn More, API Docs if present) */
+          <AnimatePresence mode="popLayout">
+            {visibleProjects.map((project) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.35 }}
+                variants={flip3D}
+                style={{ transformStyle: "preserve-3d" }}
+              >
                 <ProjectCard project={project} onSelect={onSelect} />
-              ) : (
-                /* Client tab — simple client-facing card */
-                <article
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl"
-                  style={{
-                    background: tc.cardBg,
-                    border: `1px solid ${tc.cardBorder}`,
-                    backdropFilter: "blur(18px)",
-                    WebkitBackdropFilter: "blur(18px)",
-                  }}
-                >
-                  {/* Screenshot — largest available image, fixed aspect container to avoid layout shift */}
-                  <div className="aspect-video w-full overflow-hidden shrink-0">
-                    <img
-                      src={project.clientImage}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      width={project.clientImageW}
-                      height={project.clientImageH}
-                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-2xl font-bold text-txt-primary">{project.title}</h3>
-                    <p className="mt-2 text-sm text-txt-secondary leading-relaxed">
-                      {t(`projects.clientDesc.${project.clientKey}`)}
-                    </p>
-
-                    <div className="mt-auto pt-4">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs font-bold"
-                        style={{
-                          background: tc.primaryGradient,
-                          color: tc.isDark ? "#0a0f1a" : "#fff",
-                          boxShadow: `0 4px 12px ${tc.accent}66`,
-                        }}
-                      >
-                        <ExternalLink size={12} />
-                        {t("projects.viewSite")}
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              )}
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }
 

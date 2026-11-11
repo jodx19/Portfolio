@@ -6,8 +6,25 @@ import { useTranslation } from "react-i18next";
 import useThemeColors from "../hooks/useThemeColors";
 import useTypewriter from "../hooks/useTypewriter";
 
-// ─── AnimatedLetters: each letter animates independently ─────────────────────
+// ─── AnimatedLetters: each letter animates independently (whole word for Arabic to preserve cursive joining) ──
 function AnimatedLetters({ text, variant, staggerDelay = 0, className = "" }) {
+  const isArabic = /[\u0600-\u06FF]/.test(text);
+
+  if (isArabic) {
+    return (
+      <motion.span
+        className={`inline-block ${className}`}
+        initial="hidden"
+        animate="visible"
+        variants={variant}
+        transition={{ delay: staggerDelay, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        style={{ perspective: "400px" }}
+      >
+        {text}
+      </motion.span>
+    );
+  }
+
   const letters = text.split("");
   return (
     <motion.span
@@ -46,8 +63,9 @@ const riseUp = {
 
 // ─── Main Hero ────────────────────────────────────────────────────────────────
 function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tc = useThemeColors();
+  const isRtl = i18n.language === "ar";
 
   const firstName = t("hero.firstName");
   const lastName  = t("hero.lastName");
@@ -121,7 +139,9 @@ function Hero() {
           {/* ── Name: Letters Cascade ── */}
           <div className="mb-6" style={{ perspective: "800px" }}>
             <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[1] tracking-tighter"
+              className={`text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[1.1] ${
+                isRtl ? "tracking-normal py-1" : "tracking-tighter"
+              }`}
               animate={titleGlow}
             >
               {/* First name drops from above — stagger starts at 0.25s */}
@@ -224,7 +244,7 @@ function Hero() {
 
           {/* "View My Work" — demoted to text/arrow link (3 buttons overflow on mobile) */}
           <motion.a
-            href="#projects"
+            href="#work"
             className="group inline-flex items-center justify-center gap-2 mt-6 text-base font-semibold"
             style={{ color: `${tc.accent}CC` }}
             initial={{ opacity: 0, y: 20 }}

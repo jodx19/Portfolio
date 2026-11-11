@@ -8,10 +8,11 @@
 // === NAVIGATION SECTIONS ===
 export const sections = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "education", label: "Journey" },
+  { id: "work", label: "Work" },
+  { id: "services", label: "Services" },
   { id: "skills", label: "Stack" },
-  { id: "projects", label: "Work" },
+  { id: "education", label: "Journey" },
+  { id: "about", label: "About" },
   { id: "certifications", label: "Certifications" },
   { id: "contact", label: "Contact" },
 ];
@@ -24,7 +25,7 @@ export const heroData = {
   status: "Available for New Projects",
   description: "I build scalable, high-performance web applications. Specializing in turning complex problems into elegant digital solutions with a focus on Clean Architecture and User Experience.",
   cta: {
-    primary: { label: "View My Work", href: "#projects" },
+    primary: { label: "View My Work", href: "#work" },
 
     secondary: {
       label: "Download CV",
@@ -123,7 +124,29 @@ export const skills = [
 
 // === PROJECTS ===
 export const projects = [
-  // ── TIER 1: Full-Stack Production Applications (Most Complex) ──────────
+  // ── FLAGSHIP SAAS & HEALTHCARE OS ───────────────────────────────────────
+  {
+    title: "MediQueue EMR — Clinic Management SaaS",
+    titleAr: "نظام ميدي كيو (MediQueue EMR) — إدارة العيادات والمراكز الطبية",
+    description: "An enterprise-grade Healthcare OS & EMR SaaS platform featuring 91 production endpoints. Includes multi-portal RBAC (Clinic Owner, Clinical EMR, Front Desk), real-time patient queue dispatching, automated scheduling, and billing.",
+    details: "MediQueue is a specialized Healthcare SaaS platform designed for high-efficiency clinical operations. It bridges patient self-service booking with doctor clinical workstations and administrative billing. The backend is engineered with ASP.NET Core 8 Web API following Clean Architecture, featuring JWT role-based authorization (Clinic Owner, Clinical EMR, Front Desk), structured logging, and automated queue dispatching across 91 endpoints. The frontend provides real-time dashboard analytics, interactive care flow tracking, and multi-portal role-specific views.",
+    image: "/images/mediqueue-hero.png",
+    images: [
+      "/images/mediqueue-hero.png",
+      "/images/mediqueue-page.jpg"
+    ],
+    tags: ["ASP.NET Core 8", "Angular / Modern JS", "SaaS Architecture", "Clean Architecture", "91 REST Endpoints", "SQL Server", "JWT & RBAC"],
+    stackBadge: "Healthcare SaaS / Full-Stack OS",
+    liveLink: "https://mediqueue-emr.vercel.app/",
+    apiUrl: "https://mediqueue-api.runasp.net/swagger/index.html",
+    apiEndpointsCount: 91,
+    categories: ["all", "fullstack"],
+    clientKey: "mediqueue",
+    clientImage: "/images/mediqueue-hero.png",
+    clientImageW: 1280,
+    clientImageH: 720
+  },
+  // ── TIER 1: Full-Stack Production Applications ──────────────────────────
   {
     title: "SafiStore",
     description: "A professional e-commerce platform built with Angular, .NET Core Web API, and SQL Server, following Clean Architecture principles with full admin dashboard and order management.",
@@ -143,7 +166,7 @@ export const projects = [
     liveLink: "https://safistore.vercel.app/",
     backendLink: "https://github.com/jodx19/SafiStore-Backend-API",
     apiUrl: "https://safis.runasp.net/swagger/index.html",
-    categories: ["client", "engineering"],
+    categories: ["all", "fullstack", "ecommerce"],
     clientKey: "safistore",
     clientImage: "/images/client/safistore.webp",
     clientImageW: 1280,
@@ -162,7 +185,7 @@ export const projects = [
     githubLink: "https://github.com/jodx19/ErrorMonitor",
     liveLink: "https://error-monitor-ui.vercel.app/",
     backendLink: "https://errormonitorapi.runasp.net/swagger",
-    categories: ["engineering"]
+    categories: ["all", "fullstack"]
   },
   {
     title: "Simple ERP System",
@@ -176,7 +199,7 @@ export const projects = [
     liveLink: "https://simpleerpsystem.vercel.app",
     backendLink: "https://simpleerpsystem.runasp.net/swagger",
     apiUrl: "https://simpleerpsystem.runasp.net/swagger/index.html",
-    categories: ["engineering"]
+    categories: ["all", "fullstack"]
   },
   // ── TIER 2: Full-Stack Freelance & Complex Projects ───────────────────
   {
@@ -190,7 +213,7 @@ export const projects = [
     githubLink: "https://github.com/jodx19/maxilla-frontend",
     liveLink: "https://maxillastore.vercel.app/",
     backendLink: "https://maxillastorebackend.runasp.net/swagger",
-    categories: ["client", "engineering"],
+    categories: ["all", "fullstack", "ecommerce"],
     clientKey: "maxilla",
     clientImage: "/images/client/maxilla.webp",
     clientImageW: 1280,
@@ -212,7 +235,7 @@ export const projects = [
     stackBadge: "Premium Printing Agency",
     githubLink: "https://github.com/jodx19/Art4Print",
     liveLink: "https://art4-print.vercel.app/",
-    categories: ["client"],
+    categories: ["all", "landing"],
     clientKey: "art4print",
     clientImage: "/images/client/art4print.webp",
     clientImageW: 1280,
@@ -236,7 +259,7 @@ export const projects = [
     stackBadge: "Premium Digital Showroom",
     githubLink: "https://github.com/jodx19/El-mo3rad.git",
     liveLink: "https://el-mo3rad.vercel.app/",
-    categories: ["client"],
+    categories: ["all", "ecommerce", "landing"],
     clientKey: "mearad",
     clientImage: "/images/client/al-marad.webp",
     clientImageW: 1280,
@@ -254,7 +277,7 @@ export const projects = [
     stackBadge: "Premium Landing Page",
     githubLink: "https://github.com/jodx19/El-Wad-Premium-Landing-Page",
     liveLink: "https://el-wad.vercel.app/",
-    categories: ["client"],
+    categories: ["all", "landing"],
     clientKey: "alwod",
     clientImage: "/images/client/al-wod.webp",
     clientImageW: 1280,
@@ -271,7 +294,7 @@ export const projects = [
     stackBadge: "Landing Page",
     githubLink: "https://github.com/jodx19/royal-stay-hotel-landing-freelance",
     liveLink: "https://royal-stay-hotel-landing-freelance.vercel.app/",
-    categories: ["client"],
+    categories: ["all", "landing"],
     clientKey: "qasr",
     clientImage: "/images/client/qasr-al-riyadh.webp",
     clientImageW: 1280,
@@ -288,7 +311,7 @@ export const projects = [
     stackBadge: "Landing Page",
     githubLink: "https://github.com/jodx19/Dental-Landing-page",
     liveLink: "https://drmahmoudomran.vercel.app/",
-    categories: ["client"],
+    categories: ["all", "landing"],
     clientKey: "omran",
     clientImage: "/images/client/dr-omran.webp",
     clientImageW: 1280,
@@ -305,7 +328,7 @@ export const projects = [
     stackBadge: "Web Application",
     githubLink: "https://github.com/amralmohamdy/Movie-App",
     liveLink: "#",
-    categories: ["engineering"]
+    categories: ["all", "specialized"]
   },
   {
     title: "Digital Notes Manager",
@@ -317,7 +340,7 @@ export const projects = [
     stackBadge: "Desktop Application",
     githubLink: "https://github.com/jodx19/DigitalNotesManager",
     liveLink: "#",
-    categories: ["engineering"]
+    categories: ["all", "specialized"]
   },
 ];
 // === EXPERIENCE ===
