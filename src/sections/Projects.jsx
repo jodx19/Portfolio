@@ -39,7 +39,7 @@ function ProjectsGrid({ projects, onSelect }) {
   });
 
   return (
-    <div className="relative px-6 overflow-visible py-12 md:py-16">
+    <div className="relative px-4 sm:px-6 overflow-visible">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 50% 0%, ${tc.orbPrimary} 0%, transparent 50%)` }}
@@ -48,7 +48,7 @@ function ProjectsGrid({ projects, onSelect }) {
       <div className="relative z-10">
         {/* Header */}
         <motion.div
-          className="mb-12 text-center"
+          className="mb-6 md:mb-8 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
@@ -67,14 +67,14 @@ function ProjectsGrid({ projects, onSelect }) {
             {t("projects.label")}
           </motion.p>
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-3 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-txt-primary mt-1.5 tracking-tight"
             variants={fadeUp}
           >
             {t("projects.title")}{" "}
             <span style={{ color: tc.accent }}>{t("projects.titleHighlight")}</span>
           </motion.h2>
           <motion.p
-            className="text-xl text-txt-secondary mt-6 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base text-txt-secondary mt-2 max-w-2xl mx-auto leading-relaxed"
             variants={fadeUp}
           >
             {t("projects.subtitle")}
@@ -83,7 +83,7 @@ function ProjectsGrid({ projects, onSelect }) {
 
         {/* ── Solution-Based Filter Tabs ── */}
         <motion.div
-          className="mb-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+          className="mb-6 sm:mb-8 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
@@ -95,7 +95,7 @@ function ProjectsGrid({ projects, onSelect }) {
               <button
                 key={tab.key}
                 onClick={() => setActiveFilter(tab.key)}
-                className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold transition-all duration-300 ${
+                className={`rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs font-bold transition-all duration-300 ${
                   isActive
                     ? "shadow-lg scale-105"
                     : "text-txt-secondary border bg-surface-1 hover:text-txt-primary hover:border-accent/40"
@@ -115,7 +115,7 @@ function ProjectsGrid({ projects, onSelect }) {
         {/* ── 3D Grid — All projects presented with full technical depth and visual polish ── */}
         <motion.div
           layout
-          className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 [perspective:1200px]"
+          className="grid gap-5 sm:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 [perspective:1200px]"
           initial="hidden"
           whileInView="visible"
           viewport={VP}

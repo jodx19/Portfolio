@@ -6,8 +6,8 @@ import useThemeColors from "../hooks/useThemeColors";
 const VP = { once: true, amount: 0.05 };
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 30, filter: "blur(4px)" },
-  visible: { opacity: 1, y:  0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const SPIRAL_DIRECTIONS = [
@@ -18,16 +18,16 @@ const SPIRAL_DIRECTIONS = [
 
 const spiralVariant = (dir) => {
   const map = {
-    "top-left":     { x: -60, y: -60, rotate: -10, scale: 0.7 },
-    "top":          { x:   0, y: -70, rotate:   0, scale: 0.7 },
-    "top-right":    { x:  60, y: -60, rotate:  10, scale: 0.7 },
-    "bottom-left":  { x: -60, y:  60, rotate:  10, scale: 0.7 },
-    "bottom":       { x:   0, y:  70, rotate:   0, scale: 0.7 },
-    "bottom-right": { x:  60, y:  60, rotate: -10, scale: 0.7 },
+    "top-left": { x: -60, y: -60, rotate: -10, scale: 0.7 },
+    "top": { x: 0, y: -70, rotate: 0, scale: 0.7 },
+    "top-right": { x: 60, y: -60, rotate: 10, scale: 0.7 },
+    "bottom-left": { x: -60, y: 60, rotate: 10, scale: 0.7 },
+    "bottom": { x: 0, y: 70, rotate: 0, scale: 0.7 },
+    "bottom-right": { x: 60, y: 60, rotate: -10, scale: 0.7 },
   };
   const { x, y, rotate, scale } = map[dir] || map["bottom"];
   return {
-    hidden:  { opacity: 0, x, y, rotate, scale },
+    hidden: { opacity: 0, x, y, rotate, scale },
     visible: { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
   };
 };
@@ -48,23 +48,23 @@ function Certifications() {
   const tc = useThemeColors();
 
   const certificates = certLinks.map((link, i) => ({
-    title:     t(`certifications.cert${i + 1}Title`),
-    issuer:    t(`certifications.cert${i + 1}Issuer`),
-    date:      certDates[i],
+    title: t(`certifications.cert${i + 1}Title`),
+    issuer: t(`certifications.cert${i + 1}Issuer`),
+    date: certDates[i],
     link,
-    note:      t(`certifications.cert${i + 1}Note`),
+    note: t(`certifications.cert${i + 1}Note`),
     direction: SPIRAL_DIRECTIONS[i],
   }));
 
   return (
-    <section id="certifications" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
+    <div className="relative px-4 sm:px-6 overflow-visible">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 20% 80%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          className="mb-10"
+          className="mb-6 md:mb-7"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
@@ -81,7 +81,7 @@ function Certifications() {
             {t("certifications.label")}
           </motion.p>
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-3 tracking-tight relative"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-txt-primary mt-1.5 tracking-tight relative"
             variants={fadeUp}
           >
             {t("certifications.title")}{" "}
@@ -101,13 +101,13 @@ function Certifications() {
               />
             </span>
           </motion.h2>
-          <motion.p className="text-lg text-txt-secondary mt-4 max-w-2xl" variants={fadeUp}>
+          <motion.p className="text-sm sm:text-base text-txt-secondary mt-2 max-w-2xl" variants={fadeUp}>
             {t("certifications.subtitle")}
           </motion.p>
         </motion.div>
 
         {/* Cert Grid — spiral reveal */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {certificates.map((cert, i) => {
             const variant = spiralVariant(cert.direction);
             return (
@@ -116,8 +116,8 @@ function Certifications() {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col gap-3 p-4 sm:p-5 rounded-2xl"
-                style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
+                className="group relative flex flex-col gap-2.5 p-3.5 sm:p-4 rounded-xl"
+                style={{ background: tc.cardBg, border: `1.5px solid ${tc.cardBorder}`, boxShadow: tc.cardShadow, backdropFilter: "blur(12px)" }}
                 variants={variant}
                 initial="hidden"
                 whileInView="visible"
@@ -125,8 +125,8 @@ function Certifications() {
                 transition={{ delay: i * 0.07 }}
                 whileHover={{
                   scale: 1.02, zIndex: 5,
-                  borderColor: tc.accent,
-                  boxShadow: `0 0 10px ${tc.accent}, 0 0 30px ${tc.accent}4D`,
+                  borderColor: tc.cardHoverBorder,
+                  boxShadow: tc.cardHoverShadow,
                 }}
               >
                 <div className="flex items-start justify-between">
@@ -143,7 +143,7 @@ function Certifications() {
                   </motion.div>
                   <span
                     className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
-                    style={{ background: tc.cardBorder, border: `1px solid ${tc.cardBorder}`, color: "var(--color-text-tertiary)" }}
+                    style={{ background: tc.pillBg, border: `1px solid ${tc.pillBorder}`, color: tc.pillText }}
                   >
                     {cert.date}
                   </span>
@@ -192,7 +192,7 @@ function Certifications() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

@@ -157,7 +157,7 @@ function Navbar({ sections }) {
 
   return (
     <motion.header
-      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${scrolled ? "py-3" : "py-4"}`}
+      className={`fixed top-0 inset-x-0 mx-auto w-full max-w-[1440px] z-[100] transition-all duration-300 ${scrolled ? "py-3" : "py-4"}`}
       style={{
         background: scrolled ? tc.navBg : tc.navBgTrans,
         backdropFilter: "blur(14px)",
@@ -169,7 +169,7 @@ function Navbar({ sections }) {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-12">
+      <div className="w-full flex items-center justify-between px-6 md:px-12">
 
         {/* ── Logo — pops in from left ── */}
         <motion.a
