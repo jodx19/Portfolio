@@ -76,13 +76,13 @@ function About() {
   ];
 
   return (
-    <section id="about" className="relative px-6 overflow-visible py-12 md:py-16 scroll-mt-24">
+    <div className="relative px-4 sm:px-6 overflow-visible">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 30% 50%, ${tc.orbPrimary} 0%, transparent 50%)` }}
       />
 
-      <div className="relative z-10 grid gap-16 lg:grid-cols-[0.8fr_1.2fr] items-center">
+      <div className="relative z-10 grid gap-8 lg:gap-12 lg:grid-cols-[0.8fr_1.2fr] items-center">
 
         {/* ── Left: Photo ── */}
         <motion.div
@@ -111,7 +111,7 @@ function About() {
             <motion.img
               src={image}
               alt="Mahmoud Al-Safi"
-              className="w-72 h-72 md:w-96 md:h-96 object-cover"
+              className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover"
               initial={{ opacity: 0, y: 30, filter: "blur(10px)", scale: 1.05 }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
               viewport={VP}
@@ -125,7 +125,7 @@ function About() {
         </motion.div>
 
         {/* ── Right: Content ── */}
-        <div className="space-y-10">
+        <div className="space-y-6">
           {/* Section header */}
           <motion.div
             initial="hidden"
@@ -135,13 +135,13 @@ function About() {
           >
             <motion.p className="heading-accent" variants={fadeUp}>{t("about.label")}</motion.p>
             <motion.h2
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-txt-primary mt-2 leading-tight tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-txt-primary mt-1.5 leading-tight tracking-tight"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }}
             >
               {titleWords.map((word, i) => (
                 <motion.span
                   key={i}
-                  className="inline-block mr-3"
+                  className="inline-block mr-2.5"
                   variants={{ hidden: { opacity: 0, y: 30, rotateX: -60 }, visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } }}
                 >
                   {word}
@@ -152,7 +152,7 @@ function About() {
 
           {/* Description */}
           <motion.div
-            className="space-y-8"
+            className="space-y-4"
             initial="hidden"
             whileInView="visible"
             viewport={VP}
@@ -161,7 +161,7 @@ function About() {
             {description.map((para, i) => (
               <motion.p
                 key={i}
-                className={`text-xl leading-relaxed ${i === 1 ? "text-txt-tertiary italic pl-6" : "text-txt-secondary"}`}
+                className={`text-sm sm:text-base leading-relaxed ${i === 1 ? "text-txt-tertiary italic pl-4" : "text-txt-secondary"}`}
                 style={i === 1 ? { borderLeft: `3px solid ${tc.accent}80` } : {}}
                 variants={fadeUp}
               >
@@ -171,12 +171,12 @@ function About() {
           </motion.div>
 
           {/* Value Cards — different directions */}
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {stats.map((item, i) => (
               <motion.div
                 key={item.title}
-                className="group relative rounded-3xl p-5 sm:p-6 cursor-default overflow-visible"
-                style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
+                className="group relative rounded-2xl p-4 sm:p-4.5 cursor-default overflow-visible"
+                style={{ background: tc.cardBg, border: `1.5px solid ${tc.cardBorder}`, boxShadow: tc.cardShadow, backdropFilter: "blur(12px)" }}
                 variants={cardVariants[i]}
                 initial="hidden"
                 whileInView="visible"
@@ -185,22 +185,22 @@ function About() {
               >
                 {/* Icon — continuous subtle bounce */}
                 <motion.div
-                  className="text-4xl mb-6"
+                  className="text-3xl mb-3"
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 2.5 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
                 >
                   {item.icon}
                 </motion.div>
-                <h3 className="font-bold text-txt-primary text-xl">
+                <h3 className="font-bold text-txt-primary text-base sm:text-lg">
                   <span className="group-hover:text-accent transition-colors">{item.title}</span>
                 </h3>
-                <p className="text-txt-tertiary text-base mt-2 leading-relaxed">{item.desc}</p>
+                <p className="text-txt-tertiary text-xs sm:text-sm mt-1 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

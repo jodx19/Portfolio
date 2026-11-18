@@ -14,13 +14,13 @@ import useThemeColors from "../hooks/useThemeColors";
 const VP = { once: true, amount: 0.05 };
 
 // ── Local variants ────────────────────────────────────────────────────────────
-const fadeUp       = { hidden: { opacity: 0, y: 30, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
+const fadeUp = { hidden: { opacity: 0, y: 30, filter: "blur(4px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
 const sectionLabel = { hidden: { opacity: 0, letterSpacing: "0.5em", y: -10 }, visible: { opacity: 1, letterSpacing: "0.3em", y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
-const fromLeft     = { hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } } };
-const fromRight    = { hidden: { opacity: 0, x: 40, filter: "blur(4px)" }, visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } };
-const staggerLeft  = { hidden: {}, visible: { transition: { staggerChildren: 0.1,  delayChildren: 0.2 } } };
+const fromLeft = { hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } } };
+const fromRight = { hidden: { opacity: 0, x: 40, filter: "blur(4px)" }, visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } };
+const staggerLeft = { hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } } };
 const staggerRight = { hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } };
-const headerCont   = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
+const headerCont = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
 
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -48,8 +48,8 @@ const focusStyleDark = (e) => {
   e.target.style.boxShadow = "0 0 0 3px rgba(34,211,238,0.15), 0 0 10px rgba(34,211,238,0.30)";
 };
 const focusStyleLight = (e) => {
-  e.target.style.borderColor = "#B45309";
-  e.target.style.boxShadow = "0 0 0 3px rgba(180,83,9,0.12), 0 0 8px rgba(180,83,9,0.10)";
+  e.target.style.borderColor = "#2563eb";
+  e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.14), 0 0 10px rgba(37,99,235,0.18)";
 };
 
 // ─── Radar Pulse Animation ─────────────────────────────────────────────────────
@@ -87,8 +87,9 @@ function ContactForm() {
   const tc = useThemeColors();
 
   const inputBase = {
-    backgroundColor: tc.isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(254, 250, 244, 1.00)",
-    border: `1px solid ${tc.isDark ? tc.cardBorder : "rgba(146, 64, 14, 0.20)"}`,
+    backgroundColor: tc.isDark ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
+    border: `1.5px solid ${tc.cardBorder}`,
+    boxShadow: tc.isDark ? "none" : "0 1px 3px rgba(15, 23, 42, 0.05)",
   };
   const focusStyle = tc.isDark ? focusStyleDark : focusStyleLight;
   const blurStyleFn = (e) => {
@@ -137,21 +138,21 @@ function ContactForm() {
   };
 
   const socialLinks = [
-    { icon: Github,   href: "https://github.com/jodx19",                              label: "GitHub"   },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoud-mostafa-elsafi",     label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/jodx19", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/mahmoud-mostafa-elsafi", label: "LinkedIn" },
   ];
 
   return (
-    <section id="contact" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
+    <div className="relative px-4 sm:px-6 overflow-visible flex flex-col justify-center">
       {/* Radar pulse background effect */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
         <RadarPulse tc={tc} />
       </div>
 
-      <div className="relative z-10 container mx-auto max-w-6xl">
+      <div className="relative z-10 w-full max-w-5xl mx-auto">
         {/* ── Section Header ── */}
         <motion.div
-          className="mb-12 text-center"
+          className="mb-6 md:mb-8 text-center"
           variants={headerCont}
           initial="hidden"
           whileInView="visible"
@@ -161,14 +162,14 @@ function ContactForm() {
             {t("contact.label")}
           </motion.p>
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-4 tracking-tight leading-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-txt-primary mt-2 tracking-tight leading-normal"
             variants={fadeUp}
           >
             {t("contact.title")}{" "}
-            <span className="text-cyan-400">{t("contact.titleHighlight")}</span>
+            <span style={{ color: tc.accent }}>{t("contact.titleHighlight")}</span>
           </motion.h2>
           <motion.p
-            className="text-xl text-txt-secondary mt-6 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base text-txt-secondary mt-2 max-w-2xl mx-auto leading-relaxed"
             variants={fadeUp}
           >
             {t("contact.subtitle")}
@@ -179,7 +180,13 @@ function ContactForm() {
           {/* ── Contact Info ── */}
           <motion.div
             className="flex flex-col justify-between p-5 sm:p-6 space-y-8 rounded-2xl"
-            style={{ background: tc.cardBgDeep, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}
+            style={{
+              background: tc.cardBgDeep,
+              border: `1.5px solid ${tc.cardBorder}`,
+              boxShadow: tc.cardShadow,
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
+            }}
             variants={staggerLeft}
             initial="hidden"
             whileInView="visible"
@@ -191,9 +198,9 @@ function ContactForm() {
               </motion.h3>
               <div className="space-y-6">
                 {[
-                  { icon: Phone,  text: t("contact.phone"),    href: "tel:01118286088"                  },
-                  { icon: Mail,   text: t("contact.email"),    href: "mailto:ma7moudmostafa19@gmail.com" },
-                  { icon: MapPin, text: t("contact.location"), href: null                                },
+                  { icon: Phone, text: t("contact.phone"), href: "tel:01118286088" },
+                  { icon: Mail, text: t("contact.email"), href: "mailto:ma7moudmostafa19@gmail.com" },
+                  { icon: MapPin, text: t("contact.location"), href: null },
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -230,8 +237,9 @@ function ContactForm() {
                     rel="noreferrer"
                     className="p-3 rounded-xl transition-all"
                     style={{
-                      background: "rgba(255, 255, 255, 0.05)",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      background: tc.isDark ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
+                      border: `1px solid ${tc.cardBorder}`,
+                      boxShadow: tc.isDark ? "none" : "0 1px 3px rgba(15, 23, 42, 0.06)",
                       color: "var(--color-text-secondary)",
                     }}
                     whileHover={{ borderColor: tc.accent, color: tc.accent, boxShadow: tc.socialHoverShadow }}
@@ -246,10 +254,10 @@ function ContactForm() {
 
             <motion.div
               className="pt-6 flex items-center gap-3 text-sm text-txt-tertiary"
-              style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}
+              style={{ borderTop: `1px solid ${tc.cardBorder}` }}
               variants={fromLeft}
             >
-              <Shield size={18} className="text-cyan-400 shrink-0" />
+              <Shield size={18} style={{ color: tc.accent }} className="shrink-0" />
               <span>{t("contact.secureNote")}</span>
             </motion.div>
           </motion.div>
@@ -259,7 +267,13 @@ function ContactForm() {
             onSubmit={handleWhatsApp}
             noValidate
             className="p-5 sm:p-6 space-y-5 rounded-2xl"
-            style={{ background: tc.cardBgDeep, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}
+            style={{
+              background: tc.cardBgDeep,
+              border: `1.5px solid ${tc.cardBorder}`,
+              boxShadow: tc.cardShadow,
+              backdropFilter: "blur(14px)",
+              WebkitBackdropFilter: "blur(14px)",
+            }}
             variants={staggerRight}
             initial="hidden"
             whileInView="visible"
@@ -312,12 +326,12 @@ function ContactForm() {
                   ...inputBase,
                   color: form.projectType ? "var(--color-text-primary)" : "var(--color-text-tertiary)",
                   paddingRight: "40px",
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23${tc.isDark ? "22d3ee" : "B45309"}' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23${tc.isDark ? "22d3ee" : "2563eb"}' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "right 16px center",
                 }}
               >
-                <option value="" disabled style={{ background: tc.isDark ? "#0a0f1a" : "#fef3c7", color: tc.isDark ? "#64748b" : "#9ca3af" }}>
+                <option value="" disabled style={{ background: tc.isDark ? "#0a0f1a" : "#f8fafc", color: tc.isDark ? "#64748b" : "#94a3b8" }}>
                   — Select a project type —
                 </option>
                 {PROJECT_TYPES.map((type) => (
@@ -368,7 +382,7 @@ function ContactForm() {
           </motion.form>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

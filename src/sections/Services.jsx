@@ -71,8 +71,8 @@ export default function Services() {
     {
       key: "landingPages",
       icon: Zap,
-      accentGradient: "from-amber-500/20 to-orange-500/10",
-      accentBorder: "rgba(245, 158, 11, 0.3)",
+      accentGradient: "from-violet-500/20 to-blue-500/10",
+      accentBorder: "rgba(139, 92, 246, 0.3)",
       badge: isRtl ? "سرعة وتحويل عالي" : "High Conversion",
       title: t("services.landingTitle"),
       desc: t("services.landingDesc"),
@@ -105,33 +105,33 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative py-16 md:py-24 px-6 overflow-visible scroll-mt-24">
+    <div className="relative px-4 sm:px-6 overflow-visible">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
-          className="mb-14 text-center"
+          className="mb-6 md:mb-8 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
           variants={fadeUp}
         >
           <p
-            className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3"
+            className="text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-2"
             style={{ color: tc.accent }}
           >
             {t("services.badge")}
           </p>
-          <h2 className="text-3xl md:text-5xl font-black text-txt-primary tracking-tight">
+          <h2 className="text-2xl md:text-4xl font-black text-txt-primary tracking-tight">
             {t("services.heading")}
           </h2>
-          <p className="mt-4 text-base md:text-lg text-txt-secondary max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-2 text-sm md:text-base text-txt-secondary max-w-2xl mx-auto leading-relaxed">
             {t("services.subheading")}
           </p>
         </motion.div>
 
         {/* Bento Grid Services Cards */}
         <motion.div
-          className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2"
+          className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
@@ -145,17 +145,18 @@ export default function Services() {
               <motion.article
                 key={srv.key}
                 variants={fadeUp}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 md:p-8 transition-all duration-300"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-5 md:p-6 transition-all duration-300"
                 style={{
                   background: tc.cardBg,
-                  border: `1px solid ${tc.cardBorder}`,
+                  border: `1.5px solid ${tc.cardBorder}`,
                   backdropFilter: "blur(18px)",
                   WebkitBackdropFilter: "blur(18px)",
-                  boxShadow: tc.cardHoverShadow,
+                  boxShadow: tc.cardShadow,
                 }}
                 whileHover={{
                   y: -6,
-                  borderColor: tc.accent,
+                  borderColor: tc.cardHoverBorder,
+                  boxShadow: tc.cardHoverShadow,
                 }}
               >
                 {/* Glow accent in corner */}
@@ -241,7 +242,7 @@ export default function Services() {
           })}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }
 

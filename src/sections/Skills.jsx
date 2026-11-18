@@ -54,14 +54,14 @@ function Skills({ skills }) {
   const skillKeys = ["skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9"];
 
   return (
-    <section id="stack" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
+    <div className="relative overflow-visible">
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: `radial-gradient(ellipse at 70% 30%, ${tc.orbPrimary} 0%, transparent 50%)` }} />
 
       <div className="relative z-10">
         {/* Header */}
         <motion.div
-          className="mb-12 text-center"
+          className="mb-6 md:mb-8 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
@@ -81,7 +81,7 @@ function Skills({ skills }) {
             {t("skills.label")}
           </motion.p>
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary mt-2 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-txt-primary mt-1.5 tracking-tight"
             variants={fadeUp}
           >
             {t("skills.title")} <span style={{ color: tc.accent }}>{t("skills.titleHighlight")}</span>
@@ -93,7 +93,7 @@ function Skills({ skills }) {
           <ScanLine tc={tc} />
 
           <motion.div
-            className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [perspective:1000px]"
+            className="grid gap-4 sm:gap-4.5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 [perspective:1000px]"
             initial="hidden"
             whileInView="visible"
             viewport={VP}
@@ -108,20 +108,20 @@ function Skills({ skills }) {
               return (
                 <motion.article
                   key={skill.name}
-                  className="group relative rounded-2xl p-6 cursor-default"
-                  style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
+                  className="group relative rounded-2xl p-4 sm:p-5 cursor-default transition-colors duration-200"
+                  style={{ background: tc.cardBg, border: `1.5px solid ${tc.cardBorder}`, boxShadow: tc.cardShadow, backdropFilter: "blur(12px)" }}
                   variants={cardIn}
                   whileHover={{
                     scale: 1.02, zIndex: 5,
-                    borderColor: tc.accent,
-                    boxShadow: `0 0 10px ${tc.accent}, 0 0 30px ${tc.accent}4D`,
+                    borderColor: tc.cardHoverBorder,
+                    boxShadow: tc.cardHoverShadow,
                   }}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
                       {/* Icon — spins in on viewport enter */}
                       <motion.span
-                        className="inline-flex h-11 w-11 items-center justify-center rounded-xl"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl shrink-0"
                         style={{ background: tc.iconBg, border: `1px solid ${tc.iconBorder}`, color: tc.iconColor }}
                         initial={{ rotate: -180, scale: 0, opacity: 0 }}
                         whileInView={{ rotate: 0, scale: 1, opacity: 1 }}
@@ -132,13 +132,13 @@ function Skills({ skills }) {
                         {iconMap[skill.category] || <Sparkles className="h-5 w-5" />}
                       </motion.span>
                       <div>
-                        <p className="text-base font-semibold text-txt-primary group-hover:text-accent transition-colors">{name}</p>
-                        <p className="text-xs text-txt-tertiary">{catLabel}</p>
+                        <p className="text-sm sm:text-base font-semibold text-txt-primary group-hover:text-accent transition-colors">{name}</p>
+                        <p className="text-[11px] text-txt-tertiary">{catLabel}</p>
                       </div>
                     </div>
                   </div>
 
-                  <p className="mt-4 text-sm text-txt-secondary leading-relaxed">{desc}</p>
+                  <p className="mt-3 text-xs sm:text-sm text-txt-secondary leading-relaxed">{desc}</p>
 
                   {/* Glow line */}
                   <div
@@ -151,7 +151,7 @@ function Skills({ skills }) {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

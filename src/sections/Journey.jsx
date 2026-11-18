@@ -22,8 +22,13 @@ function TimelineCard({ title, subtitle, period, description, type, tc, slideVar
 
   return (
     <motion.div
-      className="group relative p-6 rounded-2xl"
-      style={{ background: tc.cardBg, border: `1px solid ${tc.cardBorder}`, backdropFilter: "blur(12px)" }}
+      className="group relative p-4 sm:p-5 rounded-xl"
+      style={{
+        background: tc.cardBg,
+        border: `1.5px solid ${tc.cardBorder}`,
+        backdropFilter: "blur(12px)",
+        boxShadow: tc.cardShadow
+      }}
       variants={slideVariant}
       initial="hidden"
       whileInView="visible"
@@ -32,7 +37,7 @@ function TimelineCard({ title, subtitle, period, description, type, tc, slideVar
     >
       {/* Icon badge */}
       <motion.div
-        className="absolute -top-4 -left-4 flex h-10 w-10 items-center justify-center rounded-xl shadow-lg"
+        className="absolute -top-4 -left-4 rtl:-right-4 rtl:left-auto flex h-10 w-10 items-center justify-center rounded-xl shadow-lg"
         style={{
           background: isEdu ? tc.iconBg : "rgba(168,85,247,0.10)",
           border: `1px solid ${isEdu ? tc.iconBorder : "rgba(168,85,247,0.30)"}`,
@@ -51,7 +56,7 @@ function TimelineCard({ title, subtitle, period, description, type, tc, slideVar
         {isEdu ? <GraduationCap size={20} /> : <Briefcase size={20} />}
       </motion.div>
 
-      <div className="relative z-10 ml-4 flex flex-col gap-2">
+      <div className="relative z-10 ml-4 rtl:mr-4 rtl:ml-0 flex flex-col gap-2">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
             <h4 className="text-xl font-bold text-txt-primary group-hover:text-accent transition-colors">{title}</h4>
@@ -59,7 +64,7 @@ function TimelineCard({ title, subtitle, period, description, type, tc, slideVar
           </div>
           <div
             className="flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium"
-            style={{ background: tc.cardBorder, border: `1px solid ${tc.cardBorder}`, color: "var(--color-text-tertiary)" }}
+            style={{ background: tc.pillBg, border: `1px solid ${tc.pillBorder}`, color: tc.pillText }}
           >
             <Calendar size={14} />
             {period}
@@ -74,7 +79,7 @@ function TimelineCard({ title, subtitle, period, description, type, tc, slideVar
 // ── Timeline Column ───────────────────────────────────────────────────────────
 function TimelineColumn({ label, borderColor, dotColor, dotGlow, gradientBg, items, type, tc, slideVariant, headerVariant }) {
   return (
-    <div className="space-y-12">
+    <div className="space-y-6 sm:space-y-8">
       <motion.div
         className="flex items-center gap-4"
         variants={headerVariant}
@@ -92,10 +97,10 @@ function TimelineColumn({ label, borderColor, dotColor, dotGlow, gradientBg, ite
         <h3 className="text-2xl font-bold text-txt-primary uppercase tracking-wider">{label}</h3>
       </motion.div>
 
-      <div className="relative pl-6">
+      <div className="relative pl-6 rtl:pr-6 rtl:pl-0">
         {/* Timeline line — draws in */}
         <motion.div
-          className="absolute left-0 top-0 bottom-0 w-0.5"
+          className="absolute left-0 rtl:right-0 rtl:left-auto top-0 bottom-0 w-0.5"
           style={{ background: borderColor, originY: 0 }}
           variants={lineGrow}
           initial="hidden"
@@ -105,7 +110,7 @@ function TimelineColumn({ label, borderColor, dotColor, dotGlow, gradientBg, ite
 
         {/* Dot — pops then pulses */}
         <motion.div
-          className="absolute top-0 -left-[5px] w-2.5 h-2.5 rounded-full"
+          className="absolute top-0 -left-[5px] rtl:-right-[5px] rtl:left-auto w-2.5 h-2.5 rounded-full"
           style={{ background: dotColor }}
           variants={dotPop}
           initial="hidden"
@@ -145,7 +150,7 @@ function EducationExperience() {
   const splitRight = { hidden: { opacity: 0, x: 50  }, visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } };
 
   return (
-    <section id="journey" className="relative py-12 md:py-16 px-6 overflow-visible scroll-mt-24">
+    <div className="relative px-4 sm:px-6 overflow-visible">
       <div className="absolute top-0 left-1/4 h-64 w-64 rounded-full pointer-events-none"
         style={{ background: tc.orbPrimary, filter: "blur(100px)" }} />
       <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full pointer-events-none"
@@ -154,21 +159,21 @@ function EducationExperience() {
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Header — split left/right */}
         <motion.div
-          className="mb-16 text-center"
+          className="mb-8 md:mb-10 text-center"
           initial="hidden"
           whileInView="visible"
           viewport={VP}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
         >
           <motion.p className="heading-accent tracking-[0.25em]" variants={fadeUp}>{t("journey.label")}</motion.p>
-          <div className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-txt-primary tracking-tight leading-tight flex flex-wrap justify-center gap-x-3">
+          <div className="mt-2 text-2xl md:text-3xl lg:text-4xl font-bold text-txt-primary tracking-tight leading-tight flex flex-wrap justify-center gap-x-2.5">
             <motion.span variants={splitLeft}>{t("journey.title")}</motion.span>
             <motion.span style={{ color: tc.accent }} variants={fadeUp}>{t("journey.titleAnd")}</motion.span>
             <motion.span variants={splitRight}>{t("journey.titleExperience")}</motion.span>
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 [perspective:1000px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 [perspective:1000px]">
           <TimelineColumn
             label={t("journey.educationLabel")}
             borderColor={tc.timelineEduBorder}
@@ -195,7 +200,7 @@ function EducationExperience() {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

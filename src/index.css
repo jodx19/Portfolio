@@ -10,6 +10,7 @@
     /* Backgrounds */
     --color-bg-0: #02061a;         /* very deep navy-black */
     --color-bg-1: #0a0f1a;
+    --color-bg-outer: #01040f;     /* ambient void outside framed canvas */
 
     /* Text */
     --color-text-primary: #f1f5f9;
@@ -46,44 +47,45 @@
   }
 
   /* ================================================================
-     LIGHT MODE — Solar Minimal 🔶
+     LIGHT MODE — Executive Royal Sapphire & Porcelain 🔷
      ================================================================
-     Philosophy : أبيض نظيف + برتقالي متوهج = premium tech feel
-     BG         : #ffffff — أبيض حقيقي
-     Particles  : رمادي + برتقالي
-     Accent     : #ea580c (orange-600) — حيوي ومتوهج
-     Text       : stone-900 دافئ (stone-900 مش أسود بارد)
+     Philosophy : بورسلين هادئ + أزرق ملكي وسليت عميق = Stripe / Linear Executive Grade
+     BG         : #f8fafc (Slate-50) — أرضية هادئة مريحة للعين
+     Surfaces   : #ffffff — أبيض ناصع للكروت لبروز معماري ثلاثي الأبعاد
+     Accent     : #2563eb (Royal Blue 600) — فخامة تقنية رصينة
+     Text       : Slate-900 (#0f172a) تباين طبوغرافي نقي بدون توهجات مشوشة
      ================================================================ */
   .light {
     /* ── Backgrounds ────────── */
-    --color-bg-0: #ffffff;           /* أبيض نظيف */
-    --color-bg-1: #fafaf9;           /* off-white دافئ للسطوح */
+    --color-bg-0: #f8fafc;           /* بورسلين هادئ ومريح جداً للعين */
+    --color-bg-1: #ffffff;           /* أبيض ناصع للكروت والأسطح */
+    --color-bg-outer: #f1f5f9;       /* إطار خارجي رمادي محايد ناعم */
 
-    /* ── Typography (Stone — دافئ ومريح للعين) ──────────── */
-    --color-text-primary:   #1c1917;   /* stone-900 — دافئ وقوي */
-    --color-text-secondary: #44403c;   /* stone-700 — رمادي دافئ */
-    --color-text-tertiary:  #78716c;   /* stone-500 — خفيف ومقروء */
-    --color-text-accent:    #ea580c;   /* orange-600 — برتقالي حيوي */
+    /* ── Typography (Deep Slate & Obsidian) ──────────── */
+    --color-text-primary:   #0f172a;   /* slate-900 — نقي وقوي عالي التباين */
+    --color-text-secondary: #334155;   /* slate-700 — مريح جداً للقراءة */
+    --color-text-tertiary:  #64748b;   /* slate-500 — ناعم ومتوازن */
+    --color-text-accent:    #2563eb;   /* blue-600 — أزرق ملكي فاخر */
 
-    /* ── Surfaces (Glassmorphism أبيض نظيف) ──────────────── */
-    --color-surface-0: rgba(255, 255, 255, 0.95); /* أبيض شبه مصمت */
-    --color-surface-1: rgba(250, 250, 249, 0.90); /* off-white شفاف */
+    /* ── Surfaces (Tactile Card Surfaces) ──────────────── */
+    --color-surface-0: rgba(255, 255, 255, 0.98); /* أبيض ناصع */
+    --color-surface-1: rgba(248, 250, 252, 0.92); /* slate-50 خفيف */
 
-    /* ── Borders ──────────────────────────────────────── */
-    --color-border-light:  rgba(234, 88, 12, 0.15);  /* برتقالي خفيف */
-    --color-border-medium: rgba(234, 88, 12, 0.42);  /* برتقالي واضح */
-    --color-border-accent: rgba(194, 65, 12, 0.75);  /* orange-700 قوي */
+    /* ── Borders (Deep Obsidian Architectural Framing) ─── */
+    --color-border-light:  rgba(15, 23, 42, 0.30);   /* حدود سليت/أوبسيديان أغمق صريحة تفصل الكروت بامتياز */
+    --color-border-medium: rgba(37, 99, 235, 0.50);  /* لمسة أزرق مشعة */
+    --color-border-accent: rgba(37, 99, 235, 0.85);  /* أزرق صريح للـ Active */
 
     /* ── Accent ───────────────────────────────────────── */
-    --color-accent-primary:   #ea580c;   /* orange-600 — حيوي ومتوهج */
-    --color-accent-secondary: #9a3412;   /* orange-800 — برتقالي محترق */
+    --color-accent-primary:   #2563eb;   /* blue-600 — أزرق ملكي معتمد عالمياً */
+    --color-accent-secondary: #1d4ed8;   /* blue-700 — سفير عميق */
 
-    /* ── Shadows (orange glow متوهج) ──────────────────── */
-    --shadow-lightning:         0 0 16px rgba(234,88,12,0.55), 0 0 42px rgba(234,88,12,0.28);
-    --shadow-lightning-intense: 0 0 24px rgba(234,88,12,0.75), 0 0 65px rgba(234,88,12,0.42);
-    --shadow-soft:     0 6px 20px rgba(28, 25, 23, 0.08);
-    --shadow-card:     0 4px 16px rgba(28,25,23,0.08), 0 1px 4px rgba(234,88,12,0.06);
-    --shadow-card-hover: 0 0 28px rgba(234,88,12,0.48), 0 12px 32px rgba(28,25,23,0.12);
+    /* ── Shadows & Outer Illumination (Tactile Crisp Cards + Blue Aura) ─── */
+    --shadow-lightning:         0 4px 20px rgba(37, 99, 235, 0.25), 0 0 16px rgba(37, 99, 235, 0.30);
+    --shadow-lightning-intense: 0 8px 30px rgba(37, 99, 235, 0.35), 0 0 24px rgba(37, 99, 235, 0.45);
+    --shadow-soft:       0 2px 8px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.05);
+    --shadow-card:       0 4px 20px -2px rgba(15, 23, 42, 0.10), 0 0 16px rgba(37, 99, 235, 0.16), 0 0 0 1px rgba(15, 23, 42, 0.22);
+    --shadow-card-hover: 0 16px 36px -4px rgba(15, 23, 42, 0.16), 0 0 28px rgba(37, 99, 235, 0.32), 0 0 0 2px rgba(37, 99, 235, 0.75);
     --backdrop-blur: blur(16px);
   }
 
@@ -322,43 +324,105 @@
     background: rgba(37, 99, 235, 0.12);
   }
 
-  /* === LIGHT MODE OVERRIDES (Solar Minimal — Orange & Warm Stone) === */
+  /* === LIGHT MODE OVERRIDES (Executive Royal Sapphire & Obsidian) === */
   .light .ambient-orb-cyan {
-    background: rgba(234, 88, 12, 0.18);
+    background: rgba(37, 99, 235, 0.08);
   }
   .light .ambient-orb-blue {
-    background: rgba(154, 52, 18, 0.12);
+    background: rgba(2, 132, 199, 0.06);
   }
+  .light .card,
   .light .card-lightning {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(234, 88, 12, 0.18);
-    box-shadow: 0 4px 16px rgba(28,25,23,0.06);
+    background: #ffffff;
+    border: 1.5px solid rgba(15, 23, 42, 0.38);
+    box-shadow:
+      0 2px 0 rgba(15, 23, 42, 0.08),
+      0 4px 16px -2px rgba(15, 23, 42, 0.14),
+      0 0 0 1px rgba(15, 23, 42, 0.26),
+      0 0 18px rgba(37, 99, 235, 0.14);
   }
+  .light .card:hover,
   .light .card-lightning:hover {
-    border-color: var(--color-accent-primary);
-    box-shadow: 0 0 24px rgba(234,88,12,0.50), 0 0 55px rgba(234,88,12,0.25);
+    border-color: rgba(37, 99, 235, 0.80);
+    box-shadow:
+      0 8px 32px -4px rgba(15, 23, 42, 0.18),
+      0 0 0 2px rgba(37, 99, 235, 0.70),
+      0 0 24px rgba(37, 99, 235, 0.28);
+    transform: translateY(-2px);
+  }
+  /* ── Section Dividers — Light Mode ── */
+  .light section {
+    position: relative;
+  }
+  .light section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2%;
+    right: 2%;
+    height: 1.5px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(37, 99, 235, 0.25) 15%,
+      rgba(15, 23, 42, 0.60) 35%,
+      rgba(37, 99, 235, 0.80) 50%,
+      rgba(15, 23, 42, 0.60) 65%,
+      rgba(37, 99, 235, 0.25) 85%,
+      transparent 100%
+    );
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.45), 0 0 20px rgba(37, 99, 235, 0.20);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── Section Dividers — Dark Mode ── */
+  .dark section,
+  section {
+    position: relative;
+  }
+  .dark section::after,
+  :root:not(.light) section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2%;
+    right: 2%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(34, 211, 238, 0.10) 15%,
+      rgba(34, 211, 238, 0.45) 35%,
+      rgba(34, 211, 238, 0.65) 50%,
+      rgba(34, 211, 238, 0.45) 65%,
+      rgba(34, 211, 238, 0.10) 85%,
+      transparent 100%
+    );
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.30), 0 0 20px rgba(34, 211, 238, 0.12);
+    pointer-events: none;
+    z-index: 2;
   }
   .light .badge-tech:hover {
     color: var(--color-accent-primary);
-    border-color: rgba(234, 88, 12, 0.55);
-    box-shadow: 0 0 10px rgba(234, 88, 12, 0.30);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
   }
   .light .btn-primary {
-    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     color: #ffffff;
-    box-shadow: 0 4px 20px rgba(234, 88, 12, 0.45);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
   }
   .light .btn-primary:hover {
-    box-shadow: 0 0 22px rgba(234,88,12,0.72), 0 0 48px rgba(234,88,12,0.38);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.40);
   }
   .light .hero-title {
-    background: linear-gradient(120deg, #ea580c 0%, #c2410c 45%, #f97316 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #2563eb 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(234,88,12,0.50));
+    filter: none; /* NO BLURRY HALOS in Light Mode! */
   }
 }
 

@@ -36,9 +36,10 @@ function ProjectCard({ project, onSelect }) {
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300 ease-in-out"
       style={{
         background: tc.cardBg,
-        border: `1px solid ${tc.cardBorder}`,
+        border: `1.5px solid ${tc.cardBorder}`,
         backdropFilter: "blur(18px)",
         WebkitBackdropFilter: "blur(18px)",
+        boxShadow: tc.cardShadow,
       }}
       variants={fadeUp}
       onHoverStart={() => setIsHovered(true)}
@@ -52,12 +53,67 @@ function ProjectCard({ project, onSelect }) {
       }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      {/* ── Image Container ─────────────────────────────────────── */}
-      <div className="relative h-44 sm:h-52 w-full overflow-hidden rounded-t-2xl shrink-0">
+      {/* ── Browser Window Header Bar ── */}
+      <div
+        className="flex items-center justify-between px-3.5 py-2.5 border-b shrink-0 text-[10px] font-mono"
+        style={{
+          background: tc.isDark ? "rgba(15, 23, 42, 0.95)" : "#e2e8f0",
+          borderColor: tc.isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(30, 41, 59, 0.16)",
+        }}
+        dir="ltr"
+      >
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block shadow-sm" />
+          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block shadow-sm" />
+          <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block shadow-sm" />
+        </div>
+        <div
+          className="px-3 py-0.5 rounded-md text-[10px] font-medium truncate max-w-[220px] flex items-center gap-1.5 shadow-sm"
+          style={{
+            background: tc.isDark ? "rgba(255, 255, 255, 0.06)" : "#ffffff",
+            border: `1px solid ${tc.isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(30, 41, 59, 0.12)"}`,
+            color: tc.isDark ? "#94a3b8" : "#475569",
+          }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+          <span className="truncate">{project.liveLink ? project.liveLink.replace(/^https?:\/\//, "").replace(/\/$/, "") : "app.production"}</span>
+        </div>
+        <div className="w-6" />
+      </div>
+
+      {/* ── Image Container (Framed Browser Viewport) ── */}
+      <div
+        className="relative h-44 sm:h-52 w-full overflow-hidden shrink-0 border-b"
+        style={{
+          background: tc.isDark ? "#090e1a" : "#f1f5f9",
+          borderColor: tc.isDark ? "rgba(255, 255, 255, 0.10)" : "rgba(30, 41, 59, 0.16)",
+        }}
+      >
+        {/* Crisp Inner Bezel Ring — guarantees 4-side distinction for white & dark screenshots */}
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{
+            boxShadow: tc.isDark
+              ? "inset 0 0 0 1px rgba(255, 255, 255, 0.08)"
+              : "inset 0 0 0 1px rgba(15, 23, 42, 0.12), inset 0 2px 6px rgba(15, 23, 42, 0.08)",
+          }}
+        />
+
         {project.stackBadge && (
           <span
-            className="absolute left-4 top-4 z-20 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider shadow-xl"
-            style={{ background: tc.primaryGradient, color: tc.isDark ? "#0a0f1a" : "#fff" }}
+            className="absolute left-4 top-4 z-20 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider shadow-lg"
+            style={{
+              background: tc.isDark
+                ? tc.primaryGradient
+                : "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+              color: "#fff",
+              border: tc.isDark
+                ? "1px solid rgba(34, 211, 238, 0.4)"
+                : "1px solid rgba(255, 255, 255, 0.35)",
+              boxShadow: tc.isDark
+                ? "0 4px 14px rgba(34, 211, 238, 0.35)"
+                : "0 4px 14px rgba(37, 99, 235, 0.40)",
+            }}
           >
             {project.stackBadge}
           </span>
@@ -72,7 +128,7 @@ function ProjectCard({ project, onSelect }) {
             alt={project.title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-top"
             initial={{ opacity: 0.7, scale: 1 }}
             animate={{ opacity: 1, scale: isHovered ? 1.12 : 1.04 }}
             exit={{ opacity: 0.6 }}
@@ -149,36 +205,38 @@ function ProjectCard({ project, onSelect }) {
       </div>
 
       {/* ── Card Content ─────────────────────────────────────────── */}
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <div className="mb-3">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-2xl font-bold text-txt-primary group-hover:text-accent transition-colors">
-              {project.title}
-            </h3>
-            {project.githubLink && (
-              <motion.a href={project.githubLink} target="_blank" rel="noreferrer"
-                className="text-txt-tertiary hover:text-txt-primary transition-colors"
-                whileHover={{ scale: 1.1 }}>
-                <Github size={20} />
-              </motion.a>
-            )}
+      <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
+        <div>
+          <div className="mb-3">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-txt-primary group-hover:text-accent transition-colors">
+                {project.title}
+              </h3>
+              {project.githubLink && (
+                <motion.a href={project.githubLink} target="_blank" rel="noreferrer"
+                  className="text-txt-tertiary hover:text-txt-primary transition-colors"
+                  whileHover={{ scale: 1.1 }}>
+                  <Github size={20} />
+                </motion.a>
+              )}
+            </div>
+            <p className="text-sm text-txt-secondary line-clamp-3 leading-relaxed">{project.description}</p>
           </div>
-          <p className="text-sm text-txt-secondary line-clamp-3 leading-relaxed">{project.description}</p>
-        </div>
 
-        {/* Tech Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.tags.map((tag) => (
-            <span key={tag}
-              className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-md transition-all tracking-wider"
-              style={{
-                background: `${tc.accent}0D`,
-                border: `1px solid ${tc.accent}26`,
-                color: `${tc.accent}CC`,
-              }}>
-              {tag}
-            </span>
-          ))}
+          {/* Tech Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.tags.map((tag) => (
+              <span key={tag}
+                className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-md transition-all tracking-wider"
+                style={{
+                  background: tc.isDark ? `${tc.accent}0D` : "rgba(241, 245, 249, 0.95)",
+                  border: `1px solid ${tc.isDark ? `${tc.accent}26` : "rgba(226, 232, 240, 0.90)"}`,
+                  color: tc.isDark ? `${tc.accent}CC` : "#334155",
+                }}>
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Bottom action row */}
